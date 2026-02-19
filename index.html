@@ -2,67 +2,160 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">   
-<title>Dinesh Kumar |Python Devloper</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinesh Kumar | Full Stack Python Developer</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
 body{
 background:linear-gradient(135deg,#0f172a,#020617);
 color:#f8fafc;
 scroll-behavior:smooth;
 }
-.container{width:90%;max-width:1100px;margin:auto;padding:60px 0;}
-header{text-align:center;padding-top:80px;}
-header h1{font-size:42px;font-weight:700;}
-header p{margin-top:15px;color:#94a3b8;font-size:18px;}
+
+/* Container */
+.container{
+width:90%;
+max-width:1150px;
+margin:auto;
+padding:80px 0;
+}
+
+/* Header */
+header{
+text-align:center;
+padding-top:80px;
+}
+
+header h1{
+font-size:48px;
+font-weight:700;
+background:linear-gradient(90deg,#38bdf8,#818cf8);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+header p{
+margin-top:20px;
+color:#94a3b8;
+font-size:18px;
+}
+
 .btn{
 display:inline-block;
-margin-top:25px;
-padding:12px 28px;
-background:#38bdf8;
+margin-top:30px;
+padding:14px 32px;
+background:linear-gradient(90deg,#38bdf8,#6366f1);
 color:#000;
 font-weight:600;
-border-radius:8px;
+border-radius:30px;
 text-decoration:none;
-transition:.3s;
+transition:0.3s;
 }
-.btn:hover{background:#0ea5e9;}
-section{margin-top:80px;}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 10px 25px rgba(56,189,248,0.4);
+}
+
+/* Section */
+section{
+margin-top:90px;
+}
+
 h2{
-margin-bottom:30px;
-font-size:26px;
-border-left:5px solid #38bdf8;
-padding-left:12px;
+font-size:28px;
+margin-bottom:35px;
+position:relative;
+display:inline-block;
 }
+
+h2::after{
+content:'';
+position:absolute;
+bottom:-8px;
+left:0;
+width:60%;
+height:3px;
+background:linear-gradient(90deg,#38bdf8,#6366f1);
+}
+
+/* Card */
 .card{
 background:rgba(30,41,59,0.6);
-backdrop-filter:blur(10px);
-padding:25px;
-margin-bottom:25px;
-border-radius:12px;
-box-shadow:0 10px 30px rgba(0,0,0,0.3);
-transition:.3s;
+backdrop-filter:blur(14px);
+padding:30px;
+margin-bottom:30px;
+border-radius:18px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+transition:0.4s;
 }
-.card:hover{transform:translateY(-5px);}
+
+.card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 50px rgba(56,189,248,0.3);
+}
+
+/* Skills */
 .skills span{
 display:inline-block;
 background:#1e293b;
-padding:8px 14px;
-margin:6px;
-border-radius:20px;
+padding:10px 16px;
+margin:8px;
+border-radius:30px;
 font-size:14px;
+transition:0.3s;
 }
-ul{padding-left:20px;margin-top:10px;}
-footer{text-align:center;margin-top:80px;padding:40px;color:#64748b;}
-.highlight{color:#38bdf8;font-weight:600;}
+
+.skills span:hover{
+background:linear-gradient(90deg,#38bdf8,#6366f1);
+color:#000;
+transform:scale(1.05);
+}
+
+/* List */
+ul{
+padding-left:20px;
+margin-top:15px;
+line-height:1.8;
+}
+
+.highlight{
+color:#38bdf8;
+font-weight:600;
+}
+
+/* Footer */
+footer{
+text-align:center;
+margin-top:100px;
+padding:40px;
+color:#64748b;
+border-top:1px solid rgba(255,255,255,0.1);
+}
+
+/* Responsive */
+@media(max-width:768px){
+header h1{
+font-size:34px;
+}
+}
 </style>
 </head>
+
 <body>
 
 <header class="container">
 <h1>Mariyala Venakata Dinesh Kumar</h1>
-<p>Backend Python Developer | Django REST | Secure & Scalable API Architect</p>
+<p>Full Stack Python Developer | Django | REST APIs | Modern UI Integration | Scalable Web Applications</p>
 <a class="btn" href="mailto:dk967427@gmail.com">Hire Me</a>
 </header>
 
@@ -71,9 +164,9 @@ footer{text-align:center;margin-top:80px;padding:40px;color:#64748b;}
 <section>
 <h2>Professional Summary</h2>
 <div class="card">
-Backend-focused Python Engineer with hands-on experience designing and optimizing Django REST APIs in production environments.
-Built <span class="highlight">10+ secure APIs</span>, resolved <span class="highlight">30+ production issues</span>, and improved backend performance using structured query optimization and failure analysis.
-Strong in writing clean, modular, scalable backend systems deployed in cloud environments.
+Full Stack Python Developer with hands-on experience building end-to-end web applications using Django, Django REST Framework, and modern frontend technologies.
+Built <span class="highlight">10+ production-grade APIs</span> and resolved <span class="highlight">30+ real-time production issues</span>.
+Strong in backend architecture, database optimization, API security, and frontend integration to deliver scalable, high-performance applications deployed in cloud environments.
 </div>
 </section>
 
@@ -83,6 +176,10 @@ Strong in writing clean, modular, scalable backend systems deployed in cloud env
 <span>Python</span>
 <span>Django</span>
 <span>Django REST Framework</span>
+<span>HTML5</span>
+<span>CSS3</span>
+<span>JavaScript</span>
+<span>Bootstrap</span>
 <span>PostgreSQL</span>
 <span>MySQL</span>
 <span>JWT Authentication</span>
@@ -92,7 +189,6 @@ Strong in writing clean, modular, scalable backend systems deployed in cloud env
 <span>Git</span>
 <span>Pandas</span>
 <span>Power BI</span>
-<span>RESTful API Design</span>
 </div>
 </section>
 
@@ -102,12 +198,12 @@ Strong in writing clean, modular, scalable backend systems deployed in cloud env
 <h3>Python Developer – Friendsmoo Info Media Pvt Ltd</h3>
 <p><strong>Oct 2024 – Present | Hyderabad</strong></p>
 <ul>
-<li>Designed and deployed 10+ production-grade REST APIs powering business workflows.</li>
-<li>Implemented JWT-based authentication & role-based access control (RBAC).</li>
-<li>Resolved 30+ production incidents via structured log analysis & query tracing.</li>
-<li>Optimized PostgreSQL queries reducing API latency in data-heavy endpoints.</li>
-<li>Maintained modular backend architecture for long-term scalability.</li>
-<li>Supported cloud deployment and runtime troubleshooting.</li>
+<li>Designed and deployed 10+ production-grade REST APIs.</li>
+<li>Integrated backend APIs with dynamic frontend interfaces.</li>
+<li>Implemented JWT authentication & role-based access control (RBAC).</li>
+<li>Optimized PostgreSQL queries reducing API latency significantly.</li>
+<li>Resolved 30+ production incidents using structured log analysis.</li>
+<li>Supported AWS deployment and runtime monitoring.</li>
 </ul>
 </div>
 </section>
@@ -119,43 +215,39 @@ Strong in writing clean, modular, scalable backend systems deployed in cloud env
 <h3>🏥 Hospital Management System</h3>
 <p><strong>Tech:</strong> Django REST, PostgreSQL, JWT</p>
 <ul>
-<li>Designed secure patient, doctor, appointment & billing APIs.</li>
-<li>Implemented RBAC for admin, doctor & staff access control.</li>
+<li>Developed secure patient, appointment & billing APIs.</li>
+<li>Implemented role-based dashboards.</li>
 <li>Ensured transactional integrity in billing workflows.</li>
-<li>Optimized database queries for high-volume appointment handling.</li>
 </ul>
 </div>
 
 <div class="card">
-<h3>🧹 Cleaning Services Platform (Urban Company Type)</h3>
-<p><strong>Tech:</strong> Django REST, PostgreSQL, Role-based APIs</p>
+<h3>🧹 Cleaning Services Platform</h3>
+<p><strong>Tech:</strong> Django REST, PostgreSQL</p>
 <ul>
-<li>Developed service booking, provider assignment & scheduling APIs.</li>
-<li>Built secure authentication & service-category management modules.</li>
-<li>Improved response time for high-traffic booking endpoints.</li>
-<li>Handled dynamic pricing & order tracking workflows.</li>
+<li>Built booking, provider assignment & pricing modules.</li>
+<li>Handled high-traffic service requests.</li>
+<li>Improved performance of booking endpoints.</li>
 </ul>
 </div>
 
 <div class="card">
 <h3>🏠 Real Estate Platform</h3>
-<p><strong>Tech:</strong> Django REST, MySQL, AWS Deployment</p>
+<p><strong>Tech:</strong> Django REST, MySQL, AWS</p>
 <ul>
-<li>Built property listing, filtering & search optimization APIs.</li>
-<li>Designed scalable schema for property, agents & inquiry tracking.</li>
-<li>Improved query performance using indexing strategies.</li>
-<li>Supported cloud deployment & monitoring.</li>
+<li>Designed property listing & search APIs.</li>
+<li>Implemented advanced filtering & indexing.</li>
+<li>Deployed application in cloud environment.</li>
 </ul>
 </div>
 
 <div class="card">
-<h3>📊 API Usage & Performance Monitoring System</h3>
+<h3>📊 API Monitoring System</h3>
 <p><strong>Tech:</strong> Python, Pandas, SQL, Power BI</p>
 <ul>
-<li>Analyzed 10,000+ backend logs for latency & failure detection.</li>
-<li>Built KPI dashboards for response time & error tracking.</li>
-<li>Automated recurring performance reporting workflows.</li>
-<li>Enabled faster issue detection and backend reliability improvements.</li>
+<li>Analyzed 10,000+ backend logs for latency detection.</li>
+<li>Built dashboards for response time tracking.</li>
+<li>Automated performance reporting workflows.</li>
 </ul>
 </div>
 
@@ -184,12 +276,8 @@ LinkedIn: <a href="https://www.linkedin.com/in/venakta-dinesh-kumar-mariyala-7b4
 </div>
 
 <footer>
-© 2026 Mariyala Venakata Dinesh Kumar | Python Developer
+© 2026 Mariyala Venakata Dinesh Kumar | Full Stack Python Developer
 </footer>
 
 </body>
 </html>
-
-
-
-
