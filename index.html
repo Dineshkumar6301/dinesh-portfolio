@@ -9,98 +9,119 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
-background: radial-gradient(circle at top,#0f172a,#020617);
-color:#f8fafc;
+background:#020617;
+color:#e2e8f0;
 }
 
-/* Glow Background */
-body::before{
-content:'';
+/* Navbar */
+nav{
 position:fixed;
-width:600px;
-height:600px;
-background:radial-gradient(circle,#38bdf8,#6366f1);
-filter:blur(180px);
-top:-100px;
-left:-100px;
-z-index:-1;
+top:0;
+width:100%;
+background:rgba(2,6,23,0.8);
+backdrop-filter:blur(10px);
+padding:12px 0;
+z-index:1000;
+}
+
+nav .container{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+nav a{
+color:#38bdf8;
+margin-left:20px;
+text-decoration:none;
+font-size:14px;
 }
 
 /* Container */
 .container{
 width:90%;
-max-width:1100px;
+max-width:1000px;
 margin:auto;
-padding:80px 0;
+padding:60px 0;
 }
 
 /* Header */
 header{
 text-align:center;
+padding-top:80px;
 }
 
 header h1{
-font-size:50px;
+font-size:42px;
 background:linear-gradient(90deg,#38bdf8,#818cf8);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
 
 header p{
-margin-top:15px;
+margin-top:10px;
+font-size:16px;
 color:#94a3b8;
-font-size:18px;
 }
 
 .btn{
-margin-top:25px;
+margin-top:15px;
 display:inline-block;
-padding:14px 30px;
-border-radius:30px;
-background:linear-gradient(90deg,#38bdf8,#6366f1);
+padding:10px 22px;
+border-radius:25px;
+background:#38bdf8;
 color:#000;
 font-weight:600;
 transition:0.3s;
 }
 
 .btn:hover{
-transform:scale(1.08);
-box-shadow:0 10px 40px rgba(56,189,248,0.6);
+transform:scale(1.05);
 }
 
 /* Sections */
 section{
-margin-top:90px;
+margin-top:40px;
 }
 
 h2{
-font-size:28px;
-margin-bottom:30px;
+font-size:20px;
+margin-bottom:15px;
+color:#38bdf8;
 }
 
-/* Cards */
+/* Card */
 .card{
-background:rgba(30,41,59,0.5);
-backdrop-filter:blur(18px);
-padding:30px;
-border-radius:20px;
-margin-bottom:25px;
-border:1px solid rgba(255,255,255,0.08);
-transition:0.4s;
+background:#0f172a;
+padding:18px;
+border-radius:12px;
+margin-bottom:15px;
+border:1px solid rgba(255,255,255,0.05);
+transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-10px) scale(1.02);
-box-shadow:0 20px 60px rgba(56,189,248,0.2);
+transform:translateY(-4px);
+}
+
+/* Skills */
+.skills span{
+display:inline-block;
+padding:6px 12px;
+margin:4px;
+border-radius:20px;
+background:#020617;
+font-size:12px;
+border:1px solid rgba(255,255,255,0.1);
 }
 
 /* Highlight */
@@ -109,38 +130,25 @@ color:#38bdf8;
 font-weight:600;
 }
 
-/* Skills */
-.skills span{
-display:inline-block;
-padding:10px 16px;
-margin:6px;
-border-radius:30px;
-background:#020617;
-border:1px solid rgba(255,255,255,0.1);
-}
-
-.skills span:hover{
-background:#38bdf8;
-color:#000;
-}
-
 /* List */
 ul{
-padding-left:20px;
-line-height:1.9;
+padding-left:18px;
+line-height:1.6;
+font-size:14px;
 }
 
-/* Links */
+/* Footer */
+footer{
+text-align:center;
+margin-top:40px;
+padding:20px;
+font-size:12px;
+color:#64748b;
+}
+
 a{
 color:#38bdf8;
 text-decoration:none;
-}
-
-footer{
-text-align:center;
-margin-top:80px;
-padding:40px;
-color:#64748b;
 }
 
 </style>
@@ -148,27 +156,46 @@ color:#64748b;
 
 <body>
 
+<!-- NAVBAR -->
+<nav>
+<div class="container">
+<div><strong>Dinesh</strong></div>
+<div>
+<a href="#about">About</a>
+<a href="#experience">Experience</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
+
 <header class="container">
 <h1>Dinesh Kumar</h1>
-<p>Backend Engineer | Python | Django | Scalable Systems</p>
+<p>Web Developer |Backend Engineer | Python | Django | Scalable APIs</p>
+
 <a href="mailto:dk967427@gmail.com" class="btn">Hire Me 🚀</a>
+
+<br><br>
+
+<a href="https://www.linkedin.com/in/venakta-dinesh-kumar-mariyala-7b48b219a/" target="_blank">LinkedIn</a> |
+<a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
+
 </header>
 
 <div class="container">
 
-<!-- SUMMARY -->
-<section>
-<h2>About Me</h2>
+<!-- ABOUT -->
+<section id="about">
+<h2>About</h2>
 <div class="card">
-Backend-focused engineer with real-world experience building scalable applications and APIs.  
-Delivered <span class="highlight">10+ production systems</span> handling high traffic and solved <span class="highlight">30+ critical production issues</span>.  
-Focused on performance, scalability, and clean backend architecture.
+Backend-focused developer with production experience building scalable APIs and web systems.
+Delivered <span class="highlight">10+ APIs</span>, handled <span class="highlight">5000+ daily requests</span>, and solved <span class="highlight">30+ production issues</span>.
 </div>
 </section>
 
 <!-- SKILLS -->
 <section>
-<h2>Tech Stack</h2>
+<h2>Skills</h2>
 <div class="card skills">
 <span>Python</span>
 <span>Django</span>
@@ -177,99 +204,75 @@ Focused on performance, scalability, and clean backend architecture.
 <span>MySQL</span>
 <span>AWS</span>
 <span>JWT</span>
-<span>Linux</span>
 <span>Git</span>
-<span>JavaScript</span>
+<span>Linux</span>
 </div>
 </section>
 
 <!-- EXPERIENCE -->
-<section>
+<section id="experience">
 <h2>Experience</h2>
 <div class="card">
-<h3>Python Backend Developer</h3>
-<p>Friendsmoo Info Media Pvt Ltd | Oct 2023 – Present</p>
+<strong>Python  Developer</strong><br>
+Friendsmoo Info Media Pvt Ltd | Oct 2023 – Present
 
 <ul>
-<li>Built <span class="highlight">10+ scalable APIs</span> used in live production systems.</li>
-<li>Handled <span class="highlight">5000+ daily requests</span> with optimized response time (&lt;200ms).</li>
-<li>Reduced database latency by <span class="highlight">40%</span> using indexing and query optimization.</li>
-<li>Designed secure authentication using JWT and RBAC.</li>
-<li>Debugged and resolved <span class="highlight">30+ real production issues</span>.</li>
-<li>Deployed backend services on AWS EC2 with monitoring.</li>
+<li>Built <span class="highlight">10+ production APIs</span></li>
+<li>Handled <span class="highlight">5000+ daily API calls</span></li>
+<li>Improved DB performance by <span class="highlight">40%</span></li>
+<li>Implemented JWT authentication & RBAC</li>
+<li>Resolved <span class="highlight">30+ production issues</span></li>
 </ul>
-
 </div>
 </section>
 
 <!-- PROJECTS -->
-<section>
+<section id="projects">
 <h2>Projects</h2>
 
 <div class="card">
-<h3>Hospital Management System</h3>
+<strong>Hospital Management System</strong>
 <ul>
-<li>Built full backend system for patient, billing, appointments.</li>
-<li>Handled concurrent users with transactional safety.</li>
-<li>Designed secure role-based dashboards.</li>
+<li>Built secure backend with role-based access</li>
+<li>Managed appointments, billing & users</li>
 </ul>
 </div>
 
 <div class="card">
-<h3>Real Estate Platform</h3>
+<strong>Real Estate Platform</strong>
 <ul>
-<li>Developed scalable property search APIs.</li>
-<li>Implemented filtering, indexing, and optimized queries.</li>
-<li>Deployed on AWS cloud.</li>
+<li>Developed scalable property APIs</li>
+<li>Implemented advanced search filtering</li>
 </ul>
 </div>
 
 <div class="card">
-<h3>API Monitoring System</h3>
+<strong>API Monitoring System</strong>
 <ul>
-<li>Processed 10,000+ logs using Python & Pandas.</li>
-<li>Built performance dashboards using Power BI.</li>
-<li>Detected latency bottlenecks in APIs.</li>
+<li>Processed 10K+ logs using Python</li>
+<li>Built dashboards with Power BI</li>
 </ul>
 </div>
 
-</section>
-
-<!-- SYSTEM DESIGN -->
-<section>
-<h2>System Design</h2>
-<div class="card">
-<ul>
-<li>Designed modular backend architecture for scalability.</li>
-<li>Implemented caching strategies for performance.</li>
-<li>Optimized database queries and indexing.</li>
-</ul>
-</div>
-</section>
-
-<!-- CASE STUDY -->
-<section>
-<h2>Case Study</h2>
-<div class="card">
-Improved API performance from <span class="highlight">800ms → 200ms</span>  
-by optimizing database queries and reducing redundant calls.
-</div>
 </section>
 
 <!-- CONTACT -->
-<section>
+<section id="contact">
 <h2>Contact</h2>
 <div class="card">
 Email: dk967427@gmail.com <br>
-Phone: +91 6301861405 <br>
-<a href="#">LinkedIn</a> | <a href="#">GitHub</a>
+Phone: +91 6301861405 <br><br>
+
+<a href="https://www.linkedin.com/in/venakta-dinesh-kumar-mariyala-7b48b219a/" target="_blank">LinkedIn</a><br>
+<a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
+
 </div>
 </section>
 
 </div>
 
 <footer>
-© 2026 Dinesh Kumar | Software Engineer
+© 2026 Dinesh Kumar
 </footer>
 
 </body>
