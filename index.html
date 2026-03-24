@@ -2,34 +2,36 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">   
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dinesh Kumar | Backend Engineer</title>
+<title>Dinesh Kumar | Python Full Stack Developer</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:'Inter',sans-serif;
 scroll-behavior:smooth;
 }
 
 body{
-background:#020617;
-color:#e2e8f0;
+background:#0b0f19;
+color:#e5e7eb;
 }
 
-/* Navbar */
+/* NAV */
 nav{
 position:fixed;
-top:0;
 width:100%;
-background:rgba(2,6,23,0.8);
-backdrop-filter:blur(10px);
+top:0;
+background:#0b0f19;
 padding:12px 0;
+border-bottom:1px solid #1f2937;
 z-index:1000;
 }
 
@@ -40,110 +42,110 @@ align-items:center;
 }
 
 nav a{
-color:#38bdf8;
-margin-left:20px;
+margin-left:18px;
+color:#9ca3af;
 text-decoration:none;
 font-size:14px;
 }
 
-/* Container */
-.container{
-width:90%;
-max-width:1000px;
-margin:auto;
-padding:60px 0;
+nav a:hover{
+color:#fff;
 }
 
-/* Header */
+/* CONTAINER */
+.container{
+width:90%;
+max-width:950px;
+margin:auto;
+padding:65px 0;
+}
+
+/* HEADER */
 header{
 text-align:center;
-padding-top:80px;
+padding-top:60px;
 }
 
 header h1{
-font-size:42px;
-background:linear-gradient(90deg,#38bdf8,#818cf8);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+font-size:40px;
 }
 
-header p{
-margin-top:10px;
-font-size:16px;
-color:#94a3b8;
+.typing{
+color:#38bdf8;
+font-weight:600;
 }
 
 .btn{
 margin-top:15px;
 display:inline-block;
-padding:10px 22px;
-border-radius:25px;
+padding:10px 20px;
+border-radius:6px;
 background:#38bdf8;
 color:#000;
 font-weight:600;
-transition:0.3s;
+text-decoration:none;
+margin-right:10px;
 }
 
-.btn:hover{
-transform:scale(1.05);
+.btn-outline{
+border:1px solid #38bdf8;
+color:#38bdf8;
 }
 
-/* Sections */
+/* SECTION */
 section{
-margin-top:40px;
+margin-top:30px;
 }
 
 h2{
-font-size:20px;
-margin-bottom:15px;
+font-size:18px;
+margin-bottom:10px;
 color:#38bdf8;
 }
 
-/* Card */
+/* CARD */
 .card{
-background:#0f172a;
-padding:18px;
-border-radius:12px;
-margin-bottom:15px;
-border:1px solid rgba(255,255,255,0.05);
-transition:0.3s;
+background:#111827;
+padding:16px;
+border-radius:10px;
+margin-bottom:12px;
+border:1px solid #1f2937;
+transition:0.2s;
 }
 
 .card:hover{
-transform:translateY(-4px);
+border-color:#38bdf8;
+transform:translateY(-3px);
 }
 
-/* Skills */
+/* PROJECT GRID */
+.grid{
+display:grid;
+grid-template-columns:1fr;
+gap:12px;
+}
+
+/* SKILLS */
 .skills span{
 display:inline-block;
-padding:6px 12px;
 margin:4px;
-border-radius:20px;
-background:#020617;
+padding:6px 10px;
 font-size:12px;
-border:1px solid rgba(255,255,255,0.1);
+border-radius:6px;
+background:#020617;
+border:1px solid #1f2937;
 }
 
-/* Highlight */
+/* LIST */
+ul{
+padding-left:18px;
+font-size:14px;
+line-height:1.6;
+}
+
 .highlight{
 color:#38bdf8;
 font-weight:600;
-}
-
-/* List */
-ul{
-padding-left:18px;
-line-height:1.6;
-font-size:14px;
-}
-
-/* Footer */
-footer{
-text-align:center;
-margin-top:40px;
-padding:20px;
-font-size:12px;
-color:#64748b;
 }
 
 a{
@@ -151,15 +153,23 @@ color:#38bdf8;
 text-decoration:none;
 }
 
+/* FOOTER */
+footer{
+text-align:center;
+margin-top:30px;
+padding:20px;
+font-size:12px;
+color:#6b7280;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav>
 <div class="container">
-<div><strong>Dinesh</strong></div>
+<strong>Dinesh</strong>
 <div>
 <a href="#about">About</a>
 <a href="#experience">Experience</a>
@@ -171,9 +181,10 @@ text-decoration:none;
 
 <header class="container">
 <h1>Dinesh Kumar</h1>
-<p>Web Developer |Backend Engineer | Python | Django | Scalable APIs</p>
+<p class="typing" id="typing"></p>
 
-<a href="mailto:dk967427@gmail.com" class="btn">Hire Me 🚀</a>
+<a href="mailto:dk967427@gmail.com" class="btn">Hire Me</a>
+<a href="Dinesh_Resume.pdf" class="btn btn-outline">Download Resume</a>
 
 <br><br>
 
@@ -184,88 +195,78 @@ text-decoration:none;
 
 <div class="container">
 
-<!-- ABOUT -->
-<section id="about">
+<section id="about" data-aos="fade-up">
 <h2>About</h2>
 <div class="card">
-Backend-focused developer with production experience building scalable APIs and web systems.
-Delivered <span class="highlight">10+ APIs</span>, handled <span class="highlight">5000+ daily requests</span>, and solved <span class="highlight">30+ production issues</span>.
+Python Full Stack Developer specializing in scalable backend systems and modern web applications.  
+Built <span class="highlight">10+ production APIs</span>, handled <span class="highlight">5000+ daily requests</span>, and improved performance by <span class="highlight">40%</span>.
 </div>
 </section>
 
-<!-- SKILLS -->
-<section>
-<h2>Skills</h2>
+<section data-aos="fade-up">
+<h2>Tech Stack</h2>
 <div class="card skills">
-<span>Python</span>
-<span>Django</span>
-<span>REST APIs</span>
-<span>PostgreSQL</span>
-<span>MySQL</span>
-<span>AWS</span>
-<span>JWT</span>
-<span>Git</span>
-<span>Linux</span>
+<span>Python</span><span>Django</span><span>REST APIs</span>
+<span>PostgreSQL</span><span>MySQL</span>
+<span>JavaScript</span><span>HTML</span><span>CSS</span>
+<span>AWS</span><span>Git</span>
 </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
+<section id="experience" data-aos="fade-up">
 <h2>Experience</h2>
 <div class="card">
-<strong>Python  Developer</strong><br>
-Friendsmoo Info Media Pvt Ltd | Oct 2023 – Present
-
+<strong>Python Full Stack Developer</strong><br>
+Friendsmoo | 2023–Present
 <ul>
-<li>Built <span class="highlight">10+ production APIs</span></li>
-<li>Handled <span class="highlight">5000+ daily API calls</span></li>
-<li>Improved DB performance by <span class="highlight">40%</span></li>
-<li>Implemented JWT authentication & RBAC</li>
+<li>Developed <span class="highlight">10+ APIs</span></li>
+<li>Handled <span class="highlight">5000+ requests/day</span></li>
+<li>Reduced DB latency by <span class="highlight">40%</span></li>
 <li>Resolved <span class="highlight">30+ production issues</span></li>
 </ul>
 </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
+<section id="projects" data-aos="fade-up">
 <h2>Projects</h2>
+
+<div class="grid">
 
 <div class="card">
 <strong>Hospital Management System</strong>
 <ul>
-<li>Built secure backend with role-based access</li>
-<li>Managed appointments, billing & users</li>
+<li>Full stack app with secure auth</li>
+<li>Role-based dashboards</li>
 </ul>
+<a href="#">GitHub</a>
 </div>
 
 <div class="card">
 <strong>Real Estate Platform</strong>
 <ul>
-<li>Developed scalable property APIs</li>
-<li>Implemented advanced search filtering</li>
+<li>Advanced search & filtering</li>
+<li>Scalable APIs</li>
 </ul>
+<a href="#">GitHub</a>
 </div>
 
 <div class="card">
-<strong>API Monitoring System</strong>
+<strong>API Monitoring Dashboard</strong>
 <ul>
-<li>Processed 10K+ logs using Python</li>
-<li>Built dashboards with Power BI</li>
+<li>Analyzed 10K+ logs</li>
+<li>Built Power BI dashboards</li>
 </ul>
+<a href="#">GitHub</a>
 </div>
 
+</div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
+<section id="contact" data-aos="fade-up">
 <h2>Contact</h2>
 <div class="card">
 Email: dk967427@gmail.com <br>
-Phone: +91 6301861405 <br><br>
-
-<a href="https://www.linkedin.com/in/venakta-dinesh-kumar-mariyala-7b48b219a/" target="_blank">LinkedIn</a><br>
-<a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
-
+Phone: +91 6301861405
 </div>
 </section>
 
@@ -274,6 +275,38 @@ Phone: +91 6301861405 <br><br>
 <footer>
 © 2026 Dinesh Kumar
 </footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+AOS.init();
+
+const roles = ["Python Full Stack Developer","Django Developer","API Engineer"];
+let i=0,j=0,current="",isDeleting=false;
+
+function type(){
+current = roles[i];
+document.getElementById("typing").textContent = current.substring(0,j);
+
+if(!isDeleting){
+j++;
+if(j>current.length){
+isDeleting=true;
+setTimeout(type,1000);
+return;
+}
+}else{
+j--;
+if(j==0){
+isDeleting=false;
+i=(i+1)%roles.length;
+}
+}
+
+setTimeout(type, isDeleting?50:100);
+}
+type();
+</script>
 
 </body>
 </html>
