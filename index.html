@@ -7,7 +7,6 @@
 <title>Dinesh Kumar | Python Full Stack Developer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
 
@@ -24,14 +23,14 @@ background:#0b0f19;
 color:#e5e7eb;
 }
 
-/* NAV */
+/* NAVBAR */
 nav{
 position:fixed;
-width:100%;
 top:0;
+width:100%;
 background:#0b0f19;
-padding:12px 0;
 border-bottom:1px solid #1f2937;
+padding:10px 0;
 z-index:1000;
 }
 
@@ -42,9 +41,9 @@ align-items:center;
 }
 
 nav a{
-margin-left:18px;
-color:#9ca3af;
+margin-left:16px;
 text-decoration:none;
+color:#9ca3af;
 font-size:14px;
 }
 
@@ -55,50 +54,56 @@ color:#fff;
 /* CONTAINER */
 .container{
 width:90%;
-max-width:950px;
+max-width:900px;
 margin:auto;
-padding:65px 0;
+padding:40px 0;
 }
 
 /* HEADER */
 header{
 text-align:center;
-padding-top:60px;
+padding-top:50px;
+padding-bottom:10px;
 }
 
 header h1{
-font-size:40px;
+font-size:36px;
+font-weight:700;
 }
 
-.typing{
-color:#38bdf8;
-font-weight:600;
+header p{
+margin-top:6px;
+color:#9ca3af;
+font-size:15px;
 }
 
+/* BUTTONS */
 .btn{
-margin-top:15px;
+margin-top:12px;
 display:inline-block;
-padding:10px 20px;
+padding:8px 18px;
 border-radius:6px;
 background:#38bdf8;
 color:#000;
 font-weight:600;
 text-decoration:none;
-margin-right:10px;
+margin-right:8px;
+font-size:14px;
 }
 
 .btn-outline{
+background:none;
 border:1px solid #38bdf8;
 color:#38bdf8;
 }
 
 /* SECTION */
 section{
-margin-top:30px;
+margin-top:20px;
 }
 
 h2{
-font-size:18px;
+font-size:17px;
 margin-bottom:10px;
 color:#38bdf8;
 }
@@ -106,8 +111,8 @@ color:#38bdf8;
 /* CARD */
 .card{
 background:#111827;
-padding:16px;
-border-radius:10px;
+padding:14px;
+border-radius:8px;
 margin-bottom:12px;
 border:1px solid #1f2937;
 transition:0.2s;
@@ -115,21 +120,13 @@ transition:0.2s;
 
 .card:hover{
 border-color:#38bdf8;
-transform:translateY(-3px);
-}
-
-/* PROJECT GRID */
-.grid{
-display:grid;
-grid-template-columns:1fr;
-gap:12px;
 }
 
 /* SKILLS */
 .skills span{
 display:inline-block;
 margin:4px;
-padding:6px 10px;
+padding:5px 10px;
 font-size:12px;
 border-radius:6px;
 background:#020617;
@@ -138,8 +135,8 @@ border:1px solid #1f2937;
 
 /* LIST */
 ul{
-padding-left:18px;
-font-size:14px;
+padding-left:16px;
+font-size:13px;
 line-height:1.6;
 }
 
@@ -157,9 +154,16 @@ text-decoration:none;
 footer{
 text-align:center;
 margin-top:30px;
-padding:20px;
+padding:15px;
 font-size:12px;
 color:#6b7280;
+}
+
+hr{
+border:0;
+height:1px;
+background:#1f2937;
+margin:15px 0;
 }
 
 </style>
@@ -167,6 +171,7 @@ color:#6b7280;
 
 <body>
 
+<!-- NAV -->
 <nav>
 <div class="container">
 <strong>Dinesh</strong>
@@ -179,94 +184,112 @@ color:#6b7280;
 </div>
 </nav>
 
+<!-- HERO -->
 <header class="container">
+
 <h1>Dinesh Kumar</h1>
-<p class="typing" id="typing"></p>
 
+<p>Python Full Stack Developer building scalable web applications</p>
+
+<div>
 <a href="mailto:dk967427@gmail.com" class="btn">Hire Me</a>
-<a href="Dinesh_Resume.pdf" class="btn btn-outline">Download Resume</a>
+</div>
 
-<br><br>
-
+<div style="margin-top:8px; font-size:13px;">
 <a href="https://www.linkedin.com/in/venakta-dinesh-kumar-mariyala-7b48b219a/" target="_blank">LinkedIn</a> |
 <a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
+</div>
 
 </header>
 
+<hr>
+
 <div class="container">
 
-<section id="about" data-aos="fade-up">
+<!-- ABOUT -->
+<section id="about">
 <h2>About</h2>
 <div class="card">
-Python Full Stack Developer specializing in scalable backend systems and modern web applications.  
-Built <span class="highlight">10+ production APIs</span>, handled <span class="highlight">5000+ daily requests</span>, and improved performance by <span class="highlight">40%</span>.
+Python Full Stack Developer with experience building scalable APIs and full stack applications using Django and modern web technologies.  
+Built <span class="highlight">10+ production APIs</span>, handled <span class="highlight">5000+ requests/day</span>, and improved performance by <span class="highlight">40%</span>.
 </div>
 </section>
 
-<section data-aos="fade-up">
-<h2>Tech Stack</h2>
+<!-- SKILLS -->
+<section>
+<h2>Skills</h2>
 <div class="card skills">
-<span>Python</span><span>Django</span><span>REST APIs</span>
-<span>PostgreSQL</span><span>MySQL</span>
-<span>JavaScript</span><span>HTML</span><span>CSS</span>
-<span>AWS</span><span>Git</span>
+<span>Python</span>
+<span>Django</span>
+<span>REST APIs</span>
+<span>PostgreSQL</span>
+<span>MySQL</span>
+<span>JavaScript</span>
+<span>HTML</span>
+<span>CSS</span>
+<span>AWS</span>
+<span>Git</span>
 </div>
 </section>
 
-<section id="experience" data-aos="fade-up">
+<!-- EXPERIENCE -->
+<section id="experience">
 <h2>Experience</h2>
 <div class="card">
 <strong>Python Full Stack Developer</strong><br>
-Friendsmoo | 2023–Present
+Friendsmoo Info Media Pvt Ltd | Oct 2023 – Present
 <ul>
-<li>Developed <span class="highlight">10+ APIs</span></li>
-<li>Handled <span class="highlight">5000+ requests/day</span></li>
-<li>Reduced DB latency by <span class="highlight">40%</span></li>
+<li>Built <span class="highlight">10+ production APIs</span></li>
+<li>Handled <span class="highlight">5000+ daily requests</span></li>
+<li>Improved DB performance by <span class="highlight">40%</span></li>
+<li>Integrated frontend with backend systems</li>
 <li>Resolved <span class="highlight">30+ production issues</span></li>
 </ul>
 </div>
 </section>
 
-<section id="projects" data-aos="fade-up">
+<!-- PROJECTS -->
+<section id="projects">
 <h2>Projects</h2>
-
-<div class="grid">
 
 <div class="card">
 <strong>Hospital Management System</strong>
 <ul>
-<li>Full stack app with secure auth</li>
+<li>Full stack system with secure authentication</li>
 <li>Role-based dashboards</li>
 </ul>
-<a href="#">GitHub</a>
+<a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
 </div>
 
 <div class="card">
 <strong>Real Estate Platform</strong>
 <ul>
-<li>Advanced search & filtering</li>
-<li>Scalable APIs</li>
+<li>Scalable property listing APIs</li>
+<li>Advanced filtering system</li>
 </ul>
-<a href="#">GitHub</a>
+<a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
 </div>
 
 <div class="card">
 <strong>API Monitoring Dashboard</strong>
 <ul>
-<li>Analyzed 10K+ logs</li>
-<li>Built Power BI dashboards</li>
+<li>Processed 10K+ logs using Python</li>
+<li>Built dashboards with Power BI</li>
 </ul>
-<a href="#">GitHub</a>
+<a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
 </div>
 
-</div>
 </section>
 
-<section id="contact" data-aos="fade-up">
+<!-- CONTACT -->
+<section id="contact">
 <h2>Contact</h2>
 <div class="card">
 Email: dk967427@gmail.com <br>
-Phone: +91 6301861405
+Phone: +91 6301861405 <br><br>
+
+<a href="https://www.linkedin.com/in/venakta-dinesh-kumar-mariyala-7b48b219a/" target="_blank">LinkedIn</a><br>
+<a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
 </div>
 </section>
 
@@ -275,38 +298,6 @@ Phone: +91 6301861405
 <footer>
 © 2026 Dinesh Kumar
 </footer>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-<script>
-AOS.init();
-
-const roles = ["Python Full Stack Developer","Django Developer","API Engineer"];
-let i=0,j=0,current="",isDeleting=false;
-
-function type(){
-current = roles[i];
-document.getElementById("typing").textContent = current.substring(0,j);
-
-if(!isDeleting){
-j++;
-if(j>current.length){
-isDeleting=true;
-setTimeout(type,1000);
-return;
-}
-}else{
-j--;
-if(j==0){
-isDeleting=false;
-i=(i+1)%roles.length;
-}
-}
-
-setTimeout(type, isDeleting?50:100);
-}
-type();
-</script>
 
 </body>
 </html>
