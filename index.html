@@ -4,33 +4,28 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dinesh Kumar | Python Full Stack Developer</title>
+<title>Dinesh Kumar | Backend Engineer</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Inter',sans-serif;
-scroll-behavior:smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 
 body{
-background:#0b0f19;
+background:#030712;
 color:#e5e7eb;
+line-height:1.7;
 }
 
-/* NAVBAR */
+/* NAV */
 nav{
 position:fixed;
-top:0;
 width:100%;
-background:#0b0f19;
+top:0;
+background:rgba(3,7,18,0.9);
+backdrop-filter:blur(10px);
 border-bottom:1px solid #1f2937;
-padding:10px 0;
 z-index:1000;
 }
 
@@ -38,132 +33,103 @@ nav .container{
 display:flex;
 justify-content:space-between;
 align-items:center;
+width:90%;
+max-width:1200px;
+margin:auto;
+padding:15px 0;
 }
 
 nav a{
-margin-left:16px;
-text-decoration:none;
+margin-left:20px;
 color:#9ca3af;
+text-decoration:none;
 font-size:14px;
 }
 
-nav a:hover{
-color:#fff;
+nav a:hover{color:#fff;}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:56px;
+font-weight:700;
+}
+
+.hero p{
+margin-top:15px;
+color:#9ca3af;
+max-width:750px;
+font-size:18px;
+}
+
+.btn{
+margin-top:25px;
+padding:12px 28px;
+background:#22c55e;
+color:#000;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
 }
 
 /* CONTAINER */
 .container{
 width:90%;
-max-width:900px;
+max-width:1100px;
 margin:auto;
-padding:40px 0;
-}
-
-/* HEADER */
-header{
-text-align:center;
-padding-top:50px;
-padding-bottom:10px;
-}
-
-header h1{
-font-size:36px;
-font-weight:700;
-}
-
-header p{
-margin-top:6px;
-color:#9ca3af;
-font-size:15px;
-}
-
-/* BUTTONS */
-.btn{
-margin-top:12px;
-display:inline-block;
-padding:8px 18px;
-border-radius:6px;
-background:#38bdf8;
-color:#000;
-font-weight:600;
-text-decoration:none;
-margin-right:8px;
-font-size:14px;
-}
-
-.btn-outline{
-background:none;
-border:1px solid #38bdf8;
-color:#38bdf8;
-}
-
-/* SECTION */
-section{
-margin-top:20px;
+padding:80px 0;
 }
 
 h2{
-font-size:17px;
-margin-bottom:10px;
-color:#38bdf8;
+font-size:26px;
+margin-bottom:25px;
+color:#22c55e;
 }
 
 /* CARD */
 .card{
-background:#111827;
-padding:14px;
-border-radius:8px;
-margin-bottom:12px;
+background:#020617;
+padding:25px;
+border-radius:12px;
 border:1px solid #1f2937;
-transition:0.2s;
-}
-
-.card:hover{
-border-color:#38bdf8;
+margin-bottom:25px;
 }
 
 /* SKILLS */
 .skills span{
 display:inline-block;
-margin:4px;
-padding:5px 10px;
+margin:6px;
+padding:6px 12px;
 font-size:12px;
 border-radius:6px;
-background:#020617;
 border:1px solid #1f2937;
 }
 
 /* LIST */
-ul{
-padding-left:16px;
-font-size:13px;
-line-height:1.6;
-}
+ul{padding-left:20px;}
+li{margin-bottom:8px;}
 
-.highlight{
-color:#38bdf8;
+/* PROJECT */
+.project-title{
 font-weight:600;
-}
-
-a{
-color:#38bdf8;
-text-decoration:none;
+font-size:18px;
+margin-bottom:10px;
 }
 
 /* FOOTER */
 footer{
 text-align:center;
-margin-top:30px;
-padding:15px;
-font-size:12px;
+padding:30px;
 color:#6b7280;
-}
-
-hr{
-border:0;
-height:1px;
-background:#1f2937;
-margin:15px 0;
 }
 
 </style>
@@ -174,9 +140,10 @@ margin:15px 0;
 <!-- NAV -->
 <nav>
 <div class="container">
-<strong>Dinesh</strong>
+<strong>Dinesh Kumar</strong>
 <div>
 <a href="#about">About</a>
+<a href="#skills">Skills</a>
 <a href="#experience">Experience</a>
 <a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
@@ -185,113 +152,196 @@ margin:15px 0;
 </nav>
 
 <!-- HERO -->
-<header class="container">
-
+<section class="hero">
 <h1>Dinesh Kumar</h1>
 
-<p>Python Full Stack Developer building scalable web applications</p>
+<p>
+Backend Engineer specializing in Django, REST APIs, and SQL-driven systems.  
+Reduced data processing time by ~30%, optimized database performance, and built scalable backend architectures for production applications.
+</p>
 
-<div>
 <a href="mailto:dk967427@gmail.com" class="btn">Hire Me</a>
-</div>
 
-<div style="margin-top:8px; font-size:13px;">
-<a href="https://www.linkedin.com/in/venakta-dinesh-kumar-mariyala-7b48b219a/" target="_blank">LinkedIn</a> |
-<a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
-</div>
-
-</header>
-
-<hr>
-
-<div class="container">
+<p style="margin-top:15px;">
+<a href="https://github.com/Dineshkumar6301" style="color:#22c55e;">GitHub</a> |
+<a href="https://www.linkedin.com/in/venakta-dinesh-kumar-mariyala-7b48b219a/" style="color:#22c55e;">LinkedIn</a>
+</p>
+</section>
 
 <!-- ABOUT -->
-<section id="about">
-<h2>About</h2>
+<div class="container" id="about">
+<h2>Professional Summary</h2>
+
 <div class="card">
-Python Full Stack Developer with experience building scalable APIs and full stack applications using Django and modern web technologies.  
-Built <span class="highlight">10+ production APIs</span>, handled <span class="highlight">5000+ requests/day</span>, and improved performance by <span class="highlight">40%</span>.
+Results-driven Python Developer with 2+ years of professional experience at Friendsmoo Info Media Pvt Ltd, specializing in backend systems, RESTful APIs, and SQL-driven data pipelines.
+
+Demonstrated ability to reduce query execution times, build scalable Django-based platforms, and deliver robust features in Agile environments.
+
+Adept at bridging business requirements with technical implementation across data processing, service booking, and business intelligence domains.
 </div>
-</section>
+</div>
 
 <!-- SKILLS -->
-<section>
-<h2>Skills</h2>
+<div class="container" id="skills">
+<h2>Technical Skills</h2>
+
 <div class="card skills">
-<span>Python</span>
-<span>Django</span>
-<span>REST APIs</span>
-<span>PostgreSQL</span>
-<span>MySQL</span>
-<span>JavaScript</span>
-<span>HTML</span>
-<span>CSS</span>
-<span>AWS</span>
-<span>Git</span>
+
+<strong>Languages:</strong><br>
+<span>Python</span><span>SQL</span><span>JavaScript</span>
+
+<br><br>
+
+<strong>Frameworks:</strong><br>
+<span>Django</span><span>Django REST Framework</span>
+
+<br><br>
+
+<strong>APIs:</strong><br>
+<span>RESTful API Design</span><span>JSON</span><span>Postman</span><span>Token Authentication</span><span>Session Authentication</span>
+
+<br><br>
+
+<strong>Databases:</strong><br>
+<span>MySQL</span><span>PostgreSQL</span><span>Joins</span><span>CTEs</span><span>Indexing</span><span>Window Functions</span><span>Stored Procedures</span>
+
+<br><br>
+
+<strong>Deployment:</strong><br>
+<span>Render</span><span>Gunicorn</span><span>CI/CD Pipelines</span><span>Environment Variables</span>
+
+<br><br>
+
+<strong>Data Processing:</strong><br>
+<span>Pandas</span><span>NumPy</span><span>ETL Pipelines</span><span>Automation Scripts</span>
+
+<br><br>
+
+<strong>Frontend:</strong><br>
+<span>HTML5</span><span>CSS3</span><span>Bootstrap</span>
+
+<br><br>
+
+<strong>Tools:</strong><br>
+<span>Git</span><span>GitHub</span><span>Linux</span><span>VS Code</span>
+
+<br><br>
+
+<strong>Practices:</strong><br>
+<span>Agile</span><span>Scrum</span><span>SDLC</span><span>Unit Testing</span><span>Debugging</span><span>Code Reviews</span>
+
 </div>
-</section>
+</div>
 
 <!-- EXPERIENCE -->
-<section id="experience">
-<h2>Experience</h2>
+<div class="container" id="experience">
+<h2>Professional Experience</h2>
+
 <div class="card">
-<strong>Python Full Stack Developer</strong><br>
-Friendsmoo Info Media Pvt Ltd | Oct 2023 – Present
+
+<strong>Python Developer — Friendsmoo Info Media Pvt Ltd</strong><br>
+Oct 2023 – Present
+
 <ul>
-<li>Built <span class="highlight">10+ production APIs</span></li>
-<li>Handled <span class="highlight">5000+ daily requests</span></li>
-<li>Improved DB performance by <span class="highlight">40%</span></li>
-<li>Integrated frontend with backend systems</li>
-<li>Resolved <span class="highlight">30+ production issues</span></li>
+<li>Designed and built scalable backend workflows using Python and Django to support data processing pipelines and core business operations.</li>
+
+<li>Optimized complex SQL queries (Joins, CTEs, Indexing, Window Functions), reducing execution time and improving system throughput.</li>
+
+<li>Developed and integrated RESTful APIs enabling seamless communication between microservices and third-party systems.</li>
+
+<li>Diagnosed production-level performance bottlenecks and implemented fixes to improve stability and response time.</li>
+
+<li>Collaborated with frontend engineers, QA teams, and product managers to deliver high-quality features.</li>
+
+<li>Implemented structured logging, validation, and error-handling mechanisms for reliability.</li>
+
+<li>Deployed Django applications on Render with PostgreSQL and Gunicorn.</li>
+
+<li>Managed Git workflows and version control in Agile sprint cycles.</li>
+
+</ul>
+
+</div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="container">
+<h2>Key Achievements</h2>
+
+<div class="card">
+<ul>
+<li>Reduced data processing time by ~30% using SQL optimization techniques (indexing, CTEs, execution analysis).</li>
+
+<li>Engineered ETL pipelines handling high-volume operational datasets.</li>
+
+<li>Built end-to-end backend for service booking platform reducing manual workload.</li>
+
+<li>Designed normalized schemas improving database performance and retrieval speed.</li>
 </ul>
 </div>
-</section>
+
+</div>
 
 <!-- PROJECTS -->
-<section id="projects">
+<div class="container" id="projects">
 <h2>Projects</h2>
 
 <div class="card">
-<strong>Hospital Management System</strong>
+<div class="project-title">Service Booking Platform</div>
 <ul>
-<li>Full stack system with secure authentication</li>
-<li>Role-based dashboards</li>
+<li>Designed backend architecture using Django for appointment scheduling and booking lifecycle.</li>
+<li>Built 12+ REST APIs with validation and structured responses.</li>
+<li>Implemented transaction-safe booking using atomic operations.</li>
+<li>Optimized database queries using indexing and ORM techniques.</li>
+<li>Deployed application on Render with PostgreSQL and Gunicorn.</li>
 </ul>
-<a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
 </div>
 
 <div class="card">
-<strong>Real Estate Platform</strong>
+<div class="project-title">Hospital Management System</div>
 <ul>
-<li>Scalable property listing APIs</li>
-<li>Advanced filtering system</li>
+<li>Designed normalized relational schema covering patients, doctors, billing, and operations.</li>
+<li>Developed SQL reports for operational and financial analytics.</li>
+<li>Reduced query time by ~40% using indexing and optimization.</li>
+<li>Implemented role-based data access.</li>
 </ul>
-<a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
 </div>
 
 <div class="card">
-<strong>API Monitoring Dashboard</strong>
+<div class="project-title">Real Estate Platform</div>
 <ul>
-<li>Processed 10K+ logs using Python</li>
-<li>Built dashboards with Power BI</li>
+<li>Developed full-stack application with property search and filtering.</li>
+<li>Designed optimized database schema for performance.</li>
+<li>Built REST APIs with pagination and structured responses.</li>
+<li>Implemented authentication and CRUD operations.</li>
+<li>Deployed application with PostgreSQL and backend services.</li>
 </ul>
-<a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
 </div>
 
-</section>
+</div>
+
+<!-- EDUCATION -->
+<div class="container">
+<h2>Education</h2>
+
+<div class="card">
+B.Tech — Electronics & Communication Engineering (2019–2023)<br>
+Krishna Chaithanya Institute of Technology and Sciences
+</div>
+
+</div>
 
 <!-- CONTACT -->
-<section id="contact">
+<div class="container" id="contact">
 <h2>Contact</h2>
+
 <div class="card">
 Email: dk967427@gmail.com <br>
 Phone: +91 6301861405 <br><br>
 
-<a href="https://www.linkedin.com/in/venakta-dinesh-kumar-mariyala-7b48b219a/" target="_blank">LinkedIn</a><br>
-<a href="https://github.com/Dineshkumar6301/" target="_blank">GitHub</a>
+<a href="https://github.com/Dineshkumar6301">GitHub</a><br>
+<a href="https://www.linkedin.com/in/venakta-dinesh-kumar-mariyala-7b48b219a/">LinkedIn</a>
 </div>
-</section>
 
 </div>
 
