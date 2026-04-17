@@ -17,7 +17,6 @@ color:#e5e7eb;
 line-height:1.7;
 }
 
-/* NAV */
 nav{
 position:fixed;
 width:100%;
@@ -47,7 +46,6 @@ font-size:14px;
 
 nav a:hover{color:#fff;}
 
-/* HERO */
 .hero{
 height:100vh;
 display:flex;
@@ -66,7 +64,7 @@ font-weight:700;
 .hero p{
 margin-top:15px;
 color:#9ca3af;
-max-width:750px;
+max-width:800px;
 font-size:18px;
 }
 
@@ -80,7 +78,6 @@ text-decoration:none;
 font-weight:600;
 }
 
-/* SECTION */
 .container{
 width:90%;
 max-width:1100px;
@@ -94,7 +91,6 @@ margin-bottom:25px;
 color:#22c55e;
 }
 
-/* CARD */
 .card{
 background:#020617;
 padding:25px;
@@ -103,7 +99,6 @@ border:1px solid #1f2937;
 margin-bottom:25px;
 }
 
-/* SKILLS */
 .skills span{
 display:inline-block;
 margin:6px;
@@ -113,18 +108,15 @@ border-radius:6px;
 border:1px solid #1f2937;
 }
 
-/* LIST */
 ul{padding-left:20px;}
 li{margin-bottom:8px;}
 
-/* PROJECT */
 .project-title{
 font-weight:600;
 font-size:18px;
 margin-bottom:10px;
 }
 
-/* FOOTER */
 footer{
 text-align:center;
 padding:30px;
@@ -135,28 +127,36 @@ color:#6b7280;
 
 <body>
 
-<!-- NAV -->
 <nav>
 <div class="container">
 <strong>Dinesh Kumar</strong>
 <div>
 <a href="#about">About</a>
+<a href="#impact">Impact</a>
 <a href="#skills">Skills</a>
 <a href="#experience">Experience</a>
 <a href="#projects">Projects</a>
-<a href="#why">Why Me</a>
+<a href="#system">System Design</a>
+<a href="#testing">Testing</a>
+<a href="#education">Education</a>
 <a href="#contact">Contact</a>
 </div>
 </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 <h1>Mariyala Venakata Dinesh Kumar</h1>
 
 <p>
-Backend Engineer specializing in Django, REST APIs, and SQL-driven systems.  
-Reduced query execution time by ~30% and improved reporting efficiency by ~40% in production systems.
+I build backend systems that don’t break under load.<br><br>
+
+✔ Reduced SQL query time by ~30%  
+✔ Improved reporting efficiency by ~40%  
+✔ Built ETL pipelines reducing manual work by ~60%  
+✔ Reduced ML API response time by ~40%  
+
+<br><br>
+Specialized in Django, FastAPI, scalable APIs, and real-time systems.
 </p>
 
 <a href="mailto:dk967427@gmail.com" class="btn">Hire Me</a>
@@ -167,141 +167,159 @@ Reduced query execution time by ~30% and improved reporting efficiency by ~40% i
 </p>
 </section>
 
-<!-- ABOUT -->
 <div class="container" id="about">
 <h2>Professional Summary</h2>
-
 <div class="card">
-Backend Engineer with 2+ years of experience building scalable backend systems using Python and Django.
+Python Backend Engineer with 2+ years of experience building scalable backend systems using Django, FastAPI, and REST APIs.
 
-Expert in REST APIs, SQL optimization (CTEs, indexing), and backend architecture.
+Strong expertise in SQL optimization, ETL pipelines, ML systems, and real-time data processing.
 
-Built real-time ML systems using Kafka and FastAPI. Strong in debugging production systems and delivering high-performance solutions.
+Focused on performance tuning, debugging production issues, and building reliable high-performance systems.
 </div>
 </div>
 
-<!-- SKILLS -->
+<div class="container" id="impact">
+<h2>Impact Delivered</h2>
+<div class="card">
+<ul>
+<li>Reduced SQL query execution time by ~30%</li>
+<li>Improved reporting efficiency by ~40%</li>
+<li>Built ETL pipelines reducing manual work by ~60%</li>
+<li>Designed 12+ scalable APIs reducing integration time by ~35%</li>
+<li>Reduced ML API response time by ~40%</li>
+</ul>
+</div>
+</div>
+
 <div class="container" id="skills">
 <h2>Technical Skills</h2>
-
 <div class="card skills">
-<span>Python</span><span>Django</span><span>FastAPI</span><span>SQL</span>
-<span>PostgreSQL</span><span>MySQL</span><span>Kafka</span>
-<span>Pandas</span><span>Scikit-learn</span>
-<span>REST APIs</span><span>CI/CD</span><span>Git</span>
+<span>Python</span><span>SQL</span><span>JavaScript</span>
+<span>Django</span><span>DRF</span><span>FastAPI</span>
+<span>PostgreSQL</span><span>MySQL</span>
+<span>CTEs</span><span>Indexing</span><span>Query Optimization</span>
+<span>Pandas</span><span>NumPy</span><span>Scikit-learn</span>
+<span>ETL Pipelines</span><span>ML Pipelines</span>
+<span>Kafka</span><span>Real-time Processing</span>
+<span>JWT Auth</span><span>REST APIs</span>
+<span>Pytest</span><span>Django TestCase</span>
+<span>Docker</span><span>CI/CD</span><span>Gunicorn</span>
+<span>Git</span><span>Linux</span><span>Postman</span><span>VS Code</span>
+<span>ChatGPT</span><span>GitHub Copilot</span>
 </div>
 </div>
 
-<!-- EXPERIENCE -->
 <div class="container" id="experience">
 <h2>Experience</h2>
-
 <div class="card">
-
 <strong>Software Engineer — Friendsmoo Info Media Pvt Ltd</strong><br>
 Oct 2023 – Present
 
 <ul>
-<li>Designed scalable backend systems using Django for high-volume data processing</li>
-<li>Built REST APIs enabling system integration</li>
-<li>Optimized SQL queries reducing execution time by ~30%</li>
-<li>Resolved production issues and improved performance</li>
-<li>Implemented logging, validation, and error handling</li>
-<li>Built ML APIs using FastAPI</li>
-<li>Deployed apps using Render and PostgreSQL</li>
-<li><b>Note:</b> Due to confidentiality, production code cannot be shared. Architecture and contributions can be explained.</li>
+<li>Designed and deployed 12+ scalable REST APIs using Django & DRF</li>
+<li>Optimized 15+ SQL queries using CTEs, indexing (~30% faster)</li>
+<li>Built ETL pipelines using Pandas (~60% less manual effort)</li>
+<li>Developed ML inference APIs using FastAPI (~40% faster response)</li>
+<li>Implemented JWT/token-based authentication for 500+ users</li>
+<li>Built real-time processing system using producer-consumer architecture</li>
+<li>Deployed apps using Render, Gunicorn, PostgreSQL with CI/CD</li>
+<li>Implemented centralized logging reducing debugging time by ~50%</li>
 </ul>
-
 </div>
 </div>
 
-<!-- PROJECTS -->
 <div class="container" id="projects">
 <h2>Projects</h2>
 
 <div class="card">
-<div class="project-title">Real-Time Customer Churn Prediction System</div>
-
+<div class="project-title">Real-Time ML System</div>
 <ul>
-<li>Built ML pipeline using Scikit-learn</li>
-<li>Designed Kafka-based real-time system</li>
-<li>Developed FastAPI APIs</li>
-<li>Implemented Pytest testing</li>
-<li><b>Architecture:</b> Producer → Kafka → Consumer → FastAPI → Model → Response</li>
+<li>Kafka-based streaming architecture</li>
+<li>FastAPI ML inference APIs</li>
+<li>End-to-end ML pipeline</li>
+<li>Automated testing using Pytest</li>
 </ul>
-
-<p><b>GitHub:</b> Add your repo link here</p>
 </div>
 
 <div class="card">
 <div class="project-title">Service Booking Platform</div>
-
 <ul>
-<li>Designed backend using Django</li>
 <li>Built 12+ REST APIs</li>
-<li>Implemented atomic transactions</li>
-<li>Optimized queries (N+1 fix)</li>
+<li>Fixed N+1 queries (35% faster)</li>
+<li>Atomic transactions → zero double booking</li>
 </ul>
-
 </div>
 
 <div class="card">
 <div class="project-title">Hospital Management System</div>
-
 <ul>
-<li>Designed normalized database schema</li>
-<li>Developed SQL reports</li>
-<li>Reduced query time by ~40%</li>
-<li>Implemented role-based access</li>
+<li>Normalized DB (3NF)</li>
+<li>Optimized reporting queries (~40% faster)</li>
+<li>Role-based access control</li>
 </ul>
-
 </div>
 
 <div class="card">
 <div class="project-title">Real Estate Platform</div>
-
 <ul>
-<li>Built Django full-stack app</li>
-<li>Developed REST APIs</li>
-<li>Implemented authentication</li>
+<li>Django full-stack app</li>
+<li>Advanced filtering + pagination</li>
 <li>Optimized search performance</li>
 </ul>
-
 </div>
 
 </div>
 
-<!-- WHY HIRE ME -->
-<div class="container" id="why">
-<h2>Why Hire Me</h2>
+<div class="container" id="system">
+<h2>System Design</h2>
+<div class="card">
+<p><b>Real-Time ML System:</b><br>
+Producer → Kafka → Consumer → FastAPI → ML Model → Response</p>
 
+<br>
+
+<p><b>Backend Architecture:</b><br>
+Client → API Layer → Service Layer → Database (PostgreSQL)</p>
+</div>
+</div>
+
+<div class="container" id="testing">
+<h2>Testing & Quality</h2>
 <div class="card">
 <ul>
-<li>Strong backend and database optimization expertise</li>
-<li>Proven performance improvements (30%–40%)</li>
-<li>Experience with real-world production systems</li>
-<li>Built scalable APIs and ML pipelines</li>
-<li>Fast learner and strong problem solver</li>
+<li>Unit testing using Pytest and Django TestCase</li>
+<li>API testing using Postman</li>
+<li>Ensured production reliability</li>
 </ul>
 </div>
-
 </div>
 
-<!-- CONTACT -->
-<div class="container" id="contact">
-<h2>Let’s Work Together</h2>
-
+<div class="container" id="education">
+<h2>Education</h2>
 <div class="card">
-<p>I am open to Backend Engineer roles. Let’s build scalable systems together.</p>
+B.Tech — Electronics & Communication Engineering <br>
+Krishna Chaithanya Institute of Technology and Sciences (2019 – 2023)
+</div>
+</div>
+
+<div class="container">
+<h2>Languages</h2>
+<div class="card">
+Telugu (Native) | English (Professional)
+</div>
+</div>
+
+<div class="container" id="contact">
+<h2>Contact</h2>
+<div class="card">
+<p>I don’t just build features — I solve performance problems and scale systems.</p>
 
 <a href="mailto:dk967427@gmail.com" class="btn">Contact Me</a>
 
 <br><br>
-
 Email: dk967427@gmail.com <br>
 Phone: 6301861405
 </div>
-
 </div>
 
 <footer>
