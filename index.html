@@ -1,735 +1,490 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dinesh Kumar · Software Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+
+<h2 class="sr-only">portfolio for Venakata Dinesh Kumar Mariyala — Python Full Stack Developer with 2+ years of experience, showcasing projects, skills, metrics and contact information</h2>
+
 <style>
-:root {
-  --black: #080808;
-  --white: #f5f0e8;
-  --green: #b8ff57;
-  --green-dim: #7ab52e;
-  --gray: #1a1a1a;
-  --gray2: #2a2a2a;
-  --muted: #666;
-  --border: #222;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
 
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.pf { padding: 0; }
 
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--black);
-  color: var(--white);
-  font-family: 'DM Sans', sans-serif;
-  font-size: 15px;
-  line-height: 1.7;
-  overflow-x: hidden;
-  cursor: none;
+.hero-band {
+  background: var(--color-background-secondary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem 1.75rem 1.5rem;
+  margin-bottom: 1rem;
 }
-
-/* CURSOR */
-.cursor {
-  width: 10px; height: 10px;
-  background: var(--green);
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.1s ease;
-  mix-blend-mode: difference;
-}
-.cursor-ring {
-  width: 36px; height: 36px;
-  border: 1px solid var(--green);
-  border-radius: 50%;
-  position: fixed;
-  top: 0; left: 0;
-  pointer-events: none;
-  z-index: 9998;
-  transition: transform 0.15s ease, width 0.2s, height 0.2s;
-  transform: translate(-50%, -50%);
-}
-
-/* NAV */
-nav {
-  position: fixed;
-  top: 0; width: 100%;
-  z-index: 100;
-  padding: 18px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border);
-  background: rgba(8,8,8,0.85);
-  backdrop-filter: blur(12px);
-}
-.nav-logo {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: 16px;
-  letter-spacing: -0.02em;
-}
-.nav-logo span { color: var(--green); }
-.nav-links { display: flex; gap: 28px; }
-.nav-links a {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 13px;
-  font-family: 'DM Mono', monospace;
-  letter-spacing: 0.04em;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--green); }
-
-/* HERO */
-.hero {
-  min-height: 100vh;
-  padding: 120px 5% 80px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -200px; right: -200px;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(184,255,87,0.07) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-label {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: var(--green);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 18px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.hero-label::before {
-  content: '';
-  display: block;
-  width: 28px;
-  height: 1px;
-  background: var(--green);
-}
-.hero h1 {
-  font-family: 'Syne', sans-serif;
-  font-weight: 800;
-  font-size: clamp(38px, 5vw, 62px);
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin-bottom: 24px;
-}
-.hero h1 .line2 { color: var(--green); }
-.hero-desc {
-  color: #999;
-  font-size: 15px;
-  line-height: 1.8;
-  max-width: 420px;
-  margin-bottom: 36px;
-}
-.hero-cta {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-.btn-hire {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 26px;
-  background: var(--green);
-  color: var(--black);
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  border-radius: 4px;
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.btn-hire:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(184,255,87,0.25); }
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 26px;
-  border: 1px solid var(--border);
-  color: var(--white);
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  border-radius: 4px;
-  text-decoration: none;
-  letter-spacing: 0.02em;
-  transition: border-color 0.2s, background 0.2s;
-}
-.btn-outline:hover { border-color: var(--green); background: rgba(184,255,87,0.05); }
-
-/* HERO RIGHT — metrics */
-.hero-right { position: relative; }
-.metrics-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-}
-.metric-box {
-  background: var(--gray);
-  padding: 24px 22px;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.2s;
-}
-.metric-box:hover { background: #1f1f1f; }
-.metric-num {
-  font-family: 'Syne', sans-serif;
-  font-size: 36px;
-  font-weight: 800;
-  color: var(--green);
-  line-height: 1;
-  margin-bottom: 6px;
-}
-.metric-label {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.4;
-  font-family: 'DM Mono', monospace;
-}
-.hero-available {
-  margin-top: 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: var(--muted);
-  font-family: 'DM Mono', monospace;
-}
-.dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--green);
-  animation: pulse 2s infinite;
-}
-@keyframes pulse {
-  0%,100%{box-shadow:0 0 0 0 rgba(184,255,87,0.5);}
-  50%{box-shadow:0 0 0 5px rgba(184,255,87,0);}
-}
-
-/* SECTIONS */
-section { padding: 80px 5%; border-top: 1px solid var(--border); }
-.section-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: var(--green);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 36px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.section-tag::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-  max-width: 80px;
-}
-
-/* EXPERIENCE */
-.exp-card {
-  background: var(--gray);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 32px;
-  position: relative;
-  overflow: hidden;
-}
-.exp-card::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 3px;
-  background: var(--green);
-}
-.exp-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.exp-title {
-  font-family: 'Syne', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-}
-.exp-company { color: var(--green); font-size: 14px; margin-top: 3px; }
-.exp-date {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: var(--muted);
-  background: var(--gray2);
-  padding: 5px 12px;
-  border-radius: 3px;
-  border: 1px solid var(--border);
-}
-.exp-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.exp-list li {
-  display: flex;
-  gap: 12px;
-  font-size: 14px;
-  color: #aaa;
-  line-height: 1.6;
-}
-.exp-list li::before {
-  content: '→';
-  color: var(--green);
+.hero-top { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.25rem; }
+.avatar {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--color-background-info);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 500; color: var(--color-text-info);
   flex-shrink: 0;
-  margin-top: 1px;
+}
+.hero-name { font-size: 22px; font-weight: 500; color: var(--color-text-primary); }
+.hero-role { font-size: 14px; color: var(--color-text-secondary); margin-top: 2px; }
+.avail {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--color-background-success); color: var(--color-text-success);
+  font-size: 11px; font-weight: 500; padding: 3px 10px;
+  border-radius: var(--border-radius-md); margin-top: 6px;
+}
+.dot-pulse {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--color-text-success);
+}
+.hero-bio {
+  font-size: 14px; color: var(--color-text-secondary); line-height: 1.75;
+  margin-bottom: 1.25rem; max-width: 560px;
+}
+.hero-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag {
+  font-size: 12px; padding: 4px 10px;
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-secondary);
 }
 
-/* PROJECTS */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1px;
-  background: var(--border);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
+.metrics-row {
+  display: grid; grid-template-columns: repeat(6,1fr); gap: 1px;
+  background: var(--color-border-tertiary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md); overflow: hidden;
+  margin-bottom: 1rem;
 }
-.project-card {
-  background: var(--gray);
-  padding: 28px;
-  transition: background 0.2s;
-  position: relative;
+.met {
+  background: var(--color-background-primary);
+  padding: 14px 10px; text-align: center;
 }
-.project-card:hover { background: #1c1c1c; }
-.proj-num {
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: #333;
-  margin-bottom: 12px;
-}
-.proj-title {
-  font-family: 'Syne', sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  margin-bottom: 12px;
-  line-height: 1.3;
-}
-.proj-desc { font-size: 13px; color: #888; line-height: 1.7; margin-bottom: 14px; }
-.proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.proj-tag {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  padding: 3px 8px;
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  color: var(--muted);
-  letter-spacing: 0.04em;
+.met-val { font-size: 20px; font-weight: 500; color: var(--color-text-primary); }
+.met-lbl { font-size: 11px; color: var(--color-text-secondary); margin-top: 3px; line-height: 1.4; }
+
+.sec-label {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.07em;
+  color: var(--color-text-secondary); text-transform: uppercase;
+  margin: 1.5rem 0 .75rem;
 }
 
-/* SKILLS */
-.skills-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 24px;
+.exp-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-left: 3px solid var(--color-text-info);
+  border-radius: var(--border-radius-lg);
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  margin-bottom: 1rem;
 }
-.skill-group-title {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  color: var(--muted);
-  text-transform: uppercase;
-  margin-bottom: 12px;
+.exp-hd { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px; margin-bottom: 1rem; }
+.exp-title { font-size: 16px; font-weight: 500; color: var(--color-text-primary); }
+.exp-co { font-size: 13px; color: var(--color-text-info); margin-top: 2px; }
+.exp-date {
+  font-size: 11px; color: var(--color-text-secondary);
+  background: var(--color-background-secondary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md); padding: 4px 10px;
 }
-.skill-list { display: flex; flex-wrap: wrap; gap: 7px; }
-.skill-pill {
-  font-size: 12px;
-  padding: 5px 11px;
-  background: var(--gray2);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  color: #ccc;
-  font-family: 'DM Mono', monospace;
-  transition: border-color 0.2s, color 0.2s;
-}
-.skill-pill:hover { border-color: var(--green-dim); color: var(--green); }
+.exp-items { display: flex; flex-direction: column; gap: 8px; }
+.exp-item { display: flex; gap: 10px; font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; }
+.exp-arrow { color: var(--color-text-info); flex-shrink: 0; margin-top: 1px; font-size: 13px; }
 
-/* CONTACT */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  align-items: start;
+.proj-grid {
+  display: grid; grid-template-columns: repeat(2,1fr); gap: 10px;
+  margin-bottom: 1rem;
 }
-.contact-heading {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin-bottom: 16px;
+.proj-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 1.1rem;
+  cursor: pointer; transition: border-color 0.15s;
 }
-.contact-heading span { color: var(--green); }
-.contact-sub { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 28px; }
-.contact-links { display: flex; flex-direction: column; gap: 12px; }
-.contact-link {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px 20px;
-  background: var(--gray);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  text-decoration: none;
-  color: var(--white);
-  font-size: 14px;
-  transition: border-color 0.2s, background 0.2s;
+.proj-card:hover { border-color: var(--color-border-primary); }
+.proj-num { font-size: 10px; color: var(--color-text-secondary); margin-bottom: 8px; letter-spacing: 0.06em; }
+.proj-title { font-size: 14px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 8px; line-height: 1.4; }
+.proj-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.65; margin-bottom: 10px; }
+.proj-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.proj-chip {
+  font-size: 10px; padding: 2px 7px;
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-secondary);
 }
-.contact-link:hover { border-color: var(--green); background: rgba(184,255,87,0.04); }
-.contact-link-icon {
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  color: var(--green);
-  letter-spacing: 0.1em;
-  min-width: 60px;
+.proj-impact {
+  font-size: 11px; font-weight: 500;
+  color: var(--color-text-success);
+  background: var(--color-background-success);
+  border-radius: var(--border-radius-md);
+  padding: 3px 8px; margin-bottom: 8px; display: inline-block;
 }
-.contact-link-val { color: #ccc; font-family: 'DM Mono', monospace; font-size: 13px; }
 
-/* FOOTER */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 28px 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  color: var(--muted);
-  flex-wrap: wrap;
-  gap: 12px;
+.skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 1rem; }
+.skill-group {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg); padding: 1rem;
 }
-footer span { color: var(--green); }
+.skill-group-lbl { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 10px; }
+.pills { display: flex; flex-wrap: wrap; gap: 5px; }
+.pill {
+  font-size: 11px; padding: 4px 9px;
+  background: var(--color-background-secondary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-primary);
+}
 
-/* ANIMATIONS */
-.fade-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+.contact-band {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 1.25rem; margin-bottom: 1rem;
 }
-.fade-up.visible { opacity: 1; transform: translateY(0); }
+.contact-hd { font-size: 16px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+.contact-sub { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 1rem; line-height: 1.6; }
+.contact-links { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.cl {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  background: var(--color-background-secondary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md);
+  text-decoration: none; font-size: 12px;
+  color: var(--color-text-primary); cursor: pointer;
+  transition: border-color 0.15s;
+}
+.cl:hover { border-color: var(--color-border-primary); }
+.cl-icon { font-size: 16px; color: var(--color-text-info); flex-shrink: 0; }
+.cl-content { min-width: 0; }
+.cl-label { font-size: 10px; color: var(--color-text-secondary); letter-spacing: 0.06em; text-transform: uppercase; }
+.cl-val { font-size: 12px; color: var(--color-text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-@media (max-width: 768px) {
-  .hero { grid-template-columns: 1fr; padding-top: 100px; }
-  .hero-right { display: none; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
+.action-row { display: flex; gap: 8px; margin-bottom: .75rem; flex-wrap: wrap; }
+.btn-primary {
+  padding: 9px 18px; font-size: 13px; font-weight: 500;
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-secondary);
+  border-radius: var(--border-radius-md);
+  color: var(--color-text-primary); cursor: pointer;
 }
+.btn-primary:hover { background: var(--color-background-secondary); }
 </style>
-</head>
-<body>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<div class="pf">
 
-<nav>
-  <div class="nav-logo">DK<span>.</span></div>
-  <div class="nav-links">
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-left">
-    <div class="hero-label">Software Engineer · Hyderabad, India</div>
-    <h1>
-      Mariyala<br>
-      Venakata<br>
-      <span class="line2">Dinesh Kumar</span>
-    </h1>
-    <p class="hero-desc">
-      I build backend systems that don't break under load. Python · Django · FastAPI · Real-time ML systems. 2+ years shipping production-grade APIs and data pipelines.
-    </p>
-    <div class="hero-cta">
-      <a href="mailto:dk967427@gmail.com" class="btn-hire">↗ Hire Me</a>
-      <a href="tel:+916301861405" class="btn-outline">📞 6301861405</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="metrics-grid">
-      <div class="metric-box">
-        <div class="metric-num">~30%</div>
-        <div class="metric-label">SQL query<br>time reduced</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-num">~40%</div>
-        <div class="metric-label">Reporting<br>efficiency gain</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-num">~60%</div>
-        <div class="metric-label">ETL manual<br>work eliminated</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-num">12+</div>
-        <div class="metric-label">REST APIs<br>shipped to prod</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-num">~40%</div>
-        <div class="metric-label">ML API<br>response faster</div>
-      </div>
-      <div class="metric-box">
-        <div class="metric-num">~50%</div>
-        <div class="metric-label">Debug time<br>cut via logging</div>
-      </div>
-    </div>
-    <div class="hero-available">
-      <div class="dot"></div>
-      Available for new opportunities
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-tag">Experience</div>
-  <div class="exp-card fade-up">
-    <div class="exp-header">
+  <!-- HERO -->
+  <div class="hero-band">
+    <div class="hero-top">
+      <div class="avatar">VD</div>
       <div>
-        <div class="exp-title">Software Engineer</div>
-        <div class="exp-company">Friendsmoo Info Media Pvt Ltd</div>
+        <div class="hero-name">Venakata Dinesh Kumar Mariyala</div>
+        <div class="hero-role">Python Full Stack Developer &nbsp;·&nbsp; Python Engineer &nbsp;·&nbsp; Hyderabad, India</div>
+        <div class="avail"><span class="dot-pulse"></span> Open to opportunities</div>
       </div>
-      <div class="exp-date">Oct 2023 – Present</div>
     </div>
-    <ul class="exp-list">
-      <li>Designed and deployed 12+ scalable REST APIs using Django & DRF for high-volume business workflows</li>
-      <li>Optimized 15+ SQL queries with CTEs, indexing, and execution plans — ~30% reduction in execution time</li>
-      <li>Built ETL pipelines with Pandas reducing manual data processing effort by ~60%</li>
-      <li>Developed FastAPI-based ML inference APIs improving response time by ~40%</li>
-      <li>Implemented JWT/token authentication system serving 500+ users</li>
-      <li>Built real-time producer-consumer architecture using Apache Kafka</li>
-      <li>Deployed apps on Render with Gunicorn + PostgreSQL and CI/CD pipelines</li>
-      <li>Centralized logging system reduced average debugging time by ~50%</li>
-    </ul>
+    <p class="hero-bio">
+      I build backend systems that scale and data pipelines that don't break. 2.6+ years shipping production-grade REST APIs, ETL pipelines, and full stack Django applications. Strong in Python, SQL, and cloud-native workflows — actively exploring GenAI and LLM-driven automation.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Python · OOP</span>
+      <span class="tag">Django · FastAPI · DRF</span>
+      <span class="tag">REST APIs</span>
+      <span class="tag">PostgreSQL · MySQL</span>
+      <span class="tag">ETL Pipelines</span>
+      <span class="tag">Pandas · NumPy</span>
+      <span class="tag">AWS EC2 · S3</span>
+      <span class="tag">Docker · CI/CD</span>
+      <span class="tag">GenAI · LLM</span>
+      <span class="tag">Apache Kafka</span>
+    </div>
   </div>
-</section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-tag">Projects</div>
-  <div class="projects-grid">
-    <div class="project-card fade-up">
-      <div class="proj-num">01</div>
+  <!-- METRICS -->
+  <div class="metrics-row">
+    <div class="met"><div class="met-val">~30%</div><div class="met-lbl">SQL query time reduced</div></div>
+    <div class="met"><div class="met-val">~40%</div><div class="met-lbl">Reporting efficiency gain</div></div>
+    <div class="met"><div class="met-val">~60%</div><div class="met-lbl">ETL manual work cut</div></div>
+    <div class="met"><div class="met-val">12+</div><div class="met-lbl">REST APIs shipped to prod</div></div>
+    <div class="met"><div class="met-val">~40%</div><div class="met-lbl">ML API response faster</div></div>
+    <div class="met"><div class="met-val">~50%</div><div class="met-lbl">Debug time via logging</div></div>
+  </div>
+
+  <!-- ACTION BUTTONS -->
+  <div class="action-row">
+    <button class="btn-primary" onclick="sendPrompt('Generate a cover letter for Dinesh Kumar for a Python Full Stack Developer role')">Generate cover letter ↗</button>
+    <button class="btn-primary" onclick="sendPrompt('What are the strongest projects in Dinesh Kumar profile for a senior Python engineer role?')">Analyse best projects ↗</button>
+    <button class="btn-primary" onclick="sendPrompt('Match Dinesh Kumar profile to top Python Full Stack Developer JDs in Hyderabad')">Match to JDs ↗</button>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="sec-label">Experience</div>
+  <div class="exp-card">
+    <div class="exp-hd">
+      <div>
+        <div class="exp-title">Python Full Stack Developer &nbsp;|&nbsp; Software Engineer</div>
+        <div class="exp-co">Friendsmoo Info Media Pvt Ltd &nbsp;·&nbsp; Hyderabad, India</div>
+      </div>
+      <div class="exp-date">Oct 2023 – Present &nbsp;·&nbsp; 2.6+ yrs</div>
+    </div>
+    <div class="exp-items">
+      <div class="exp-item"><span class="exp-arrow">→</span>Designed and deployed 12+ scalable REST APIs using Django &amp; DRF for high-volume business workflows with JWT authentication, pagination, and error handling</div>
+      <div class="exp-item"><span class="exp-arrow">→</span>Optimized 15+ SQL queries with CTEs, indexing, and execution plan analysis — ~30% reduction in query execution time on production databases (PostgreSQL, MySQL)</div>
+      <div class="exp-item"><span class="exp-arrow">→</span>Built ETL pipelines with Pandas and NumPy for real-time data ingestion and transformation — reduced manual data processing effort by ~60%</div>
+      <div class="exp-item"><span class="exp-arrow">→</span>Developed FastAPI-based ML inference APIs with Scikit-learn integration — improved response time by ~40% through async design and connection pooling</div>
+      <div class="exp-item"><span class="exp-arrow">→</span>Implemented JWT/token authentication system with role-based access control serving 500+ users across multiple backend services</div>
+      <div class="exp-item"><span class="exp-arrow">→</span>Built real-time producer-consumer data pipeline using Apache Kafka for event-driven microservice communication and data streaming</div>
+      <div class="exp-item"><span class="exp-arrow">→</span>Deployed applications on cloud infrastructure with Gunicorn + PostgreSQL, CI/CD pipelines, and Docker containerization</div>
+      <div class="exp-item"><span class="exp-arrow">→</span>Centralized structured logging system reduced average production debugging time by ~50% across all backend services</div>
+      <div class="exp-item"><span class="exp-arrow">→</span>Participated in Agile Scrum sprints — code reviews, TDD, sprint planning, stakeholder demos, and documentation</div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="sec-label">Key Projects</div>
+  <div class="proj-grid">
+
+    <div class="proj-card">
+      <div class="proj-num">01 &nbsp;·&nbsp; ML PIPELINE</div>
+      <div class="proj-impact">~40% faster inference</div>
       <div class="proj-title">Real-Time Customer Churn Prediction System</div>
-      <div class="proj-desc">End-to-end ML pipeline with Kafka streaming, FastAPI inference, and Scikit-learn Random Forest model. Automated testing with Pytest covering model and API responses.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">Python</span>
-        <span class="proj-tag">Apache Kafka</span>
-        <span class="proj-tag">FastAPI</span>
-        <span class="proj-tag">Scikit-learn</span>
-        <span class="proj-tag">Pytest</span>
-        <span class="proj-tag">Pandas</span>
+      <div class="proj-desc">End-to-end ML pipeline with Kafka streaming, FastAPI inference endpoint, and Scikit-learn Random Forest model. Automated testing with Pytest covering model performance and API responses.</div>
+      <div class="proj-chips">
+        <span class="proj-chip">Python</span>
+        <span class="proj-chip">Apache Kafka</span>
+        <span class="proj-chip">FastAPI</span>
+        <span class="proj-chip">Scikit-learn</span>
+        <span class="proj-chip">Pytest</span>
+        <span class="proj-chip">Pandas</span>
       </div>
     </div>
-    <div class="project-card fade-up">
-      <div class="proj-num">02</div>
+
+    <div class="proj-card">
+      <div class="proj-num">02 &nbsp;·&nbsp; REST API BACKEND</div>
+      <div class="proj-impact">35% faster queries · N+1 eliminated</div>
       <div class="proj-title">Service Booking Platform</div>
-      <div class="proj-desc">12+ REST APIs for appointment booking, slot management and cancellations. Eliminated N+1 queries (35% faster). Atomic transactions prevent race conditions and double-bookings.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">Django</span>
-        <span class="proj-tag">DRF</span>
-        <span class="proj-tag">PostgreSQL</span>
-        <span class="proj-tag">MySQL</span>
-        <span class="proj-tag">REST APIs</span>
+      <div class="proj-desc">12+ REST APIs for appointment booking, slot management, and cancellations. Eliminated N+1 query problem. Atomic transactions prevent race conditions and double-bookings in concurrent scenarios.</div>
+      <div class="proj-chips">
+        <span class="proj-chip">Django</span>
+        <span class="proj-chip">DRF</span>
+        <span class="proj-chip">PostgreSQL</span>
+        <span class="proj-chip">MySQL</span>
+        <span class="proj-chip">REST APIs</span>
+        <span class="proj-chip">JWT Auth</span>
       </div>
     </div>
-    <div class="project-card fade-up">
-      <div class="proj-num">03</div>
+
+    <div class="proj-card">
+      <div class="proj-num">03 &nbsp;·&nbsp; DATA & ANALYTICS</div>
+      <div class="proj-impact">~40% faster reporting</div>
       <div class="proj-title">Hospital Management System</div>
-      <div class="proj-desc">Normalized 3NF schema for patients, doctors, appointments and billing. Optimized reporting queries cut generation time ~40%. Role-based access control for secure data handling.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">Python</span>
-        <span class="proj-tag">Django</span>
-        <span class="proj-tag">MySQL</span>
-        <span class="proj-tag">PostgreSQL</span>
-        <span class="proj-tag">SQL</span>
+      <div class="proj-desc">Normalized 3NF schema for patients, doctors, appointments, and billing modules. Optimized reporting queries cut generation time by ~40%. Role-based access control for secure data handling.</div>
+      <div class="proj-chips">
+        <span class="proj-chip">Python</span>
+        <span class="proj-chip">Django</span>
+        <span class="proj-chip">MySQL</span>
+        <span class="proj-chip">PostgreSQL</span>
+        <span class="proj-chip">SQL Optimization</span>
       </div>
     </div>
-    <div class="project-card fade-up">
-      <div class="proj-num">04</div>
-      <div class="proj-title">Real Estate Platform</div>
-      <div class="proj-desc">Full-stack Django app for property listing, filtering and enquiry management. Indexed search on location, price and property type. Optimized ORM queries with pagination.</div>
-      <div class="proj-tags">
-        <span class="proj-tag">Django</span>
-        <span class="proj-tag">HTML/CSS</span>
-        <span class="proj-tag">Bootstrap</span>
-        <span class="proj-tag">PostgreSQL</span>
-        <span class="proj-tag">REST APIs</span>
+
+    <div class="proj-card">
+      <div class="proj-num">04 &nbsp;·&nbsp; FULL STACK</div>
+      <div class="proj-impact">Indexed search · ORM optimized</div>
+      <div class="proj-title">Real Estate Web Platform</div>
+      <div class="proj-desc">Full-stack Django application for property listing, filtering, and enquiry management. Indexed search on location, price, and property type. Optimized ORM queries with server-side pagination.</div>
+      <div class="proj-chips">
+        <span class="proj-chip">Django</span>
+        <span class="proj-chip">HTML / CSS</span>
+        <span class="proj-chip">Bootstrap</span>
+        <span class="proj-chip">PostgreSQL</span>
+        <span class="proj-chip">REST APIs</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">05 &nbsp;·&nbsp; ETL PIPELINE</div>
+      <div class="proj-impact">~60% manual effort eliminated</div>
+      <div class="proj-title">Real-Time ETL Data Engineering Pipeline</div>
+      <div class="proj-desc">Production ETL pipeline for real-time data ingestion, transformation, and loading across multiple sources. Automated validation, deduplication, and error alerting with structured audit trails.</div>
+      <div class="proj-chips">
+        <span class="proj-chip">Python</span>
+        <span class="proj-chip">Pandas</span>
+        <span class="proj-chip">NumPy</span>
+        <span class="proj-chip">SQL</span>
+        <span class="proj-chip">PostgreSQL</span>
+        <span class="proj-chip">AWS S3</span>
+      </div>
+    </div>
+
+    <div class="proj-card">
+      <div class="proj-num">06 &nbsp;·&nbsp; AI / GENAI</div>
+      <div class="proj-impact">Automated evaluation pipeline</div>
+      <div class="proj-title">AI-Powered LLM Evaluation Framework</div>
+      <div class="proj-desc">Automated evaluation pipeline for LLM and GenAI outputs using Python, prompt engineering, and Scikit-learn metrics. Reproducible results with audit trails and structured compliance reporting.</div>
+      <div class="proj-chips">
+        <span class="proj-chip">Python</span>
+        <span class="proj-chip">FastAPI</span>
+        <span class="proj-chip">GenAI</span>
+        <span class="proj-chip">LLM</span>
+        <span class="proj-chip">Scikit-learn</span>
+        <span class="proj-chip">Pandas</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SKILLS -->
+  <div class="sec-label">Skills</div>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-lbl">Core Python</div>
+      <div class="pills">
+        <span class="pill">Python</span>
+        <span class="pill">OOP</span>
+        <span class="pill">Design Patterns</span>
+        <span class="pill">Algorithms</span>
+        <span class="pill">Clean Code</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-lbl">Backend &amp; APIs</div>
+      <div class="pills">
+        <span class="pill">Django</span>
+        <span class="pill">DRF</span>
+        <span class="pill">FastAPI</span>
+        <span class="pill">Flask</span>
+        <span class="pill">REST APIs</span>
+        <span class="pill">Microservices</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-lbl">Databases</div>
+      <div class="pills">
+        <span class="pill">PostgreSQL</span>
+        <span class="pill">MySQL</span>
+        <span class="pill">MongoDB</span>
+        <span class="pill">ORM</span>
+        <span class="pill">SQL Optimization</span>
+        <span class="pill">Indexing</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-lbl">Data &amp; ML</div>
+      <div class="pills">
+        <span class="pill">Pandas</span>
+        <span class="pill">NumPy</span>
+        <span class="pill">Scikit-learn</span>
+        <span class="pill">ETL Pipelines</span>
+        <span class="pill">Apache Kafka</span>
+        <span class="pill">PySpark</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-lbl">AI &amp; GenAI</div>
+      <div class="pills">
+        <span class="pill">GenAI</span>
+        <span class="pill">LLM Workflows</span>
+        <span class="pill">Prompt Engineering</span>
+        <span class="pill">Agent Architecture</span>
+        <span class="pill">AI Evaluation</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-lbl">DevOps &amp; Cloud</div>
+      <div class="pills">
+        <span class="pill">AWS EC2</span>
+        <span class="pill">AWS S3</span>
+        <span class="pill">Docker</span>
+        <span class="pill">Git / GitHub</span>
+        <span class="pill">CI/CD</span>
+        <span class="pill">Linux</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-lbl">Testing &amp; QA</div>
+      <div class="pills">
+        <span class="pill">Pytest</span>
+        <span class="pill">TDD</span>
+        <span class="pill">Unit Testing</span>
+        <span class="pill">Integration Tests</span>
+        <span class="pill">Debugging</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-lbl">Frontend</div>
+      <div class="pills">
+        <span class="pill">JavaScript</span>
+        <span class="pill">HTML5 / CSS3</span>
+        <span class="pill">React (familiar)</span>
+        <span class="pill">UI/API Integration</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-lbl">Practices</div>
+      <div class="pills">
+        <span class="pill">Agile / Scrum</span>
+        <span class="pill">Code Reviews</span>
+        <span class="pill">SDLC</span>
+        <span class="pill">System Design</span>
+        <span class="pill">Documentation</span>
       </div>
     </div>
   </div>
-</section>
 
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-tag">Skills</div>
-  <div class="skills-section fade-up">
-    <div>
-      <div class="skill-group-title">Languages</div>
-      <div class="skill-list">
-        <span class="skill-pill">Python</span>
-        <span class="skill-pill">SQL</span>
-        <span class="skill-pill">JavaScript</span>
-      </div>
-    </div>
-    <div>
-      <div class="skill-group-title">Frameworks</div>
-      <div class="skill-list">
-        <span class="skill-pill">Django</span>
-        <span class="skill-pill">DRF</span>
-        <span class="skill-pill">FastAPI</span>
-      </div>
-    </div>
-    <div>
-      <div class="skill-group-title">Databases</div>
-      <div class="skill-list">
-        <span class="skill-pill">PostgreSQL</span>
-        <span class="skill-pill">MySQL</span>
-        <span class="skill-pill">CTEs</span>
-        <span class="skill-pill">Indexing</span>
-        <span class="skill-pill">Query Optimization</span>
-      </div>
-    </div>
-    <div>
-      <div class="skill-group-title">Data & ML</div>
-      <div class="skill-list">
-        <span class="skill-pill">Pandas</span>
-        <span class="skill-pill">NumPy</span>
-        <span class="skill-pill">Scikit-learn</span>
-        <span class="skill-pill">ETL Pipelines</span>
-        <span class="skill-pill">ML Pipelines</span>
-      </div>
-    </div>
-    <div>
-      <div class="skill-group-title">Systems</div>
-      <div class="skill-list">
-        <span class="skill-pill">Apache Kafka</span>
-        <span class="skill-pill">Docker</span>
-        <span class="skill-pill">Gunicorn</span>
-        <span class="skill-pill">CI/CD</span>
-        <span class="skill-pill">Linux</span>
-      </div>
-    </div>
-    <div>
-      <div class="skill-group-title">Testing & Tools</div>
-      <div class="skill-list">
-        <span class="skill-pill">Pytest</span>
-        <span class="skill-pill">Django TestCase</span>
-        <span class="skill-pill">Postman</span>
-        <span class="skill-pill">Git</span>
-        <span class="skill-pill">JWT Auth</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-tag">Contact</div>
-  <div class="contact-grid">
-    <div>
-      <div class="contact-heading">Let's<br><span>work together.</span></div>
-      <p class="contact-sub">Open to full-time developer roles in Hyderabad or remote. I don't just build features — I solve performance problems and scale systems.</p>
-      <a href="mailto:dk967427@gmail.com" class="btn-hire" style="display:inline-flex;">↗ Send Email</a>
-    </div>
+  <!-- CONTACT -->
+  <div class="sec-label">Contact</div>
+  <div class="contact-band">
+    <div class="contact-hd">Let's work together.</div>
+    <div class="contact-sub">Open to full-time Python Full Stack / Python Engineer roles in Hyderabad or hybrid. I solve performance problems, scale systems, and build things that last.</div>
     <div class="contact-links">
-      <a href="mailto:dk967427@gmail.com" class="contact-link">
-        <span class="contact-link-icon">EMAIL</span>
-        <span class="contact-link-val">dk967427@gmail.com</span>
-      </a>
-      <a href="tel:+916301861405" class="contact-link">
-        <span class="contact-link-icon">PHONE</span>
-        <span class="contact-link-val">+91 6301861405</span>
-      </a>
-      <a href="https://www.linkedin.com/in/venakata-dinesh-kumar-mariyala-7b48b219a/" target="_blank" class="contact-link">
-        <span class="contact-link-icon">LINKEDIN</span>
-        <span class="contact-link-val">venakata-dinesh-kumar-mariyala</span>
-      </a>
-      <a href="https://github.com/Dineshkumar6301" target="_blank" class="contact-link">
-        <span class="contact-link-icon">GITHUB</span>
-        <span class="contact-link-val">github.com/Dineshkumar6301</span>
-      </a>
-      <a href="https://dineshkumar6301.github.io/dinesh-portfolio/" target="_blank" class="contact-link">
-        <span class="contact-link-icon">PORTFOLIO</span>
-        <span class="contact-link-val">dineshkumar6301.github.io</span>
-      </a>
+      <div class="cl" onclick="openLink('mailto:dk967427@gmail.com')">
+        <i class="ti ti-mail cl-icon" aria-hidden="true"></i>
+        <div class="cl-content">
+          <div class="cl-label">Email</div>
+          <div class="cl-val">dk967427@gmail.com</div>
+        </div>
+      </div>
+      <div class="cl" onclick="openLink('tel:+916301861405')">
+        <i class="ti ti-phone cl-icon" aria-hidden="true"></i>
+        <div class="cl-content">
+          <div class="cl-label">Phone</div>
+          <div class="cl-val">+91 6301861405</div>
+        </div>
+      </div>
+      <div class="cl" onclick="openLink('https://www.linkedin.com/in/venakata-dinesh-kumar-mariyala-7b48b219a/')">
+        <i class="ti ti-brand-linkedin cl-icon" aria-hidden="true"></i>
+        <div class="cl-content">
+          <div class="cl-label">LinkedIn</div>
+          <div class="cl-val">venakata-dinesh-kumar-mariyala</div>
+        </div>
+      </div>
+      <div class="cl" onclick="openLink('https://github.com/Dineshkumar6301')">
+        <i class="ti ti-brand-github cl-icon" aria-hidden="true"></i>
+        <div class="cl-content">
+          <div class="cl-label">GitHub</div>
+          <div class="cl-val">github.com/Dineshkumar6301</div>
+        </div>
+      </div>
+      <div class="cl" onclick="openLink('https://dineshkumar6301.github.io/dinesh-portfolio/')">
+        <i class="ti ti-world cl-icon" aria-hidden="true"></i>
+        <div class="cl-content">
+          <div class="cl-label">Portfolio</div>
+          <div class="cl-val">dineshkumar6301.github.io</div>
+        </div>
+      </div>
+      <div class="cl" onclick="sendPrompt('Download or view the resume for Dinesh Kumar')">
+        <i class="ti ti-file-cv cl-icon" aria-hidden="true"></i>
+        <div class="cl-content">
+          <div class="cl-label">Resume</div>
+          <div class="cl-val">Request full resume ↗</div>
+        </div>
+      </div>
     </div>
   </div>
-</section>
 
-<footer>
-  <div>© 2026 <span>Mariyala Venakata Dinesh Kumar</span></div>
-  <div>software Engineer · Python · Django · FastAPI</div>
-</footer>
+</div>
 
 <script>
-// Custom cursor
-const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  cursor.style.transform = `translate(${mx - 5}px, ${my - 5}px)`;
-});
-function animateRing() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  ring.style.transform = `translate(${rx - 18}px, ${ry - 18}px)`;
-  requestAnimationFrame(animateRing);
+function openLink(url) {
+  window.open(url, '_blank');
 }
-animateRing();
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    ring.style.width = '52px';
-    ring.style.height = '52px';
-  });
-  el.addEventListener('mouseleave', () => {
-    ring.style.width = '36px';
-    ring.style.height = '36px';
-  });
-});
-
-// Scroll fade-in
-const obs = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 80);
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
 </script>
-</body>
-</html>
