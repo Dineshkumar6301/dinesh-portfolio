@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venakata Dinesh Kumar Mariyala | Portfolio</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap">
+    <title>Dinesh Kumar Mariyala | Python Full Stack Developer</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
         :root {
             --bg: #020617;
             --card: #0f172a;
@@ -19,801 +18,706 @@
             --primary: #38bdf8;
             --accent: #818cf8;
             --success: #22c55e;
-            --brown: #72351C;
             --gradient: linear-gradient(135deg, #0ea5e9, #6366f1);
         }
-
         html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
-        }
-
-        /* ── Progress Bar ── */
+        /* Progress */
         .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; }
         .progress-container { width: 100%; height: 4px; background: transparent; }
-        .progress-bar {
-            height: 4px;
-            background: var(--gradient);
-            width: 0%;
-            transition: width 0.1s;
-        }
+        .progress-bar { height: 4px; background: var(--gradient); width: 0%; transition: width 0.1s; }
 
-        /* ── Nav ── */
+        /* Nav */
         .top-nav {
-            position: fixed;
-            top: 4px;
-            left: 0;
-            right: 0;
-            z-index: 998;
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 16px 40px;
-            background: rgba(2, 6, 23, 0.85);
-            backdrop-filter: blur(12px);
+            position: fixed; top: 4px; left: 0; right: 0; z-index: 998;
+            display: flex; justify-content: flex-end; align-items: center;
+            padding: 14px 40px;
+            background: rgba(2,6,23,0.88); backdrop-filter: blur(14px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
-        .menu {
-            display: flex;
-            gap: 6px;
-            list-style: none;
-        }
+        .menu { display: flex; gap: 4px; list-style: none; }
         .menu li a {
-            text-decoration: none;
-            color: var(--muted);
-            font-size: 14px;
-            font-weight: 500;
-            padding: 8px 14px;
-            border-radius: 999px;
-            transition: 0.2s;
+            text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500;
+            padding: 8px 14px; border-radius: 999px; transition: 0.2s;
         }
-        .menu li a:hover {
-            color: var(--primary);
-            background: rgba(56,189,248,0.08);
+        .menu li a:hover { color: var(--primary); background: rgba(56,189,248,0.08); }
+        .menu li a.rbtn-nav {
+            background: var(--gradient); color: #fff; font-weight: 700;
+            padding: 8px 18px;
         }
-        .menu li a.rbtn-link {
-            background: var(--gradient);
-            color: #fff;
-            font-weight: 700;
-        }
-
-        /* Hamburger */
         #menu-toggle { display: none; }
         .menu-button-container { display: none; }
-
         @media (max-width: 768px) {
             .menu-button-container {
-                display: flex;
-                cursor: pointer;
-                flex-direction: column;
-                gap: 5px;
-                padding: 6px;
+                display: flex; cursor: pointer; flex-direction: column;
+                gap: 5px; padding: 6px;
             }
             .menu-button, .menu-button::before, .menu-button::after {
-                display: block;
-                width: 24px;
-                height: 2px;
-                background: var(--text);
-                transition: 0.3s;
+                display: block; width: 24px; height: 2px;
+                background: var(--text); transition: 0.3s;
             }
-            .menu-button::before, .menu-button::after {
-                content: '';
-            }
+            .menu-button::before, .menu-button::after { content: ''; }
             .menu {
-                position: fixed;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background: rgba(2,6,23,0.97);
-                flex-direction: column;
-                padding: 20px;
-                gap: 4px;
-                display: none;
+                position: fixed; top: 60px; left: 0; right: 0;
+                background: rgba(2,6,23,0.97); flex-direction: column;
+                padding: 20px; gap: 4px; display: none;
             }
             #menu-toggle:checked ~ .menu { display: flex; }
         }
 
-        /* ── Hero ── */
+        /* Hero */
         .box1 {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 120px 40px 80px;
-            position: relative;
-            overflow: hidden;
+            min-height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            padding: 120px 40px 80px; position: relative; overflow: hidden;
         }
         .box1::before {
-            content: '';
-            position: absolute;
-            width: 600px; height: 600px;
+            content: ''; position: absolute; width: 600px; height: 600px;
             background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%);
-            top: -200px; right: -200px;
+            top: -200px; right: -200px; pointer-events: none;
         }
         .box1::after {
-            content: '';
-            position: absolute;
-            width: 400px; height: 400px;
+            content: ''; position: absolute; width: 400px; height: 400px;
             background: radial-gradient(circle, rgba(99,102,241,0.1), transparent 70%);
-            bottom: -100px; left: -100px;
+            bottom: -100px; left: -100px; pointer-events: none;
         }
-        .box10 {
-            display: flex;
-            gap: 4px;
-            margin-bottom: 30px;
-        }
+        .box10 { display: flex; gap: 2px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center; }
+        .box10 span { animation: dropIn 0.6s ease both; animation-delay: calc(var(--i) * 0.07s); }
         .box10 h1 {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(48px, 8vw, 96px);
-            font-weight: 800;
-            color: var(--text);
-            line-height: 1;
-            animation: dropIn 0.6s ease both;
+            font-size: clamp(48px, 8vw, 88px);
+            font-weight: 800; color: var(--text); line-height: 1;
         }
-        .box10 span {
-            animation: dropIn 0.6s ease both;
-            animation-delay: calc(var(--i) * 0.07s);
-        }
-        .box10 span[style*="color"] h1 { color: var(--primary); }
+        .box10 .accent h1 { color: var(--primary); }
+        @keyframes dropIn { from { opacity:0; transform:translateY(-40px); } to { opacity:1; transform:translateY(0); } }
 
-        @keyframes dropIn {
-            from { opacity: 0; transform: translateY(-40px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .box11 {
-            display: flex;
-            align-items: center;
-            gap: 60px;
-            max-width: 1100px;
-            width: 100%;
-            position: relative;
-            z-index: 2;
-        }
+        .box11 { display: flex; align-items: center; gap: 60px; max-width: 1100px; width: 100%; position: relative; z-index: 2; }
         .box111 { flex: 1; }
-        .wlcm_note {
-            font-family: 'Syne', sans-serif;
-            font-size: 22px;
-            color: var(--primary);
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .some_about {
-            font-size: clamp(18px, 2.5vw, 26px);
-            font-weight: 300;
-            line-height: 1.5;
-            color: #dbeafe;
-            margin-bottom: 30px;
-        }
+        .wlcm_note { font-family: 'Syne', sans-serif; font-size: 20px; color: var(--primary); margin-bottom: 14px; font-weight: 600; }
+        .some_about { font-size: clamp(17px, 2.3vw, 24px); font-weight: 300; line-height: 1.6; color: #dbeafe; margin-bottom: 28px; }
         .some_about span { color: var(--primary); font-weight: 600; }
+        .hero-sub { font-size: 15px; color: var(--muted); margin-bottom: 30px; line-height: 1.7; max-width: 600px; }
         .btn_div { display: flex; gap: 14px; flex-wrap: wrap; }
         .rbtn {
-            padding: 14px 28px;
-            border: none;
-            border-radius: 999px;
-            background: var(--gradient);
-            cursor: pointer;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            transition: 0.3s;
-            box-shadow: 0 8px 20px rgba(14,165,233,0.3);
+            padding: 13px 26px; border: none; border-radius: 999px;
+            background: var(--gradient); cursor: pointer;
+            font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700;
+            transition: 0.3s; box-shadow: 0 8px 20px rgba(14,165,233,0.3);
         }
         .rbtn:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(14,165,233,0.45); }
         .rbtn a { color: #fff; text-decoration: none; }
-        .box112 { flex: 0 0 280px; opacity: 0.85; }
-        .box112 img { width: 100%; }
+        .rbtn-outline {
+            padding: 13px 26px; border: 1px solid var(--border); border-radius: 999px;
+            background: transparent; cursor: pointer;
+            font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--text);
+            transition: 0.3s;
+        }
+        .rbtn-outline:hover { border-color: var(--primary); color: var(--primary); }
+        .rbtn-outline a { color: inherit; text-decoration: none; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 16px; border-radius: 999px; margin-bottom: 20px;
+            background: rgba(34,197,94,0.12); color: #4ade80;
+            font-size: 13px; font-weight: 700; border: 1px solid rgba(74,222,128,0.2);
+        }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{ opacity:1; } 50%{ opacity:0.4; } }
+        .box112 { flex: 0 0 260px; }
+        .avatar-hero {
+            width: 220px; height: 220px; border-radius: 30px;
+            background: var(--gradient); display: flex; align-items: center;
+            justify-content: center; font-family: 'Syne', sans-serif;
+            font-size: 72px; font-weight: 900; color: #fff;
+            box-shadow: 0 20px 50px rgba(14,165,233,0.3);
+            border: 2px solid rgba(56,189,248,0.3);
+        }
+        @media (max-width: 768px) { .box11 { flex-direction: column; } .box112 { display: none; } }
 
-        @media (max-width: 768px) {
-            .box11 { flex-direction: column; }
-            .box112 { display: none; }
+        /* About */
+        .box0 { padding: 100px 40px; max-width: 1200px; margin: auto; }
+        .section-header { margin-bottom: 50px; }
+        .section-header h1 {
+            font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800;
+            letter-spacing: -1px;
         }
-
-        /* ── About ── */
-        .box0 {
-            padding: 100px 40px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        #about .row {
-            display: flex;
-            gap: 60px;
-            align-items: flex-start;
-        }
-        .about-col-1 { flex: 0 0 260px; }
-        .about-col-1 img {
-            width: 100%;
-            border-radius: 24px;
+        .section-header p { color: var(--muted); margin-top: 8px; font-size: 15px; }
+        #about .row { display: flex; gap: 60px; align-items: flex-start; }
+        .about-col-1 { flex: 0 0 240px; }
+        .about-avatar {
+            width: 220px; height: 250px; border-radius: 24px;
+            background: var(--gradient); display: flex; align-items: center;
+            justify-content: center; font-family: 'Syne', sans-serif;
+            font-size: 64px; font-weight: 900; color: #fff;
             border: 2px solid var(--border);
         }
         .about-col-2 { flex: 1; }
-        .about-col-2 > p {
-            font-size: 16px;
-            color: #cbd5e1;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-        .tab-title {
-            display: flex;
-            gap: 0;
-            margin-bottom: 24px;
-            border-bottom: 1px solid var(--border);
-        }
+        .about-col-2 > p { font-size: 15px; color: #cbd5e1; line-height: 1.8; margin-bottom: 28px; }
+        .tab-title { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
         .tab-links {
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--muted);
-            border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
-            transition: 0.2s;
+            padding: 10px 20px; cursor: pointer; font-size: 14px; font-weight: 600;
+            color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: 0.2s;
         }
         .tab-links.active-link { color: var(--primary); border-bottom-color: var(--primary); }
         .tab-contents { display: none; }
         .tab-contents.active-tab { display: block; }
-        .aboutSkill { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+        .aboutSkill { list-style: none; display: flex; flex-direction: column; gap: 20px; }
         .aboutSkill li > span:first-child { font-weight: 700; font-size: 15px; }
         .co {
-            display: inline-block;
-            margin-top: 6px;
-            padding: 5px 12px;
-            background: rgba(56,189,248,0.08);
-            border: 1px solid rgba(56,189,248,0.2);
-            border-radius: 999px;
-            font-size: 12px;
-            color: var(--primary);
-            margin-right: 6px;
+            display: inline-block; margin-top: 6px; padding: 5px 11px;
+            background: rgba(56,189,248,0.07); border: 1px solid rgba(56,189,248,0.18);
+            border-radius: 999px; font-size: 12px; color: var(--primary); margin-right: 5px;
         }
+        @media (max-width: 768px) { #about .row { flex-direction: column; } .about-col-1 { max-width: 180px; } }
 
-        @media (max-width: 768px) {
-            #about .row { flex-direction: column; }
-            .about-col-1 { max-width: 200px; }
-        }
-
-        /* ── Tech Stack ── */
+        /* Tech Stack */
         .box2 {
             padding: 80px 40px;
             background: rgba(15,23,42,0.5);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
         }
         .box21 { text-align: center; margin-bottom: 50px; }
-        .box21 h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: 40px;
-            font-weight: 800;
-            letter-spacing: -1px;
-        }
-        .box22 {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
+        .box21 h1 { font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -1px; }
+        .box22 { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; max-width: 1100px; margin: auto; }
         .tool {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            padding: 20px;
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            width: 110px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--muted);
-            transition: 0.3s;
-            animation: floatIn 0.5s ease both;
-            animation-delay: calc(var(--i) * 0.08s);
+            display: flex; flex-direction: column; align-items: center; gap: 10px;
+            padding: 20px 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+            border-radius: 20px; width: 100px; font-size: 12px; font-weight: 500; color: var(--muted);
+            transition: 0.3s; animation: floatIn 0.5s ease both;
+            animation-delay: calc(var(--i) * 0.07s); text-align: center;
         }
-        .tool:hover {
-            border-color: rgba(56,189,248,0.4);
-            color: var(--text);
-            transform: translateY(-5px);
-        }
-        .tool img { width: 44px; height: 44px; object-fit: contain; }
-        .tool .tool-icon { font-size: 40px; }
+        .tool:hover { border-color: rgba(56,189,248,0.4); color: var(--text); transform: translateY(-5px); }
+        .tool-icon { font-size: 36px; line-height: 1; }
+        @keyframes floatIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
 
-        @keyframes floatIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ── Skills ── */
+        /* Skills */
         .box4 { padding: 100px 40px; }
-        .box41 { text-align: center; margin-bottom: 50px; }
-        .box41 h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: 40px;
-            font-weight: 800;
-        }
-        .skills-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-            max-width: 1200px;
-            margin: auto;
-        }
+        .box41 { margin-bottom: 50px; }
+        .box41 h1 { font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -1px; }
+        .skills-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; max-width: 1200px; }
         .skills-list > div {
-            background: rgba(15,23,42,0.75);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 32px;
-            transition: 0.3s;
+            background: rgba(15,23,42,0.75); border: 1px solid var(--border);
+            border-radius: 24px; padding: 30px; transition: 0.3s;
         }
         .skills-list > div:hover { transform: translateY(-6px); border-color: rgba(56,189,248,0.35); }
-        .skills-list i { font-size: 36px; color: var(--primary); margin-bottom: 16px; display: block; }
-        .skills-list h2 { font-size: 19px; font-weight: 700; margin-bottom: 12px; }
+        .skills-list i { font-size: 32px; color: var(--primary); margin-bottom: 14px; display: block; }
+        .skills-list h2 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
         .skills-list p { font-size: 14px; color: #94a3b8; line-height: 1.7; }
 
-        /* ── Projects ── */
-        .box3 { padding: 100px 40px; background: rgba(15,23,42,0.4); }
-        .box31 { text-align: center; margin-bottom: 50px; }
-        .box31 h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: 40px;
-            font-weight: 800;
+        /* Experience */
+        .box-exp {
+            padding: 100px 40px;
+            background: rgba(15,23,42,0.4);
+            border-top: 1px solid var(--border);
         }
-        .box32 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 26px;
-            max-width: 1200px;
-            margin: auto;
+        .box-exp-inner { max-width: 1000px; }
+        .exp-card {
+            background: rgba(15,23,42,0.75); border: 1px solid var(--border);
+            border-radius: 28px; padding: 40px; margin-bottom: 28px;
         }
-        .flip-card { height: 280px; perspective: 1000px; cursor: pointer; }
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.7s;
-            transform-style: preserve-3d;
+        .exp-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; }
+        .exp-title-main { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 6px; }
+        .exp-company { font-size: 15px; color: var(--primary); }
+        .exp-duration {
+            padding: 10px 16px; border-radius: 12px; height: fit-content;
+            background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+            font-size: 13px; color: var(--muted); white-space: nowrap;
         }
+        .exp-section-title { font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; margin: 20px 0 12px; }
+        .exp-list { display: flex; flex-direction: column; gap: 12px; }
+        .exp-item { display: flex; gap: 12px; font-size: 14px; color: #e2e8f0; line-height: 1.6; }
+        .arrow { color: var(--primary); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+
+        /* Projects */
+        .box3 { padding: 100px 40px; }
+        .box31 { margin-bottom: 50px; }
+        .box31 h1 { font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -1px; }
+        .box32 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; max-width: 1200px; }
+        .flip-card { height: 290px; perspective: 1000px; cursor: pointer; }
+        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.7s; transform-style: preserve-3d; }
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back {
-            position: absolute;
-            inset: 0;
-            backface-visibility: hidden;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid var(--border);
+            position: absolute; inset: 0; backface-visibility: hidden;
+            border-radius: 24px; overflow: hidden; border: 1px solid var(--border);
         }
-        .flip-card-front { background: var(--card); }
-        .flip-card-front img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
-        .flip-card-back {
-            background: linear-gradient(135deg, rgba(14,165,233,0.15), rgba(99,102,241,0.15));
-            backdrop-filter: blur(12px);
-            background-color: #0c1a2e;
-            transform: rotateY(180deg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 28px;
-            gap: 10px;
-        }
-        .flip-card-back h1 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; }
-        .flip-card-back p { font-size: 13px; color: #cbd5e1; line-height: 1.5; }
-        .flip-card-back .icons { display: flex; gap: 14px; margin-top: 6px; }
-        .flip-card-back .icons a { color: var(--primary); font-size: 20px; transition: 0.2s; }
-        .flip-card-back .icons a:hover { color: #fff; }
-
-        /* ── Stats ── */
-        .box7 {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-            padding: 80px 40px;
-        }
-        .box71 { display: flex; flex-direction: column; align-items: center; gap: 16px; }
-        .stat-num {
-            font-family: 'Syne', sans-serif;
-            font-size: 52px;
-            font-weight: 900;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .box712 { font-size: 14px; color: var(--muted); text-align: center; max-width: 120px; }
-        .box712 .bold { color: var(--text); font-weight: 700; display: block; }
-
-        /* ── Contact ── */
-        .box5 { padding: 100px 40px; }
-        .box51 { text-align: center; margin-bottom: 50px; }
-        .box51 h1 { font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800; }
-        .box52 {
-            display: flex;
-            gap: 60px;
-            max-width: 1100px;
-            margin: auto;
-            align-items: flex-start;
-        }
-        .box511 { flex: 1; }
-        .box5h1 { font-family: 'Syne', sans-serif; font-size: 34px; font-weight: 800; margin-bottom: 12px; }
-        .box5h3 { font-size: 13px; font-weight: 600; letter-spacing: 1px; color: var(--muted); margin-bottom: 30px; }
-        .box5111 { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; color: #cbd5e1; }
-        .box5111 i { color: var(--primary); width: 20px; }
-        .box5112 { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
-        .ico a {
-            width: 44px; height: 44px;
+        .flip-card-front {
             display: flex; align-items: center; justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border);
-            color: var(--muted);
-            font-size: 18px;
-            transition: 0.2s;
-            text-decoration: none;
+            flex-direction: column; gap: 14px; font-size: 13px; color: var(--muted); padding: 20px; text-align: center;
         }
-        .ico a:hover { background: rgba(56,189,248,0.15); color: var(--primary); border-color: rgba(56,189,248,0.4); }
-        .box512 { flex: 0 0 220px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-        .img51 { width: 180px; border-radius: 20px; border: 2px solid var(--border); }
-
-        @media (max-width: 768px) {
-            .box52 { flex-direction: column; }
+        .flip-card-front .fcard-icon { font-size: 52px; }
+        .flip-card-front .fcard-type { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--primary); }
+        .flip-card-front h2 { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: var(--text); }
+        .flip-card-back {
+            background: #0c1a2e; transform: rotateY(180deg);
+            display: flex; flex-direction: column; justify-content: center;
+            padding: 26px; gap: 10px;
+        }
+        .flip-card-back h1 { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: var(--text); }
+        .flip-card-back .impact {
+            display: inline-block; padding: 5px 12px;
+            background: rgba(34,197,94,0.12); color: #4ade80;
+            font-size: 12px; font-weight: 700; border-radius: 999px; width: fit-content;
+        }
+        .flip-card-back p { font-size: 13px; color: #cbd5e1; line-height: 1.5; }
+        .flip-card-back .icons { display: flex; gap: 12px; margin-top: 4px; }
+        .flip-card-back .icons a { color: var(--primary); font-size: 18px; transition: 0.2s; text-decoration: none; }
+        .flip-card-back .icons a:hover { color: #fff; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+        .tech-tags span {
+            padding: 4px 10px; border-radius: 999px;
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            font-size: 11px; color: var(--muted);
         }
 
-        /* ── Footer ── */
+        /* Stats */
+        .box7 {
+            display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;
+            padding: 80px 40px;
+            background: rgba(15,23,42,0.5);
+            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        }
+        .box71 { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+        .stat-num {
+            font-family: 'Syne', sans-serif; font-size: 52px; font-weight: 900;
+            background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .box712 { font-size: 13px; color: var(--muted); text-align: center; max-width: 110px; line-height: 1.4; }
+        .box712 .bold { color: var(--text); font-weight: 700; display: block; margin-bottom: 2px; }
+
+        /* Contact */
+        .box5 { padding: 100px 40px; }
+        .box51 { margin-bottom: 50px; }
+        .box51 h1 { font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -1px; }
+        .box52 { display: flex; gap: 60px; max-width: 1100px; align-items: flex-start; flex-wrap: wrap; }
+        .box511 { flex: 1; min-width: 280px; }
+        .box5h1 { font-family: 'Syne', sans-serif; font-size: 30px; font-weight: 800; margin-bottom: 10px; }
+        .box5h3 { font-size: 12px; font-weight: 600; letter-spacing: 1px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
+        .box5111 { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #cbd5e1; font-size: 15px; }
+        .box5111 i { color: var(--primary); width: 20px; }
+        .box5112 { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
+        .ico a {
+            width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border); color: var(--muted); font-size: 17px;
+            transition: 0.2s; text-decoration: none;
+        }
+        .ico a:hover { background: rgba(56,189,248,0.12); color: var(--primary); border-color: rgba(56,189,248,0.4); }
+        .box512 { flex: 0 0 200px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+        .avatar-contact {
+            width: 160px; height: 180px; border-radius: 20px;
+            background: var(--gradient); display: flex; align-items: center;
+            justify-content: center; font-family: 'Syne', sans-serif;
+            font-size: 48px; font-weight: 900; color: #fff;
+            border: 2px solid rgba(56,189,248,0.2);
+        }
+
+        /* Footer */
         .box6 {
-            text-align: center;
-            padding: 30px;
+            text-align: center; padding: 28px;
             border-top: 1px solid var(--border);
-            font-size: 14px;
-            color: var(--muted);
+            font-size: 14px; color: var(--muted);
         }
         .box6 i { color: #f43f5e; }
 
-        /* ── Scroll-up ── */
+        /* Scroll up */
         .arrup {
-            position: fixed;
-            bottom: 30px; right: 30px;
-            color: var(--primary);
-            opacity: 0.8;
-            transition: 0.2s;
-            z-index: 100;
+            position: fixed; bottom: 30px; right: 30px;
+            color: var(--primary); opacity: 0.8; transition: 0.2s; z-index: 100;
         }
         .arrup:hover { opacity: 1; transform: translateY(-4px); }
 
-        /* ── Reveal ── */
-        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        /* Reveal */
+        .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.65s ease, transform 0.65s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <!-- Progress Bar -->
-    <div class="header">
-        <div class="progress-container">
-            <div class="progress-bar" id="myBar"></div>
+<!-- Progress Bar -->
+<div class="header">
+    <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+</div>
+
+<!-- Nav -->
+<section class="top-nav">
+    <div></div>
+    <input id="menu-toggle" type="checkbox" />
+    <label class="menu-button-container" for="menu-toggle"><div class="menu-button"></div></label>
+    <ul class="menu">
+        <li><a href="#box1">Home</a></li>
+        <li><a href="#box0">About</a></li>
+        <li><a href="#box2">Tech Stack</a></li>
+        <li><a href="#box4">Skills</a></li>
+        <li><a href="#box-exp">Experience</a></li>
+        <li><a href="#box3">Projects</a></li>
+        <li><a href="#box5">Contact</a></li>
+        <li><a href="https://dineshkumar6301.github.io/dinesh-portfolio/" target="_blank" class="rbtn-nav">Portfolio ↗</a></li>
+    </ul>
+</section>
+
+<!-- Hero -->
+<div class="box1" id="box1">
+    <div class="box10">
+        <span style="--i:1;"><h1>H</h1></span>
+        <span style="--i:2;"><h1>i</h1></span>
+        <span style="--i:3;"><h1>!</h1></span>
+        <span style="--i:4;">&nbsp;&nbsp;</span>
+        <span style="--i:5;" class="accent"><h1>D</h1></span>
+        <span style="--i:6;" class="accent"><h1>i</h1></span>
+        <span style="--i:7;" class="accent"><h1>n</h1></span>
+        <span style="--i:8;" class="accent"><h1>e</h1></span>
+        <span style="--i:9;" class="accent"><h1>s</h1></span>
+        <span style="--i:10;" class="accent"><h1>h</h1></span>
+    </div>
+    <div class="box11">
+        <div class="box111">
+            <div class="hero-badge"><span class="dot"></span> Open to opportunities</div>
+            <h2 class="wlcm_note">Welcome to my portfolio!</h2>
+            <h2 class="some_about">I am a passionate <span>Python Full Stack Developer</span> &amp; Python Engineer with 2+ years of experience.</h2>
+            <p class="hero-sub">Building scalable REST APIs, ETL pipelines, microservices, and production-grade Django/FastAPI applications. Strong in Python, SQL, AWS, and GenAI workflows — based in Hyderabad, India.</p>
+            <div class="btn_div">
+                <button class="rbtn"><a href="mailto:dk967427@gmail.com">Get In Touch</a></button>
+                <button class="rbtn-outline"><a href="https://dineshkumar6301.github.io/dinesh-portfolio/" target="_blank">View Portfolio</a></button>
+            </div>
+        </div>
+        <div class="box112">
+            <div class="avatar-hero">VD</div>
         </div>
     </div>
+</div>
 
-    <!-- Nav -->
-    <section class="top-nav">
-        <div></div>
-        <input id="menu-toggle" type="checkbox" />
-        <label class="menu-button-container" for="menu-toggle">
-            <div class="menu-button"></div>
-        </label>
-        <ul class="menu">
-            <li><a href="#box1">Home</a></li>
-            <li><a href="#box0">About</a></li>
-            <li><a href="#box2">Tech Stack</a></li>
-            <li><a href="#box4">My Skills</a></li>
-            <li><a href="#box3">Projects</a></li>
-            <li><a href="#box5">Contact</a></li>
-            <li><a href="#" class="rbtn-link">Resume</a></li>
-        </ul>
-    </section>
-
-    <!-- Hero -->
-    <div class="box1" id="box1">
-        <div class="box10">
-            <span style="--i:1;"><h1>H</h1></span>
-            <span style="--i:2;"><h1>i</h1></span>
-            <span style="--i:3;"><h1>!</h1></span>
-            <span style="--i:4;">&nbsp;&nbsp;</span>
-            <span style="--i:5; color: var(--primary);"><h1>D</h1></span>
-            <span style="--i:6; color: var(--primary);"><h1>i</h1></span>
-            <span style="--i:7; color: var(--primary);"><h1>n</h1></span>
-            <span style="--i:8; color: var(--primary);"><h1>e</h1></span>
-            <span style="--i:9; color: var(--primary);"><h1>s</h1></span>
-            <span style="--i:10; color: var(--primary);"><h1>h</h1></span>
-        </div>
-
-        <div class="box11">
-            <div class="box111">
-                <h2 class="wlcm_note">Welcome to my portfolio!</h2>
-                <h2 class="some_about">I am a passionate <span>Python Full Stack Developer</span> who builds scalable APIs, data pipelines, and production-grade applications.</h2>
-                <div class="btn_div">
-                    <button class="rbtn"><a href="#">Download Resume</a></button>
+<!-- About -->
+<div class="box0 reveal" id="box0">
+    <div class="section-header">
+        <h1>About Me</h1>
+        <p>Background, skills &amp; education</p>
+    </div>
+    <div id="about">
+        <div class="row">
+            <div class="about-col-1">
+                <div class="about-avatar">VD</div>
+            </div>
+            <div class="about-col-2">
+                <p>Results-driven Python Full Stack Developer with 2+ years of professional experience designing, developing, and deploying scalable web applications, REST APIs, microservices, and data engineering pipelines. Expert in Python, Django, FastAPI, and DRF with strong JavaScript and frontend integration skills. Proven track record of delivering production-grade systems — 30% database performance improvement and 40% operational efficiency gains. Strong exposure to AI/ML workflows, GenAI, LLM concepts, ETL pipelines, and cloud services (AWS).</p>
+                <div class="tab-title">
+                    <p class="tab-links active-link" onclick="opentab('skills', event)">Technical Skills</p>
+                    <p class="tab-links" onclick="opentab('softskills', event)">Soft Skills</p>
+                    <p class="tab-links" onclick="opentab('education', event)">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul class="aboutSkill">
+                        <li><span>Backend Development</span><br>
+                            <span class="co">Python</span><span class="co">Django</span><span class="co">FastAPI</span><span class="co">DRF</span><span class="co">Flask</span><span class="co">REST APIs</span><span class="co">Microservices</span>
+                        </li>
+                        <li><span>Databases &amp; Data Engineering</span><br>
+                            <span class="co">PostgreSQL</span><span class="co">MySQL</span><span class="co">MongoDB</span><span class="co">Pandas</span><span class="co">NumPy</span><span class="co">ETL Pipelines</span><span class="co">PySpark</span>
+                        </li>
+                        <li><span>AI / GenAI &amp; Cloud</span><br>
+                            <span class="co">GenAI</span><span class="co">LLM Workflows</span><span class="co">Prompt Engineering</span><span class="co">Scikit-learn</span><span class="co">AWS EC2</span><span class="co">S3</span><span class="co">Docker</span><span class="co">CI/CD</span>
+                        </li>
+                        <li><span>Frontend &amp; Testing</span><br>
+                            <span class="co">JavaScript ES6+</span><span class="co">HTML5</span><span class="co">CSS3</span><span class="co">React</span><span class="co">Pytest</span><span class="co">TDD</span><span class="co">Unit Testing</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="softskills">
+                    <ul class="aboutSkill">
+                        <li><span>Problem-Solving &amp; System Design</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Reduced SQL query time by 30% and improved operational efficiency by 40% through systematic analysis and redesign.</span></li>
+                        <li><span>Collaboration &amp; Communication</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Effective collaborator with product managers, QA engineers, data scientists, and frontend engineers in Agile Scrum sprints.</span></li>
+                        <li><span>Self-Learning &amp; Adaptability</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Continuous learner independently exploring GenAI, LLMs, Apache Kafka, and modern data architectures.</span></li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul class="aboutSkill">
+                        <li><span>B.Tech — Electronics &amp; Communication Engineering (ECE)</span>
+                            <span class="co" style="border-radius:8px;padding:8px 12px;display:block;margin-top:8px;width:fit-content;">Krishna Chaithanya Institute of Technology and Sciences, Markapur · Graduated 2023</span>
+                        </li>
+                        <li><span>Professional Experience</span>
+                            <span class="co" style="border-radius:8px;padding:8px 12px;display:block;margin-top:8px;width:fit-content;">Python Full Stack Developer · Friendsmoo Info Media Pvt Ltd, Hyderabad · Oct 2023 – Present (2+ yrs)</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="box112">
-                <img src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/svg/1f4bb.svg" alt="coder illustration">
-            </div>
         </div>
     </div>
+</div>
 
-    <!-- About -->
-    <div class="box0 reveal" id="box0">
-        <div id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="about-col-1">
-                        <!-- Placeholder avatar since original image isn't available -->
-                        <div style="width:220px;height:260px;border-radius:24px;background:linear-gradient(135deg,#0ea5e9,#6366f1);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:72px;font-weight:900;color:#fff;">VD</div>
-                    </div>
-                    <div class="about-col-2">
-                        <p>Python Full Stack Developer with 2+ years of experience building production-grade REST APIs, ETL pipelines, and full-stack Django applications. Worked intensively across 2160+ hours in backend systems, data engineering, and cloud-native workflows with Python, Django, FastAPI, PostgreSQL, AWS, and more.</p>
-                        <div class="tab-title">
-                            <p class="tab-links active-link" onclick="opentab('skills')">Technical Skills</p>
-                            <p class="tab-links" onclick="opentab('softskills')">Soft Skills</p>
-                            <p class="tab-links" onclick="opentab('education')">Education</p>
-                        </div>
-                        <div class="tab-contents active-tab" id="skills">
-                            <ul class="aboutSkill">
-                                <li><span>Backend Development</span><br>
-                                    <span class="co">Python</span><span class="co">Django</span><span class="co">FastAPI</span><span class="co">DRF</span><span class="co">REST APIs</span><span class="co">Microservices</span>
-                                </li>
-                                <li><span>Databases & Data Engineering</span><br>
-                                    <span class="co">PostgreSQL</span><span class="co">MySQL</span><span class="co">MongoDB</span><span class="co">Pandas</span><span class="co">NumPy</span><span class="co">ETL Pipelines</span>
-                                </li>
-                                <li><span>Cloud & DevOps</span><br>
-                                    <span class="co">AWS EC2</span><span class="co">AWS S3</span><span class="co">Docker</span><span class="co">CI/CD</span><span class="co">Apache Kafka</span><span class="co">Linux</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-contents" id="softskills">
-                            <ul class="aboutSkill">
-                                <li><span>Self-learning</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Continuous learner exploring GenAI, LLMs, and modern data architectures independently.</span></li>
-                                <li><span>Problem-solving</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Reduced SQL query time by 30%, cut ETL manual effort by 60% through systematic analysis.</span></li>
-                                <li><span>Collaboration</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Active Agile Scrum participant — sprint planning, code reviews, TDD, and stakeholder demos.</span></li>
-                            </ul>
-                        </div>
-                        <div class="tab-contents" id="education">
-                            <ul class="aboutSkill">
-                                <li><span>Python Full Stack Development</span><span class="co" style="border-radius:8px;padding:8px 12px;display:block;margin-top:8px;">Friendsmoo Info Media Pvt Ltd · Oct 2023 – Present</span></li>
-                                <li><span>B.Tech / Engineering</span><span class="co" style="border-radius:8px;padding:8px 12px;display:block;margin-top:8px;">Hyderabad, India</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- Tech Stack -->
+<div class="box2 reveal" id="box2">
+    <div class="box21"><h1>TECH STACK</h1></div>
+    <div class="box22">
+        <div class="tool" style="--i:1;"><div class="tool-icon">🐍</div><div>Python</div></div>
+        <div class="tool" style="--i:2;"><div class="tool-icon">🎸</div><div>Django</div></div>
+        <div class="tool" style="--i:3;"><div class="tool-icon">⚡</div><div>FastAPI</div></div>
+        <div class="tool" style="--i:4;"><div class="tool-icon">🔷</div><div>DRF</div></div>
+        <div class="tool" style="--i:5;"><div class="tool-icon">🧪</div><div>Flask</div></div>
+        <div class="tool" style="--i:6;"><div class="tool-icon">🐘</div><div>PostgreSQL</div></div>
+        <div class="tool" style="--i:7;"><div class="tool-icon">🐬</div><div>MySQL</div></div>
+        <div class="tool" style="--i:8;"><div class="tool-icon">🍃</div><div>MongoDB</div></div>
+        <div class="tool" style="--i:9;"><div class="tool-icon">☁️</div><div>AWS</div></div>
+        <div class="tool" style="--i:10;"><div class="tool-icon">🐳</div><div>Docker</div></div>
+        <div class="tool" style="--i:11;"><div class="tool-icon">📊</div><div>Pandas</div></div>
+        <div class="tool" style="--i:12;"><div class="tool-icon">📨</div><div>Kafka</div></div>
+        <div class="tool" style="--i:13;"><div class="tool-icon">🤖</div><div>Scikit-learn</div></div>
+        <div class="tool" style="--i:14;"><div class="tool-icon">🔧</div><div>Git / CI/CD</div></div>
+        <div class="tool" style="--i:15;"><div class="tool-icon">🌐</div><div>JavaScript</div></div>
+        <div class="tool" style="--i:16;"><div class="tool-icon">🧠</div><div>GenAI / LLM</div></div>
+    </div>
+</div>
+
+<!-- My Skills -->
+<div class="box4 reveal" id="box4">
+    <div class="box41 section-header">
+        <h1>My Skills</h1>
+        <p>Core competencies and areas of expertise</p>
+    </div>
+    <div class="skills-list">
+        <div>
+            <i class="fa-brands fa-python"></i>
+            <h2>Python Backend Development</h2>
+            <p>Expert-level Python with OOP, design patterns (Factory, Singleton, Repository), and clean code principles. Builds production-grade REST APIs using Django, FastAPI, and DRF with JWT auth, RBAC, pagination, and versioning.</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-database"></i>
+            <h2>Data Engineering &amp; ETL</h2>
+            <p>Designs real-time ETL pipelines with Pandas, NumPy, and Apache Kafka. Covers ingestion, transformation, deduplication, validation, and structured audit trails across multiple data sources.</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-cloud"></i>
+            <h2>Cloud &amp; DevOps</h2>
+            <p>Deploys on AWS EC2 &amp; S3, containerizes with Docker, manages CI/CD pipelines. Implemented centralized structured logging reducing production debugging time by ~50%.</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-brain"></i>
+            <h2>AI / GenAI &amp; ML</h2>
+            <p>Builds LLM evaluation frameworks, prompt engineering pipelines, and ML inference APIs using FastAPI &amp; Scikit-learn. Applied GenAI automation to backend workflows for intelligent tooling and process optimization.</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-code"></i>
+            <h2>Full Stack Development</h2>
+            <p>Integrates Django/FastAPI backends with JavaScript frontends. Experienced in React, HTML5/CSS3, and delivering responsive, user-facing features for production web applications end-to-end.</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-vial"></i>
+            <h2>Testing &amp; Agile Delivery</h2>
+            <p>Practices TDD with unit, integration, and automated tests. Active in code reviews, sprint planning, backlog refinement, and retrospectives. Delivers features iteratively with consistent quality.</p>
         </div>
     </div>
+</div>
 
-    <!-- Tech Stack -->
-    <div class="box2 reveal" id="box2">
-        <div class="box21"><h1>TECH STACK</h1></div>
-        <div class="box22">
-            <div class="tool" style="--i:1;"><div class="tool-icon">🐍</div><div>Python</div></div>
-            <div class="tool" style="--i:2;"><div class="tool-icon">🎸</div><div>Django</div></div>
-            <div class="tool" style="--i:3;"><div class="tool-icon">⚡</div><div>FastAPI</div></div>
-            <div class="tool" style="--i:4;"><div class="tool-icon">🗄️</div><div>PostgreSQL</div></div>
-            <div class="tool" style="--i:5;"><div class="tool-icon">🐬</div><div>MySQL</div></div>
-            <div class="tool" style="--i:6;"><div class="tool-icon">☁️</div><div>AWS</div></div>
-            <div class="tool" style="--i:7;"><div class="tool-icon">🐳</div><div>Docker</div></div>
-            <div class="tool" style="--i:8;"><div class="tool-icon">📊</div><div>Pandas</div></div>
-            <div class="tool" style="--i:9;"><div class="tool-icon">🤖</div><div>Scikit-learn</div></div>
-            <div class="tool" style="--i:10;"><div class="tool-icon">📨</div><div>Kafka</div></div>
-            <div class="tool" style="--i:11;"><div class="tool-icon">🔧</div><div>Git</div></div>
-            <div class="tool" style="--i:12;"><div class="tool-icon">🌐</div><div>HTML/CSS</div></div>
+<!-- Experience -->
+<div class="box-exp reveal" id="box-exp">
+    <div class="box-exp-inner">
+        <div class="section-header">
+            <h1>Experience</h1>
+            <p>Professional history and responsibilities</p>
         </div>
-    </div>
-
-    <!-- My Skills -->
-    <div class="box4 reveal" id="box4">
-        <div class="container">
-            <div class="box41"><h1>My Skills</h1></div>
-            <div class="skills-list">
+        <div class="exp-card">
+            <div class="exp-head">
                 <div>
-                    <i class="fa-brands fa-python"></i>
-                    <h2>Python Backend Development</h2>
-                    <p>Building scalable REST APIs and backend systems using Django, FastAPI, and DRF. Strong in OOP, design patterns, JWT auth, RBAC, and writing clean, production-grade Python code.</p>
+                    <div class="exp-title-main">Python Full Stack Developer &amp; Python Engineer</div>
+                    <div class="exp-company">Friendsmoo Info Media Pvt Ltd · Hyderabad, India</div>
                 </div>
-                <div>
-                    <i class="fa-solid fa-database"></i>
-                    <h2>Data Engineering & ETL</h2>
-                    <p>Designing and running real-time ETL pipelines with Pandas, NumPy, and Apache Kafka. Includes data validation, deduplication, transformation, and audit trail implementation.</p>
-                </div>
-                <div>
-                    <i class="fa-solid fa-cubes"></i>
-                    <h2>Cloud & DevOps</h2>
-                    <p>Deploying applications on AWS EC2 & S3, containerizing with Docker, and managing CI/CD pipelines. Centralized structured logging to cut production debugging time significantly.</p>
-                </div>
-                <div>
-                    <i class="fa-solid fa-brain"></i>
-                    <h2>AI & GenAI Integration</h2>
-                    <p>Building LLM evaluation frameworks, prompt engineering pipelines, and ML inference APIs with FastAPI and Scikit-learn. Exploring agent architecture and GenAI automation workflows.</p>
-                </div>
+                <div class="exp-duration">Oct 2023 – Present · 2+ yrs</div>
+            </div>
+
+            <div class="exp-section-title">PYTHON ENGINEERING &amp; FULL STACK DEVELOPMENT</div>
+            <div class="exp-list">
+                <div class="exp-item"><span class="arrow">→</span>Designed and deployed production-grade Python full stack web applications — scalable backend systems using Django, FastAPI, and DRF with JavaScript frontend integration across the complete SDLC.</div>
+                <div class="exp-item"><span class="arrow">→</span>Engineered 12+ REST API endpoints applying clean OOP design patterns — CRUD operations, JWT authentication, input validation, pagination, versioning, and error handling following industry best practices.</div>
+                <div class="exp-item"><span class="arrow">→</span>Developed microservice-architecture backend systems — modular, decoupled Python services with clear API contracts enabling independent deployment and scalability.</div>
+                <div class="exp-item"><span class="arrow">→</span>Optimised production database query performance by ~30% through SQL optimization, Django ORM tuning, indexing, and caching strategy implementation.</div>
+                <div class="exp-item"><span class="arrow">→</span>Applied Python OOP &amp; design patterns (Factory, Singleton, Repository) — delivering maintainable, testable, self-documenting codebases consistently reviewed by senior engineers.</div>
+            </div>
+
+            <div class="exp-section-title">DATA ENGINEERING, ETL &amp; AI</div>
+            <div class="exp-list">
+                <div class="exp-item"><span class="arrow">→</span>Designed and built ETL pipelines for real-time data ingestion, transformation, and loading — applied Python (Pandas, NumPy) and SQL for large-scale structured data processing across multiple systems.</div>
+                <div class="exp-item"><span class="arrow">→</span>Built scalable data infrastructure improving operational efficiency by ~40% — automated manual data processes and redesigned pipeline architecture for throughput.</div>
+                <div class="exp-item"><span class="arrow">→</span>Applied AI/ML and GenAI concepts to backend workflows — integrated LLM-based automation pipelines, prompt engineering techniques, and intelligent tooling for process optimization.</div>
+                <div class="exp-item"><span class="arrow">→</span>Implemented data quality validation and cleansing workflows — automated error detection, deduplication, and integrity checks ensuring production data reliability.</div>
+            </div>
+
+            <div class="exp-section-title">TESTING, CI/CD &amp; AGILE</div>
+            <div class="exp-list">
+                <div class="exp-item"><span class="arrow">→</span>Practised Test-Driven Development (TDD) — wrote unit tests, integration tests, and automated test scripts before implementation; achieved strong code coverage across all production Python modules.</div>
+                <div class="exp-item"><span class="arrow">→</span>Worked in Agile Scrum sprints — sprint planning, backlog refinement, daily standups, and retrospectives; delivered features iteratively with consistent quality and on-schedule releases.</div>
+                <div class="exp-item"><span class="arrow">→</span>Applied CI/CD pipeline practices — managed Git-based version control workflows, automated testing integration, and deployment processes for consistent, reliable production releases.</div>
+                <div class="exp-item"><span class="arrow">→</span>Collaborated across cross-functional teams (product managers, QA, data scientists, frontend engineers) — communicated technical solutions clearly to stakeholders at all levels.</div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Projects -->
-    <div class="box3 reveal" id="box3">
-        <div class="box31"><h1>PROJECTS</h1></div>
-        <div class="box32">
+<!-- Projects -->
+<div class="box3 reveal" id="box3">
+    <div class="box31 section-header">
+        <h1>PROJECTS</h1>
+        <p>Hover each card to see details</p>
+    </div>
+    <div class="box32">
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front" style="background:linear-gradient(135deg,#0c2a40,#0f172a);display:flex;align-items:center;justify-content:center;font-size:60px;">🤖</div>
-                    <div class="flip-card-back">
-                        <h1>Customer Churn Prediction</h1>
-                        <p>End-to-end ML pipeline with Kafka streaming, FastAPI inference, and Scikit-learn Random Forest. ~40% faster inference.</p>
-                        <p>Python · Kafka · FastAPI · Scikit-learn · Pytest</p>
-                        <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                    </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front" style="background:linear-gradient(135deg,#071a2c,#0f172a);">
+                    <div class="fcard-type">REST API · MICROSERVICES</div>
+                    <div class="fcard-icon">📅</div>
+                    <h2>Service Booking Platform</h2>
+                </div>
+                <div class="flip-card-back">
+                    <h1>Full Stack Service Booking Platform</h1>
+                    <div class="impact">~30% performance gain · N+1 eliminated</div>
+                    <p>12+ REST API microservices with JWT auth, RBAC, transaction-safe operations, and JavaScript frontend integration. TDD-tested with full CI/CD deployment pipeline.</p>
+                    <div class="tech-tags"><span>Django</span><span>DRF</span><span>FastAPI</span><span>PostgreSQL</span><span>JavaScript</span><span>JWT</span></div>
+                    <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
                 </div>
             </div>
+        </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front" style="background:linear-gradient(135deg,#0a2a1c,#0f172a);display:flex;align-items:center;justify-content:center;font-size:60px;">📅</div>
-                    <div class="flip-card-back">
-                        <h1>Service Booking Platform</h1>
-                        <p>12+ REST APIs for appointment booking, slot management, and cancellations. Eliminated N+1 queries & race conditions.</p>
-                        <p>Django · DRF · PostgreSQL · JWT Auth</p>
-                        <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                    </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front" style="background:linear-gradient(135deg,#0e1020,#0f172a);">
+                    <div class="fcard-type">AI / GENAI PIPELINE</div>
+                    <div class="fcard-icon">🧠</div>
+                    <h2>AI-Powered LLM Evaluation Framework</h2>
+                </div>
+                <div class="flip-card-back">
+                    <h1>AI-Powered Evaluation &amp; Automation Pipeline</h1>
+                    <div class="impact">Automated audit trails · Reproducible results</div>
+                    <p>AI-driven automation pipeline using Python, GenAI, and LLM concepts — intelligent agent-based workflows for automated evaluation, metric computation, and process optimization.</p>
+                    <div class="tech-tags"><span>Python</span><span>FastAPI</span><span>GenAI</span><span>LLM</span><span>Pandas</span><span>PostgreSQL</span></div>
+                    <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
                 </div>
             </div>
+        </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front" style="background:linear-gradient(135deg,#1a0a2a,#0f172a);display:flex;align-items:center;justify-content:center;font-size:60px;">🏥</div>
-                    <div class="flip-card-back">
-                        <h1>Hospital Management System</h1>
-                        <p>Normalized 3NF schema for patients, doctors, appointments & billing. ~40% faster reporting with optimized queries.</p>
-                        <p>Python · Django · MySQL · PostgreSQL</p>
-                        <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                    </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front" style="background:linear-gradient(135deg,#071c12,#0f172a);">
+                    <div class="fcard-type">ETL · DATA ENGINEERING</div>
+                    <div class="fcard-icon">🔄</div>
+                    <h2>Real-Time ETL Data Pipeline</h2>
+                </div>
+                <div class="flip-card-back">
+                    <h1>Real-Time ETL Data Engineering Pipeline</h1>
+                    <div class="impact">~40% efficiency gain · ~60% manual effort cut</div>
+                    <p>Production ETL pipeline for real-time ingestion, transformation, validation, and deduplication. Python data processing libraries with AWS S3 cloud storage integration.</p>
+                    <div class="tech-tags"><span>Python</span><span>Pandas</span><span>NumPy</span><span>SQL</span><span>PostgreSQL</span><span>AWS S3</span></div>
+                    <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
                 </div>
             </div>
+        </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front" style="background:linear-gradient(135deg,#0a1a30,#0f172a);display:flex;align-items:center;justify-content:center;font-size:60px;">🏠</div>
-                    <div class="flip-card-back">
-                        <h1>Real Estate Platform</h1>
-                        <p>Full-stack Django platform for property listings, advanced filtering, enquiry management & ORM-optimized pagination.</p>
-                        <p>Django · HTML/CSS · Bootstrap · PostgreSQL</p>
-                        <div class="icons">
-                            <a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a>
-                        </div>
-                    </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front" style="background:linear-gradient(135deg,#1a0a2a,#0f172a);">
+                    <div class="fcard-type">DATA MODELLING · ANALYTICS</div>
+                    <div class="fcard-icon">🏥</div>
+                    <h2>Hospital Analytics System</h2>
+                </div>
+                <div class="flip-card-back">
+                    <h1>Hospital Analytics System</h1>
+                    <div class="impact">~40% faster reporting</div>
+                    <p>Normalized 3NF relational schema for patients, doctors, appointments &amp; billing. Optimized SQL analytics and data dashboards providing actionable business insights.</p>
+                    <div class="tech-tags"><span>Python</span><span>SQL</span><span>PostgreSQL</span><span>Django</span><span>Pandas</span><span>Matplotlib</span></div>
+                    <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
                 </div>
             </div>
+        </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front" style="background:linear-gradient(135deg,#0a2030,#0f172a);display:flex;align-items:center;justify-content:center;font-size:60px;">🔄</div>
-                    <div class="flip-card-back">
-                        <h1>Real-Time ETL Pipeline</h1>
-                        <p>Production pipeline for real-time ingestion, transformation, validation, deduplication. ~60% manual effort eliminated.</p>
-                        <p>Python · Pandas · NumPy · SQL · AWS S3</p>
-                        <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                    </div>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front" style="background:linear-gradient(135deg,#0a1a30,#0f172a);">
+                    <div class="fcard-type">FULL STACK · WEB APP</div>
+                    <div class="fcard-icon">🏠</div>
+                    <h2>Real Estate Web Platform</h2>
+                </div>
+                <div class="flip-card-back">
+                    <h1>Real Estate Web Platform</h1>
+                    <div class="impact">Indexed search · ORM optimized</div>
+                    <p>Full-stack Django platform for property listings, advanced search &amp; filtering, enquiry management, and server-side pagination with optimized ORM queries.</p>
+                    <div class="tech-tags"><span>Django</span><span>PostgreSQL</span><span>JavaScript</span><span>REST API</span><span>HTML/CSS</span></div>
+                    <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
                 </div>
             </div>
+        </div>
 
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front" style="background:linear-gradient(135deg,#1a1030,#0f172a);display:flex;align-items:center;justify-content:center;font-size:60px;">🧠</div>
-                    <div class="flip-card-back">
-                        <h1>LLM Evaluation Framework</h1>
-                        <p>Automated evaluation pipelines for LLM outputs using prompt engineering, Scikit-learn metrics & reproducible audit trails.</p>
-                        <p>Python · FastAPI · GenAI · LLM · Pandas</p>
-                        <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                    </div>
-                </div>
+    </div>
+</div>
+
+<!-- Stats -->
+<div class="box7 reveal">
+    <div class="box71"><div class="stat-num">2+</div><div class="box712"><span class="bold">Years</span>professional experience</div></div>
+    <div class="box71"><div class="stat-num">12+</div><div class="box712"><span class="bold">REST APIs</span>shipped to production</div></div>
+    <div class="box71"><div class="stat-num">30%</div><div class="box712"><span class="bold">DB performance</span>improvement</div></div>
+    <div class="box71"><div class="stat-num">40%</div><div class="box712"><span class="bold">Operational</span>efficiency gain</div></div>
+    <div class="box71"><div class="stat-num">5+</div><div class="box712"><span class="bold">Key projects</span>delivered</div></div>
+</div>
+
+<!-- Contact -->
+<div class="box5 reveal" id="box5">
+    <div class="box51 section-header">
+        <h1>CONTACT</h1>
+        <p>Open to full-time Python Full Stack / Python Engineer roles</p>
+    </div>
+    <div class="box52">
+        <div class="box511">
+            <h1 class="box5h1">Let's work together.</h1>
+            <h3 class="box5h3">OPEN TO FULL-TIME PYTHON FULL STACK / PYTHON ENGINEER ROLES IN HYDERABAD OR HYBRID. MY INBOX IS OPEN FOR ALL.</h3>
+            <div class="box5111"><i class="fa-solid fa-location-dot"></i> Hyderabad, India</div>
+            <div class="box5111"><i class="fa-solid fa-envelope"></i> dk967427@gmail.com</div>
+            <div class="box5111"><i class="fa-solid fa-phone"></i> +91 6301861405</div>
+            <div class="box5111"><i class="fa-solid fa-globe"></i> dineshkumar6301.github.io/dinesh-portfolio</div>
+            <div class="box5112">
+                <div class="ico"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
+                <div class="ico"><a href="https://www.linkedin.com/in/venakata-dinesh-kumar-mariyala-7b48b219a/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
+                <div class="ico"><a href="mailto:dk967427@gmail.com"><i class="fa-solid fa-envelope"></i></a></div>
+                <div class="ico"><a href="tel:+916301861405"><i class="fa-solid fa-phone"></i></a></div>
+                <div class="ico"><a href="https://dineshkumar6301.github.io/dinesh-portfolio/" target="_blank"><i class="fa-solid fa-globe"></i></a></div>
             </div>
-
+        </div>
+        <div class="box512">
+            <div class="avatar-contact">VD</div>
+            <div class="btn_div">
+                <button class="rbtn"><a href="mailto:dk967427@gmail.com">Hire Me</a></button>
+            </div>
         </div>
     </div>
+</div>
 
-    <!-- Stats -->
-    <div class="box7 reveal">
-        <div class="box71">
-            <div class="stat-num">2160+</div>
-            <div class="box712"><span class="bold">Hours</span> of full stack coding</div>
-        </div>
-        <div class="box71">
-            <div class="stat-num">12+</div>
-            <div class="box712"><span class="bold">REST APIs</span> shipped to production</div>
-        </div>
-        <div class="box71">
-            <div class="stat-num">30%</div>
-            <div class="box712"><span class="bold">SQL query</span> time reduced</div>
-        </div>
-        <div class="box71">
-            <div class="stat-num">60%</div>
-            <div class="box712"><span class="bold">ETL manual</span> work eliminated</div>
-        </div>
-        <div class="box71">
-            <div class="stat-num">6+</div>
-            <div class="box712"><span class="bold">Projects</span> delivered</div>
-        </div>
-    </div>
+<!-- Footer -->
+<div class="box6" id="box6">
+    <p>Built From Scratch With <i class="fa-sharp fa-solid fa-heart"></i> by Venakata Dinesh Kumar Mariyala</p>
+</div>
 
-    <!-- Contact -->
-    <div class="box5 reveal" id="box5">
-        <div class="box51"><h1>CONTACT</h1></div>
-        <div class="box52">
-            <div class="box511">
-                <h1 class="box5h1">Reach Out to me!</h1>
-                <h3 class="box5h3">OPEN TO FULL-TIME PYTHON FULL STACK / PYTHON ENGINEER ROLES. MY INBOX IS OPEN.</h3>
-                <div class="box5111"><i class="fa-solid fa-location-dot"></i> Hyderabad, India</div>
-                <div class="box5111"><i class="fa-solid fa-envelope"></i> dk967427@gmail.com</div>
-                <div class="box5111"><i class="fa-solid fa-phone"></i> +91 6301861405</div>
-                <div class="box5112">
-                    <div class="ico"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                    <div class="ico"><a href="https://www.linkedin.com/in/venakata-dinesh-kumar-mariyala-7b48b219a/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
-                    <div class="ico"><a href="mailto:dk967427@gmail.com"><i class="fa-solid fa-envelope"></i></a></div>
-                    <div class="ico"><a href="tel:+916301861405"><i class="fa-solid fa-phone"></i></a></div>
-                    <div class="ico"><a href="https://dineshkumar6301.github.io/dinesh-portfolio/" target="_blank"><i class="fa-solid fa-globe"></i></a></div>
-                </div>
-            </div>
-            <div class="box512">
-                <div style="width:160px;height:180px;border-radius:20px;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:52px;font-weight:900;color:#fff;border:2px solid var(--border);">VD</div>
-                <div class="btn_div">
-                    <button class="rbtn"><a href="#">Resume</a></button>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- Scroll up -->
+<a href="#box1" class="arrup">
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+    </svg>
+</a>
 
-    <!-- Footer -->
-    <div class="box6" id="box6">
-        <p>Built From Scratch With <i class="fa-sharp fa-solid fa-heart"></i> by Dinesh Kumar Mariyala</p>
-    </div>
+<script>
+    // Progress bar
+    window.onscroll = function() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        document.getElementById("myBar").style.width = ((winScroll / height) * 100) + "%";
+    };
 
-    <!-- Scroll up -->
-    <div>
-        <a href="#box1" class="arrup">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-            </svg>
-        </a>
-    </div>
+    // Tabs
+    function opentab(tabname, e) {
+        document.querySelectorAll('.tab-contents').forEach(t => t.classList.remove('active-tab'));
+        document.querySelectorAll('.tab-links').forEach(t => t.classList.remove('active-link'));
+        document.getElementById(tabname).classList.add('active-tab');
+        (e ? e.currentTarget : event.currentTarget).classList.add('active-link');
+    }
 
-    <script>
-        // Progress bar
-        window.onscroll = function() {
-            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            var scrolled = (winScroll / height) * 100;
-            document.getElementById("myBar").style.width = scrolled + "%";
-        };
-
-        // Tabs
-        function opentab(tabname) {
-            document.querySelectorAll('.tab-contents').forEach(t => t.classList.remove('active-tab'));
-            document.querySelectorAll('.tab-links').forEach(t => t.classList.remove('active-link'));
-            document.getElementById(tabname).classList.add('active-tab');
-            event.currentTarget.classList.add('active-link');
-        }
-
-        // Reveal on scroll
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (e.isIntersecting) { e.target.classList.add('visible'); }
-            });
-        }, { threshold: 0.12 });
-        reveals.forEach(r => observer.observe(r));
-    </script>
-
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+</script>
 </body>
 </html>
