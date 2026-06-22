@@ -153,7 +153,7 @@
         }
         .about-col-2 { flex: 1; }
         .about-col-2 > p { font-size: 15px; color: #cbd5e1; line-height: 1.8; margin-bottom: 28px; }
-        .tab-title { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); }
+        .tab-title { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
         .tab-links {
             padding: 10px 20px; cursor: pointer; font-size: 14px; font-weight: 600;
             color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: 0.2s;
@@ -215,7 +215,7 @@
             background: rgba(15,23,42,0.75); border: 1px solid var(--border);
             border-radius: 28px; padding: 40px; margin-bottom: 28px;
         }
-        .exp-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; }
+        .exp-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
         .exp-title-main { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 6px; }
         .exp-company { font-size: 15px; color: var(--primary); }
         .exp-duration {
@@ -223,6 +223,12 @@
             background: rgba(255,255,255,0.04); border: 1px solid var(--border);
             font-size: 13px; color: var(--muted); white-space: nowrap;
         }
+        .exp-stack {
+            font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 10px;
+            padding: 12px 16px; background: rgba(255,255,255,0.03); border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        .exp-stack b { color: var(--accent); }
         .exp-section-title { font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; margin: 20px 0 12px; }
         .exp-list { display: flex; flex-direction: column; gap: 12px; }
         .exp-item { display: flex; gap: 12px; font-size: 14px; color: #e2e8f0; line-height: 1.6; }
@@ -233,7 +239,7 @@
         .box31 { margin-bottom: 50px; }
         .box31 h1 { font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -1px; }
         .box32 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; max-width: 1200px; }
-        .flip-card { height: 290px; perspective: 1000px; cursor: pointer; }
+        .flip-card { height: 320px; perspective: 1000px; cursor: pointer; }
         .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.7s; transform-style: preserve-3d; }
         .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
         .flip-card-front, .flip-card-back {
@@ -250,19 +256,19 @@
         .flip-card-back {
             background: #0c1a2e; transform: rotateY(180deg);
             display: flex; flex-direction: column; justify-content: center;
-            padding: 26px; gap: 10px;
+            padding: 26px; gap: 9px; overflow-y: auto;
         }
-        .flip-card-back h1 { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 800; color: var(--text); }
+        .flip-card-back h1 { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; color: var(--text); }
         .flip-card-back .impact {
             display: inline-block; padding: 5px 12px;
             background: rgba(34,197,94,0.12); color: #4ade80;
-            font-size: 12px; font-weight: 700; border-radius: 999px; width: fit-content;
+            font-size: 11px; font-weight: 700; border-radius: 999px; width: fit-content;
         }
-        .flip-card-back p { font-size: 13px; color: #cbd5e1; line-height: 1.5; }
-        .flip-card-back .icons { display: flex; gap: 12px; margin-top: 4px; }
+        .flip-card-back p { font-size: 12.5px; color: #cbd5e1; line-height: 1.5; }
+        .flip-card-back .icons { display: flex; gap: 12px; margin-top: 2px; }
         .flip-card-back .icons a { color: var(--primary); font-size: 18px; transition: 0.2s; text-decoration: none; }
         .flip-card-back .icons a:hover { color: #fff; }
-        .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
         .tech-tags span {
             padding: 4px 10px; border-radius: 999px;
             background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
@@ -281,8 +287,22 @@
             font-family: 'Syne', sans-serif; font-size: 52px; font-weight: 900;
             background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
-        .box712 { font-size: 13px; color: var(--muted); text-align: center; max-width: 110px; line-height: 1.4; }
+        .box712 { font-size: 13px; color: var(--muted); text-align: center; max-width: 120px; line-height: 1.4; }
         .box712 .bold { color: var(--text); font-weight: 700; display: block; margin-bottom: 2px; }
+
+        /* Certifications */
+        .box8 { padding: 80px 40px; max-width: 1200px; margin: auto; }
+        .box8 .section-header { margin-bottom: 40px; }
+        .cert-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .cert-card {
+            display: flex; align-items: center; gap: 16px;
+            background: rgba(15,23,42,0.75); border: 1px solid var(--border);
+            border-radius: 18px; padding: 22px; transition: 0.3s;
+        }
+        .cert-card:hover { border-color: rgba(56,189,248,0.35); transform: translateY(-4px); }
+        .cert-card i { font-size: 26px; color: var(--primary); flex-shrink: 0; }
+        .cert-card .cert-title { font-size: 14.5px; font-weight: 700; margin-bottom: 4px; }
+        .cert-card .cert-sub { font-size: 12.5px; color: var(--muted); }
 
         /* Contact */
         .box5 { padding: 100px 40px; }
@@ -350,6 +370,7 @@
         <li><a href="#box4">Skills</a></li>
         <li><a href="#box-exp">Experience</a></li>
         <li><a href="#box3">Projects</a></li>
+        <li><a href="#box8">Certifications</a></li>
         <li><a href="#box5">Contact</a></li>
         <li><a href="https://drive.google.com/uc?export=download&id=1P1QfI61ggKbDu4ApmOUMGl5zbZg9dCcu" target="_blank" class="rbtn-nav">Resume ↓</a></li>
     </ul>
@@ -361,8 +382,8 @@
         <div class="box111">
             <div class="hero-badge"><span class="dot"></span> Open to opportunities</div>
             <h2 class="wlcm_note">Welcome to my portfolio!</h2>
-            <h2 class="some_about">I am a passionate <span>Python Full Stack Developer</span> &amp; Python Engineer with 2+ years of experience.</h2>
-            <p class="hero-sub">Building scalable REST APIs, ETL pipelines, microservices, and production-grade Django/FastAPI applications. Strong in Python, SQL, AWS, and GenAI workflows — based in Hyderabad, India.</p>
+            <h2 class="some_about">I am a passionate <span>Python Full Stack Developer</span> with 2+ years building production-grade systems.</h2>
+            <p class="hero-sub">Building scalable REST APIs, event-driven pipelines with Apache Kafka, Razorpay payment integrations, and RAG/LLM-powered applications using Django, FastAPI, and PostgreSQL — deployed on AWS &amp; DigitalOcean. Based in Hyderabad, India.</p>
             <div class="btn_div">
                 <button class="rbtn"><a href="mailto:dk967427@gmail.com">Get In Touch</a></button>
                 <button class="rbtn-outline"><a href="https://drive.google.com/uc?export=download&id=1P1QfI61ggKbDu4ApmOUMGl5zbZg9dCcu" target="_blank">Download Resume</a></button>
@@ -386,39 +407,39 @@
                 <div class="about-avatar">VD</div>
             </div>
             <div class="about-col-2">
-                <p>Results-driven Python Full Stack Developer with 2+ years of professional experience designing, developing, and deploying scalable web applications, REST APIs, microservices, and data engineering pipelines. Expert in Python, Django, FastAPI, and DRF with strong JavaScript and frontend integration skills. Proven track record of delivering production-grade systems — 30% database performance improvement and 40% operational efficiency gains. Strong exposure to AI/ML workflows, GenAI, LLM concepts, ETL pipelines, and cloud services (AWS).</p>
+                <p>Python Full Stack Developer with 2+ years of hands-on experience building and shipping production-grade web applications, REST APIs, and data-driven backend systems. Delivered 3 live products on cloud infrastructure — from architecture and database design to deployment, monitoring, and performance tuning. Strong in Django, FastAPI, Flask, PostgreSQL, and JavaScript ES6+. Experienced with Apache Kafka for event streaming, AWS and DigitalOcean for cloud infrastructure, and LLM/RAG pipelines for AI-enabled applications. Delivers clean, tested, maintainable Python code following OOP, SOLID principles, and TDD.</p>
                 <div class="tab-title">
                     <p class="tab-links active-link" onclick="opentab('skills', event)">Technical Skills</p>
-                    <p class="tab-links" onclick="opentab('softskills', event)">Soft Skills</p>
+                    <p class="tab-links" onclick="opentab('softskills', event)">Key Achievements</p>
                     <p class="tab-links" onclick="opentab('education', event)">Education</p>
                 </div>
                 <div class="tab-contents active-tab" id="skills">
                     <ul class="aboutSkill">
                         <li><span>Backend Development</span><br>
-                            <span class="co">Python</span><span class="co">Django</span><span class="co">FastAPI</span><span class="co">DRF</span><span class="co">Flask</span><span class="co">REST APIs</span><span class="co">Microservices</span>
+                            <span class="co">Python 3</span><span class="co">Django</span><span class="co">FastAPI</span><span class="co">DRF</span><span class="co">Flask</span><span class="co">REST APIs</span><span class="co">Microservices</span><span class="co">Async Python</span>
                         </li>
                         <li><span>Databases &amp; Data Engineering</span><br>
-                            <span class="co">PostgreSQL</span><span class="co">MySQL</span><span class="co">MongoDB</span><span class="co">Pandas</span><span class="co">NumPy</span><span class="co">ETL Pipelines</span><span class="co">PySpark</span>
+                            <span class="co">PostgreSQL</span><span class="co">MySQL</span><span class="co">MongoDB</span><span class="co">pgvector</span><span class="co">Pandas</span><span class="co">NumPy</span><span class="co">ETL Pipelines</span>
                         </li>
-                        <li><span>AI / GenAI &amp; Cloud</span><br>
-                            <span class="co">GenAI</span><span class="co">LLM Workflows</span><span class="co">Prompt Engineering</span><span class="co">Scikit-learn</span><span class="co">AWS EC2 , Digital Ocean</span><span class="co">S3</span><span class="co">Docker</span><span class="co">CI/CD</span>
+                        <li><span>Streaming, Payments &amp; Cloud</span><br>
+                            <span class="co">Apache Kafka</span><span class="co">Razorpay</span><span class="co">AWS S3/EC2</span><span class="co">DigitalOcean</span><span class="co">Docker</span><span class="co">Nginx</span><span class="co">CI/CD</span>
                         </li>
-                        <li><span>Frontend &amp; Testing</span><br>
-                            <span class="co">JavaScript ES6+</span><span class="co">HTML5</span><span class="co">CSS3</span><span class="co">React</span><span class="co">Pytest</span><span class="co">TDD</span><span class="co">Unit Testing</span>
+                        <li><span>AI / GenAI &amp; Frontend</span><br>
+                            <span class="co">LLM APIs</span><span class="co">RAG Pipelines</span><span class="co">Prompt Engineering</span><span class="co">n8n Agents</span><span class="co">JavaScript ES6+</span><span class="co">HTML5/CSS3</span>
                         </li>
                     </ul>
                 </div>
                 <div class="tab-contents" id="softskills">
                     <ul class="aboutSkill">
-                        <li><span>Problem-Solving &amp; System Design</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Reduced SQL query time by 30% and improved operational efficiency by 40% through systematic analysis and redesign.</span></li>
-                        <li><span>Collaboration &amp; Communication</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Effective collaborator with product managers, QA engineers, data scientists, and frontend engineers in Agile Scrum sprints.</span></li>
-                        <li><span>Self-Learning &amp; Adaptability</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Continuous learner independently exploring GenAI, LLMs, Apache Kafka, and modern data architectures.</span></li>
+                        <li><span>Performance &amp; Reliability</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Reduced API response time from 4.2s to under 300ms (30% SQL performance improvement) and maintained 99%+ uptime across 3 production applications.</span></li>
+                        <li><span>Payments &amp; Data at Scale</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Zero payment failures in 6+ months on a live Razorpay integration; built Kafka pipelines handling real-time event streams without data loss.</span></li>
+                        <li><span>AI-Enabled Engineering</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Built a production RAG pipeline with pgvector achieving under 2s P95 latency, and an n8n-orchestrated AI agent workflow delivering a 40% efficiency gain.</span></li>
                     </ul>
                 </div>
                 <div class="tab-contents" id="education">
                     <ul class="aboutSkill">
                         <li><span>B.Tech — Electronics &amp; Communication Engineering (ECE)</span>
-                            <span class="co" style="border-radius:8px;padding:8px 12px;display:block;margin-top:8px;width:fit-content;">Krishna Chaithanya Institute of Technology and Sciences, Markapur · Graduated 2023</span>
+                            <span class="co" style="border-radius:8px;padding:8px 12px;display:block;margin-top:8px;width:fit-content;">Krishna Chaithanya Institute of Technology and Sciences, Markapur, Andhra Pradesh · Aug 2019 – May 2023</span>
                         </li>
                         <li><span>Professional Experience</span>
                             <span class="co" style="border-radius:8px;padding:8px 12px;display:block;margin-top:8px;width:fit-content;">Python Full Stack Developer · Friendsmoo Info Media Pvt Ltd, Hyderabad · Oct 2023 – Present (2+ yrs)</span>
@@ -442,14 +463,18 @@
         <div class="tool" style="--i:6;"><div class="tool-icon">🐘</div><div>PostgreSQL</div></div>
         <div class="tool" style="--i:7;"><div class="tool-icon">🐬</div><div>MySQL</div></div>
         <div class="tool" style="--i:8;"><div class="tool-icon">🍃</div><div>MongoDB</div></div>
-        <div class="tool" style="--i:9;"><div class="tool-icon">☁️</div><div>AWS</div></div>
-        <div class="tool" style="--i:10;"><div class="tool-icon">🐳</div><div>Docker</div></div>
-        <div class="tool" style="--i:11;"><div class="tool-icon">📊</div><div>Pandas</div></div>
-        <div class="tool" style="--i:12;"><div class="tool-icon">📨</div><div>Kafka</div></div>
-        <div class="tool" style="--i:13;"><div class="tool-icon">🤖</div><div>Scikit-learn</div></div>
-        <div class="tool" style="--i:14;"><div class="tool-icon">🔧</div><div>Git / CI/CD</div></div>
-        <div class="tool" style="--i:15;"><div class="tool-icon">🌐</div><div>JavaScript</div></div>
-        <div class="tool" style="--i:16;"><div class="tool-icon">🧠</div><div>GenAI / LLM</div></div>
+        <div class="tool" style="--i:9;"><div class="tool-icon">📨</div><div>Apache Kafka</div></div>
+        <div class="tool" style="--i:10;"><div class="tool-icon">💳</div><div>Razorpay</div></div>
+        <div class="tool" style="--i:11;"><div class="tool-icon">☁️</div><div>AWS S3/EC2</div></div>
+        <div class="tool" style="--i:12;"><div class="tool-icon">🌊</div><div>DigitalOcean</div></div>
+        <div class="tool" style="--i:13;"><div class="tool-icon">🐳</div><div>Docker</div></div>
+        <div class="tool" style="--i:14;"><div class="tool-icon">📊</div><div>Pandas</div></div>
+        <div class="tool" style="--i:15;"><div class="tool-icon">🧠</div><div>LLM / RAG</div></div>
+        <div class="tool" style="--i:16;"><div class="tool-icon">🔗</div><div>pgvector</div></div>
+        <div class="tool" style="--i:17;"><div class="tool-icon">🤖</div><div>n8n Agents</div></div>
+        <div class="tool" style="--i:18;"><div class="tool-icon">🌐</div><div>JavaScript</div></div>
+        <div class="tool" style="--i:19;"><div class="tool-icon">🔧</div><div>Git / CI/CD</div></div>
+        <div class="tool" style="--i:20;"><div class="tool-icon">🐧</div><div>Linux / Nginx</div></div>
     </div>
 </div>
 
@@ -463,32 +488,32 @@
         <div>
             <i class="fa-brands fa-python"></i>
             <h2>Python Backend Development</h2>
-            <p>Expert-level Python with OOP, design patterns (Factory, Singleton, Repository), and clean code principles. Builds production-grade REST APIs using Django, FastAPI, and DRF with JWT auth, RBAC, pagination, and versioning.</p>
+            <p>Builds production REST APIs with Django REST Framework, FastAPI, and Flask — JWT auth, RBAC, pagination, OpenAPI docs, input validation, and structured logging across 12+ endpoints.</p>
+        </div>
+        <div>
+            <i class="fa-solid fa-money-check-dollar"></i>
+            <h2>Payments &amp; Webhooks</h2>
+            <p>Integrated Razorpay into a production booking platform — secure payment initiation, webhook signature verification, idempotency handling, and refund flows with zero payment failures in 6+ months.</p>
         </div>
         <div>
             <i class="fa-solid fa-database"></i>
-            <h2>Data Engineering &amp; ETL</h2>
-            <p>Designs real-time ETL pipelines with Pandas, NumPy, and Apache Kafka. Covers ingestion, transformation, deduplication, validation, and structured audit trails across multiple data sources.</p>
+            <h2>Database Design &amp; SQL Optimisation</h2>
+            <p>Designs normalised PostgreSQL schemas, resolves N+1 ORM chains, and uses EXPLAIN ANALYZE + composite indexing — cut API response time from 4.2s to under 300ms (30% improvement).</p>
         </div>
         <div>
-            <i class="fa-solid fa-cloud"></i>
-            <h2>Cloud &amp; DevOps</h2>
-            <p>Deploys on AWS EC2 &amp; S3, containerizes with Docker, manages CI/CD pipelines. Implemented centralized structured logging reducing production debugging time by ~50%.</p>
+            <i class="fa-solid fa-tower-broadcast"></i>
+            <h2>Kafka &amp; Event-Driven ETL</h2>
+            <p>Designs Kafka producer-consumer architectures across multiple topic partitions and builds ETL pipelines with Pandas-based transformation, validation, and deduplication — 40% efficiency gain.</p>
         </div>
         <div>
             <i class="fa-solid fa-brain"></i>
-            <h2>AI / GenAI &amp; ML</h2>
-            <p>Builds LLM evaluation frameworks, prompt engineering pipelines, and ML inference APIs using FastAPI &amp; Scikit-learn. Applied GenAI automation to backend workflows for intelligent tooling and process optimization.</p>
+            <h2>AI / RAG &amp; LLM Agents</h2>
+            <p>Builds RAG pipelines with semantic chunking, embeddings, and pgvector similarity search (P95 &lt;2s). Orchestrates multi-step LLM agent workflows via n8n with structured JSON output.</p>
         </div>
         <div>
-            <i class="fa-solid fa-code"></i>
-            <h2>Full Stack Development</h2>
-            <p>Integrates Django/FastAPI backends with JavaScript frontends. Experienced in React, HTML5/CSS3, and delivering responsive, user-facing features for production web applications end-to-end.</p>
-        </div>
-        <div>
-            <i class="fa-solid fa-vial"></i>
-            <h2>Testing &amp; Agile Delivery</h2>
-            <p>Practices TDD with unit, integration, and automated tests. Active in code reviews, sprint planning, backlog refinement, and retrospectives. Delivers features iteratively with consistent quality.</p>
+            <i class="fa-solid fa-cloud"></i>
+            <h2>Cloud, DevOps &amp; Testing</h2>
+            <p>Deploys on DigitalOcean &amp; AWS with Nginx, SSL, and automated backups (99%+ uptime). Maintains 80%+ pytest coverage and CI/CD pipelines cutting deploy time from 25min to under 4min.</p>
         </div>
     </div>
 </div>
@@ -503,35 +528,53 @@
         <div class="exp-card">
             <div class="exp-head">
                 <div>
-                    <div class="exp-title-main">Python Full Stack Developer &amp; Python Engineer</div>
-                    <div class="exp-company">Friendsmoo Info Media Pvt Ltd · Hyderabad, India</div>
+                    <div class="exp-title-main">Python Full Stack Developer</div>
+                    <div class="exp-company">Friendsmoo Info Media Pvt Ltd · Hyderabad, Telangana</div>
                 </div>
                 <div class="exp-duration">Oct 2023 – Present · 2+ yrs</div>
             </div>
+            <div class="exp-stack"><b>Stack:</b> Python 3, Django, FastAPI, DRF, Flask, PostgreSQL, MySQL, MongoDB, Apache Kafka, Razorpay, AWS S3/EC2, DigitalOcean, Nginx, Linux/Ubuntu, Git, Docker, pytest, CI/CD, JavaScript ES6+, HTML5, CSS3, LLM APIs, RAG, Agile Scrum</div>
 
-            <div class="exp-section-title">PYTHON ENGINEERING &amp; FULL STACK DEVELOPMENT</div>
+            <div class="exp-section-title">REST APIs &amp; FULL STACK DEVELOPMENT</div>
             <div class="exp-list">
-                <div class="exp-item"><span class="arrow">→</span>Designed and deployed production-grade Python full stack web applications — scalable backend systems using Django, FastAPI, and DRF with JavaScript frontend integration across the complete SDLC.</div>
-                <div class="exp-item"><span class="arrow">→</span>Engineered 12+ REST API endpoints applying clean OOP design patterns — CRUD operations, JWT authentication, input validation, pagination, versioning, and error handling following industry best practices.</div>
-                <div class="exp-item"><span class="arrow">→</span>Developed microservice-architecture backend systems — modular, decoupled Python services with clear API contracts enabling independent deployment and scalability.</div>
-                <div class="exp-item"><span class="arrow">→</span>Optimised production database query performance by ~30% through SQL optimization, Django ORM tuning, indexing, and caching strategy implementation.</div>
-                <div class="exp-item"><span class="arrow">→</span>Applied Python OOP &amp; design patterns (Factory, Singleton, Repository) — delivering maintainable, testable, self-documenting codebases consistently reviewed by senior engineers.</div>
+                <div class="exp-item"><span class="arrow">→</span>Architected and shipped 12+ production REST API endpoints using DRF, FastAPI, and Flask — JWT auth, RBAC, paginated views, AWS S3 uploads, Razorpay webhook processing, and async task queuing.</div>
+                <div class="exp-item"><span class="arrow">→</span>Built full-stack features end-to-end — modelled databases, wrote business logic, exposed REST APIs, and connected to a JavaScript ES6+ frontend. Took sole ownership of 2 complete features from spec to live deployment.</div>
+                <div class="exp-item"><span class="arrow">→</span>Integrated Razorpay into a production service-booking platform — secure payment initiation, webhook signature verification, idempotency handling, refunds, and full transaction audit trail. <b>Zero payment failures</b> in 6+ months.</div>
             </div>
 
-            <div class="exp-section-title">DATA ENGINEERING, ETL &amp; AI</div>
+            <div class="exp-section-title">DATABASE DESIGN, SQL OPTIMISATION &amp; DATA MODELLING</div>
             <div class="exp-list">
-                <div class="exp-item"><span class="arrow">→</span>Designed and built ETL pipelines for real-time data ingestion, transformation, and loading — applied Python (Pandas, NumPy) and SQL for large-scale structured data processing across multiple systems.</div>
-                <div class="exp-item"><span class="arrow">→</span>Built scalable data infrastructure improving operational efficiency by ~40% — automated manual data processes and redesigned pipeline architecture for throughput.</div>
-                <div class="exp-item"><span class="arrow">→</span>Applied AI/ML and GenAI concepts to backend workflows — integrated LLM-based automation pipelines, prompt engineering techniques, and intelligent tooling for process optimization.</div>
-                <div class="exp-item"><span class="arrow">→</span>Implemented data quality validation and cleansing workflows — automated error detection, deduplication, and integrity checks ensuring production data reliability.</div>
+                <div class="exp-item"><span class="arrow">→</span>Designed PostgreSQL schemas from scratch for 3 production apps — 3NF normalisation, foreign keys, soft deletes, audit columns. Used Django ORM/SQLAlchemy plus raw SQL with CTEs and window functions.</div>
+                <div class="exp-item"><span class="arrow">→</span>Resolved a critical slow-query bottleneck — used EXPLAIN ANALYZE on a 500K+ row table, added composite indexes, rewrote 3 N+1 ORM chains, reducing response time from 4.2s to under 300ms (<b>30% improvement</b>).</div>
+                <div class="exp-item"><span class="arrow">→</span>Used MongoDB as a schema-flexible document store for activity logs and event payloads, with custom aggregation pipelines for reporting.</div>
             </div>
 
-            <div class="exp-section-title">TESTING, CI/CD &amp; AGILE</div>
+            <div class="exp-section-title">APACHE KAFKA EVENT STREAMING &amp; ETL PIPELINE</div>
             <div class="exp-list">
-                <div class="exp-item"><span class="arrow">→</span>Practised Test-Driven Development (TDD) — wrote unit tests, integration tests, and automated test scripts before implementation; achieved strong code coverage across all production Python modules.</div>
-                <div class="exp-item"><span class="arrow">→</span>Worked in Agile Scrum sprints — sprint planning, backlog refinement, daily standups, and retrospectives; delivered features iteratively with consistent quality and on-schedule releases.</div>
-                <div class="exp-item"><span class="arrow">→</span>Applied CI/CD pipeline practices — managed Git-based version control workflows, automated testing integration, and deployment processes for consistent, reliable production releases.</div>
-                <div class="exp-item"><span class="arrow">→</span>Collaborated across cross-functional teams (product managers, QA, data scientists, frontend engineers) — communicated technical solutions clearly to stakeholders at all levels.</div>
+                <div class="exp-item"><span class="arrow">→</span>Designed a Kafka producer-consumer architecture across 3 topic partitions — Django services emit structured JSON events; Python consumers process and persist to PostgreSQL and AWS S3 with no data loss under burst loads.</div>
+                <div class="exp-item"><span class="arrow">→</span>Built an end-to-end ETL pipeline replacing a fully manual workflow — automated ingestion from 4 upstream sources, Pandas transformations, quality validation, eliminating 3 hours of daily work (<b>40% efficiency gain</b>).</div>
+                <div class="exp-item"><span class="arrow">→</span>Wrote Bash automation for scheduled runs, health monitoring, and recovery logic — <b>zero undetected pipeline failures</b> in production since launch.</div>
+            </div>
+
+            <div class="exp-section-title">CLOUD INFRASTRUCTURE &amp; PRODUCTION DEPLOYMENT</div>
+            <div class="exp-list">
+                <div class="exp-item"><span class="arrow">→</span>Deployed and operated 3 production applications on DigitalOcean Droplets — Nginx with SSL (Let's Encrypt), Gunicorn/Uvicorn, firewall rules, and automated daily backups to AWS S3. <b>99%+ uptime</b> maintained.</div>
+                <div class="exp-item"><span class="arrow">→</span>Managed AWS S3 with bucket policies, least-privilege IAM roles, pre-signed URLs, and lifecycle tiering integrated into Django and FastAPI services.</div>
+                <div class="exp-item"><span class="arrow">→</span>Set up CI/CD pipelines — automated pytest, flake8 linting, and deployments on every merge to main, cutting deploy time from 25 minutes to <b>under 4 minutes</b>.</div>
+            </div>
+
+            <div class="exp-section-title">AI-ENABLED DEVELOPMENT — LLM APIs, RAG &amp; PROMPT ENGINEERING</div>
+            <div class="exp-list">
+                <div class="exp-item"><span class="arrow">→</span>Built a production RAG pipeline from scratch — semantic chunking, OpenAI-compatible embeddings, cosine similarity search via PostgreSQL pgvector, and context-augmented LLM responses at <b>under 2s P95 latency</b>.</div>
+                <div class="exp-item"><span class="arrow">→</span>Engineered structured prompt templates with role definition, few-shot examples, JSON schema enforcement, and retry logic with exponential backoff for rate limits.</div>
+                <div class="exp-item"><span class="arrow">→</span>Automated a multistep business evaluation workflow using an AI agent architecture — chained 4 LLM calls via n8n, replacing a 3-person manual process with a <b>40% efficiency gain</b>.</div>
+            </div>
+
+            <div class="exp-section-title">TESTING, CODE QUALITY &amp; AGILE ENGINEERING</div>
+            <div class="exp-list">
+                <div class="exp-item"><span class="arrow">→</span>Wrote pytest test suites — unit, integration (TestClient/httpx), and pytest-django fixtures — maintaining <b>80%+ test coverage</b> across all production services.</div>
+                <div class="exp-item"><span class="arrow">→</span>Enforced code quality via peer review, catching <b>3 production-critical bugs</b> before they reached main; reviewed for security, N+1 queries, and blocking I/O in async routes.</div>
+                <div class="exp-item"><span class="arrow">→</span>Participated in Agile Scrum for 2+ years — sprint planning, standups, backlog refinement, and retrospectives, consistently delivering committed sprint goals.</div>
             </div>
         </div>
     </div>
@@ -548,32 +591,15 @@
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front" style="background:linear-gradient(135deg,#071a2c,#0f172a);">
-                    <div class="fcard-type">REST API · MICROSERVICES</div>
+                    <div class="fcard-type">REST API · KAFKA · RAZORPAY</div>
                     <div class="fcard-icon">📅</div>
                     <h2>Service Booking Platform</h2>
                 </div>
                 <div class="flip-card-back">
-                    <h1>Full Stack Service Booking Platform</h1>
-                    <div class="impact">~30% performance gain · N+1 eliminated</div>
-                    <p>12+ REST API microservices with JWT auth, RBAC, transaction-safe operations, and JavaScript frontend integration. TDD-tested with full CI/CD deployment pipeline.</p>
-                    <div class="tech-tags"><span>Django</span><span>DRF</span><span>FastAPI</span><span>PostgreSQL</span><span>JavaScript</span><span>JWT</span></div>
-                    <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front" style="background:linear-gradient(135deg,#0e1020,#0f172a);">
-                    <div class="fcard-type">AI / GENAI PIPELINE</div>
-                    <div class="fcard-icon">🧠</div>
-                    <h2>AI-Powered LLM Evaluation Framework</h2>
-                </div>
-                <div class="flip-card-back">
-                    <h1>AI-Powered Evaluation &amp; Automation Pipeline</h1>
-                    <div class="impact">Automated audit trails · Reproducible results</div>
-                    <p>AI-driven automation pipeline using Python, GenAI, and LLM concepts — intelligent agent-based workflows for automated evaluation, metric computation, and process optimization.</p>
-                    <div class="tech-tags"><span>Python</span><span>FastAPI</span><span>GenAI</span><span>LLM</span><span>Pandas</span><span>PostgreSQL</span></div>
+                    <h1>Service Booking Platform — End-to-End Production App</h1>
+                    <div class="impact">4.2s → &lt;300ms · 85% test coverage</div>
+                    <p>Full-stack booking platform: DRF + FastAPI microservices, JavaScript ES6+ frontend, PostgreSQL with 12 normalised tables. 12+ REST endpoints with JWT, Razorpay payments/webhooks, and Kafka event streaming to analytics &amp; S3 audit logs.</p>
+                    <div class="tech-tags"><span>Django</span><span>DRF</span><span>FastAPI</span><span>PostgreSQL</span><span>Kafka</span><span>Razorpay</span><span>DigitalOcean</span></div>
                     <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
                 </div>
             </div>
@@ -582,15 +608,32 @@
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front" style="background:linear-gradient(135deg,#071c12,#0f172a);">
-                    <div class="fcard-type">ETL · DATA ENGINEERING</div>
+                    <div class="fcard-type">KAFKA · ETL · DATA ENGINEERING</div>
                     <div class="fcard-icon">🔄</div>
-                    <h2>Real-Time ETL Data Pipeline</h2>
+                    <h2>Intelligent ETL Pipeline</h2>
                 </div>
                 <div class="flip-card-back">
-                    <h1>Real-Time ETL Data Engineering Pipeline</h1>
-                    <div class="impact">~40% efficiency gain · ~60% manual effort cut</div>
-                    <p>Production ETL pipeline for real-time ingestion, transformation, validation, and deduplication. Python data processing libraries with AWS S3 cloud storage integration.</p>
-                    <div class="tech-tags"><span>Python</span><span>Pandas</span><span>NumPy</span><span>SQL</span><span>PostgreSQL</span><span>AWS S3</span></div>
+                    <h1>Intelligent ETL Pipeline — Automated Real-Time Processing</h1>
+                    <div class="impact">40% efficiency gain · 3 hrs/day eliminated</div>
+                    <p>Kafka producers ingest raw events from 4 upstream sources → Python consumers apply Pandas transformations, type coercion, dedup, and quality validation → clean data loaded to PostgreSQL, archived to S3. Dockerised with cron orchestration.</p>
+                    <div class="tech-tags"><span>Kafka</span><span>Pandas</span><span>NumPy</span><span>PostgreSQL</span><span>MongoDB</span><span>Docker</span><span>AWS S3</span></div>
+                    <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front" style="background:linear-gradient(135deg,#0e1020,#0f172a);">
+                    <div class="fcard-type">RAG · LLM AGENT · pgvector</div>
+                    <div class="fcard-icon">🧠</div>
+                    <h2>AI Automated Evaluation Platform</h2>
+                </div>
+                <div class="flip-card-back">
+                    <h1>AI-Powered Automated Evaluation Platform</h1>
+                    <div class="impact">40% efficiency gain · P95 &lt;2s latency</div>
+                    <p>Replaced a 3-person manual review process — RAG pipeline with 512-token semantic chunking, pgvector similarity search, and a 4-step n8n agent workflow generating structured, auditable LLM evaluation outputs with retry logic.</p>
+                    <div class="tech-tags"><span>FastAPI</span><span>LLM APIs</span><span>RAG</span><span>pgvector</span><span>n8n</span><span>PostgreSQL</span></div>
                     <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
                 </div>
             </div>
@@ -601,30 +644,13 @@
                 <div class="flip-card-front" style="background:linear-gradient(135deg,#1a0a2a,#0f172a);">
                     <div class="fcard-type">DATA MODELLING · ANALYTICS</div>
                     <div class="fcard-icon">🏥</div>
-                    <h2>Hospital Analytics System</h2>
+                    <h2>Hospital Analytics &amp; KPI Dashboard</h2>
                 </div>
                 <div class="flip-card-back">
-                    <h1>Hospital Analytics System</h1>
-                    <div class="impact">~40% faster reporting</div>
-                    <p>Normalized 3NF relational schema for patients, doctors, appointments &amp; billing. Optimized SQL analytics and data dashboards providing actionable business insights.</p>
-                    <div class="tech-tags"><span>Python</span><span>SQL</span><span>PostgreSQL</span><span>Django</span><span>Pandas</span><span>Matplotlib</span></div>
-                    <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front" style="background:linear-gradient(135deg,#0a1a30,#0f172a);">
-                    <div class="fcard-type">FULL STACK · WEB APP</div>
-                    <div class="fcard-icon">🏠</div>
-                    <h2>Real Estate Web Platform</h2>
-                </div>
-                <div class="flip-card-back">
-                    <h1>Real Estate Web Platform</h1>
-                    <div class="impact">Indexed search · ORM optimized</div>
-                    <p>Full-stack Django platform for property listings, advanced search &amp; filtering, enquiry management, and server-side pagination with optimized ORM queries.</p>
-                    <div class="tech-tags"><span>Django</span><span>PostgreSQL</span><span>JavaScript</span><span>REST API</span><span>HTML/CSS</span></div>
+                    <h1>Hospital Analytics &amp; KPI Dashboard System</h1>
+                    <div class="impact">8.4s → &lt;500ms query time</div>
+                    <p>3NF schema (8 tables), SQL analytics layer with CTEs, window functions, and rolling averages. 6 core analytics modules — admissions, bed occupancy, length-of-stay, staffing ratios — each a SQL view + API endpoint + Matplotlib chart.</p>
+                    <div class="tech-tags"><span>Django</span><span>PostgreSQL</span><span>SQL</span><span>Pandas</span><span>Matplotlib</span><span>DigitalOcean</span></div>
                     <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
                 </div>
             </div>
@@ -636,10 +662,36 @@
 <!-- Stats -->
 <div class="box7 reveal">
     <div class="box71"><div class="stat-num">2+</div><div class="box712"><span class="bold">Years</span>professional experience</div></div>
+    <div class="box71"><div class="stat-num">3</div><div class="box712"><span class="bold">Live products</span>deployed to production</div></div>
     <div class="box71"><div class="stat-num">12+</div><div class="box712"><span class="bold">REST APIs</span>shipped to production</div></div>
-    <div class="box71"><div class="stat-num">30%</div><div class="box712"><span class="bold">DB performance</span>improvement</div></div>
+    <div class="box71"><div class="stat-num">30%</div><div class="box712"><span class="bold">SQL performance</span>improvement</div></div>
     <div class="box71"><div class="stat-num">40%</div><div class="box712"><span class="bold">Operational</span>efficiency gain</div></div>
-    <div class="box71"><div class="stat-num">5+</div><div class="box712"><span class="bold">Key projects</span>delivered</div></div>
+    <div class="box71"><div class="stat-num">99%+</div><div class="box712"><span class="bold">Uptime</span>across all apps</div></div>
+    <div class="box71"><div class="stat-num">80%+</div><div class="box712"><span class="bold">Test coverage</span>on production services</div></div>
+</div>
+
+<!-- Certifications -->
+<div class="box8 reveal" id="box8">
+    <div class="section-header">
+        <h1>Certifications</h1>
+        <p>Continued learning &amp; credentials</p>
+    </div>
+    <div class="cert-list">
+        <div class="cert-card">
+            <i class="fa-brands fa-python"></i>
+            <div>
+                <div class="cert-title">Complete Python Bootcamp: From Zero to Hero in Python</div>
+                <div class="cert-sub">Naresh I Technologies</div>
+            </div>
+        </div>
+        <div class="cert-card">
+            <i class="fa-brands fa-python"></i>
+            <div>
+                <div class="cert-title">Data Analysis with Python</div>
+                <div class="cert-sub">IBM</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Contact -->
@@ -658,7 +710,7 @@
             <div class="box5111"><i class="fa-solid fa-globe"></i> dineshkumar6301.github.io/dinesh-portfolio</div>
             <div class="box5112">
                 <div class="ico"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                <div class="ico"><a href="https://www.linkedin.com/in/venakata-dinesh-kumar-mariyala-7b48b219a/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
+                <div class="ico"><a href="https://linkedin.com/in/venakata-dinesh-kumar-mariyala-7b48b219a" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
                 <div class="ico"><a href="mailto:dk967427@gmail.com"><i class="fa-solid fa-envelope"></i></a></div>
                 <div class="ico"><a href="tel:+916301861405"><i class="fa-solid fa-phone"></i></a></div>
                 <div class="ico"><a href="https://dineshkumar6301.github.io/dinesh-portfolio/" target="_blank"><i class="fa-solid fa-globe"></i></a></div>
