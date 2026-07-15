@@ -1,763 +1,618 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinesh Kumar Mariyala | Python Full Stack Developer</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --bg: #020617;
-            --card: #0f172a;
-            --border: #1e293b;
-            --text: #f8fafc;
-            --muted: #94a3b8;
-            --primary: #38bdf8;
-            --accent: #818cf8;
-            --success: #22c55e;
-            --gradient: linear-gradient(135deg, #0ea5e9, #6366f1);
-        }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinesh Kumar Mariyala — Python Backend / AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+<style>
+:root{
+  --bg:#0a0d0d;
+  --panel:#101515;
+  --panel-2:#141b1b;
+  --line:#22302f;
+  --line-soft:#1a2423;
+  --text:#eaf1ef;
+  --muted:#7f938f;
+  --dim:#54635f;
+  --signal:#4fe3c4;
+  --signal-dim:#1f4d43;
+  --warn:#ffb454;
+  --danger:#ff6b6b;
+  --mono:'IBM Plex Mono',monospace;
+  --sans:'IBM Plex Sans',sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.5;overflow-x:hidden;}
+::selection{background:var(--signal);color:#04120e;}
+a{color:inherit;}
 
-        /* Progress */
-        .header { position: fixed; top: 0; left: 0; width: 100%; z-index: 999; }
-        .progress-container { width: 100%; height: 4px; background: transparent; }
-        .progress-bar { height: 4px; background: var(--gradient); width: 0%; transition: width 0.1s; }
+/* background grid texture */
+.grid-bg{
+  position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, black 40%, transparent 100%);
+}
 
-        /* Nav */
-        .top-nav {
-            position: fixed; top: 4px; left: 0; right: 0; z-index: 998;
-            display: flex; justify-content: flex-end; align-items: center;
-            padding: 14px 40px;
-            background: rgba(2,6,23,0.88); backdrop-filter: blur(14px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .menu { display: flex; gap: 4px; list-style: none; }
-        .menu li a {
-            text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500;
-            padding: 8px 14px; border-radius: 999px; transition: 0.2s;
-        }
-        .menu li a:hover { color: var(--primary); background: rgba(56,189,248,0.08); }
-        .menu li a.rbtn-nav {
-            background: var(--gradient); color: #fff; font-weight: 700;
-            padding: 8px 18px;
-        }
-        #menu-toggle { display: none; }
-        .menu-button-container { display: none; }
-        @media (max-width: 768px) {
-            .menu-button-container {
-                display: flex; cursor: pointer; flex-direction: column;
-                gap: 5px; padding: 6px;
-            }
-            .menu-button, .menu-button::before, .menu-button::after {
-                display: block; width: 24px; height: 2px;
-                background: var(--text); transition: 0.3s;
-            }
-            .menu-button::before, .menu-button::after { content: ''; }
-            .menu {
-                position: fixed; top: 60px; left: 0; right: 0;
-                background: rgba(2,6,23,0.97); flex-direction: column;
-                padding: 20px; gap: 4px; display: none;
-            }
-            #menu-toggle:checked ~ .menu { display: flex; }
-        }
+/* progress */
+.progress-wrap{position:fixed;top:0;left:0;width:100%;height:2px;z-index:999;background:rgba(255,255,255,0.04);}
+.progress-bar{height:100%;width:0%;background:var(--signal);box-shadow:0 0 12px var(--signal);transition:width .1s;}
 
-        /* Hero */
-        .box1 {
-            min-height: 100vh; display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            padding: 120px 40px 80px; position: relative; overflow: hidden;
-        }
-        .box1::before {
-            content: ''; position: absolute; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%);
-            top: -200px; right: -200px; pointer-events: none;
-        }
-        .box1::after {
-            content: ''; position: absolute; width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(99,102,241,0.1), transparent 70%);
-            bottom: -100px; left: -100px; pointer-events: none;
-        }
-        .box10 { display: flex; gap: 2px; margin-bottom: 30px; flex-wrap: wrap; justify-content: center; }
-        .box10 span { animation: dropIn 0.6s ease both; animation-delay: calc(var(--i) * 0.07s); }
-        .box10 h1 {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(48px, 8vw, 88px);
-            font-weight: 800; color: var(--text); line-height: 1;
-        }
-        .box10 .accent h1 { color: var(--primary); }
-        @keyframes dropIn { from { opacity:0; transform:translateY(-40px); } to { opacity:1; transform:translateY(0); } }
+/* nav */
+.nav{
+  position:fixed; top:2px; left:0; right:0; z-index:998;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 40px; background:rgba(10,13,13,0.82); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-soft);
+  font-family:var(--mono);
+}
+.nav-id{display:flex; align-items:center; gap:10px; font-size:13px; color:var(--muted); letter-spacing:.5px;}
+.nav-id .led{width:7px;height:7px;border-radius:50%;background:var(--signal);box-shadow:0 0 8px var(--signal);animation:blink 2.4s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.35;}}
+.nav-links{display:flex; gap:2px; list-style:none;}
+.nav-links a{
+  text-decoration:none; color:var(--muted); font-size:12.5px; padding:9px 14px;
+  border-radius:3px; transition:.2s; letter-spacing:.3px;
+}
+.nav-links a:hover{color:var(--signal); background:rgba(79,227,196,0.06);}
+.nav-links a.cta{color:var(--bg); background:var(--signal); font-weight:600;}
+.nav-links a.cta:hover{background:#6fe9cf; color:var(--bg);}
+#menu-toggle{display:none;}
+.menu-btn{display:none;}
+@media(max-width:860px){
+  .menu-btn{display:flex; flex-direction:column; gap:5px; cursor:pointer; z-index:1000;}
+  .menu-btn span{width:22px;height:2px;background:var(--text);}
+  .nav-links{
+    position:fixed; top:56px; left:0; right:0; flex-direction:column;
+    background:#0c1010; padding:10px; display:none; border-bottom:1px solid var(--line-soft);
+  }
+  #menu-toggle:checked ~ .nav-links{display:flex;}
+}
 
-        .box11 { display: flex; align-items: center; gap: 60px; max-width: 1100px; width: 100%; position: relative; z-index: 2; }
-        .box111 { flex: 1; }
-        .wlcm_note { font-family: 'Syne', sans-serif; font-size: 20px; color: var(--primary); margin-bottom: 14px; font-weight: 600; }
-        .some_about { font-size: clamp(17px, 2.3vw, 24px); font-weight: 300; line-height: 1.6; color: #dbeafe; margin-bottom: 28px; }
-        .some_about span { color: var(--primary); font-weight: 600; }
-        .hero-sub { font-size: 15px; color: var(--muted); margin-bottom: 30px; line-height: 1.7; max-width: 600px; }
-        .btn_div { display: flex; gap: 14px; flex-wrap: wrap; }
-        .rbtn {
-            padding: 13px 26px; border: none; border-radius: 999px;
-            background: var(--gradient); cursor: pointer;
-            font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700;
-            transition: 0.3s; box-shadow: 0 8px 20px rgba(14,165,233,0.3);
-        }
-        .rbtn:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(14,165,233,0.45); }
-        .rbtn a { color: #fff; text-decoration: none; }
-        .rbtn-outline {
-            padding: 13px 26px; border: 1px solid var(--border); border-radius: 999px;
-            background: transparent; cursor: pointer;
-            font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; color: var(--text);
-            transition: 0.3s;
-        }
-        .rbtn-outline:hover { border-color: var(--primary); color: var(--primary); }
-        .rbtn-outline a { color: inherit; text-decoration: none; }
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 8px 16px; border-radius: 999px; margin-bottom: 20px;
-            background: rgba(34,197,94,0.12); color: #4ade80;
-            font-size: 13px; font-weight: 700; border: 1px solid rgba(74,222,128,0.2);
-        }
-        .dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%,100%{ opacity:1; } 50%{ opacity:0.4; } }
-        .box112 { flex: 0 0 260px; }
-        .avatar-hero {
-            width: 220px; height: 220px; border-radius: 30px;
-            background: var(--gradient); display: flex; align-items: center;
-            justify-content: center; font-family: 'Syne', sans-serif;
-            font-size: 72px; font-weight: 900; color: #fff;
-            box-shadow: 0 20px 50px rgba(14,165,233,0.3);
-            border: 2px solid rgba(56,189,248,0.3);
-        }
-        @media (max-width: 768px) { .box11 { flex-direction: column; } .box112 { display: none; } }
+section{position:relative; z-index:1;}
 
-        /* About */
-        .box0 { padding: 100px 40px; max-width: 1200px; margin: auto; }
-        .section-header { margin-bottom: 50px; }
-        .section-header h1 {
-            font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800;
-            letter-spacing: -1px;
-        }
-        .section-header p { color: var(--muted); margin-top: 8px; font-size: 15px; }
-        #about .row { display: flex; gap: 60px; align-items: flex-start; }
-        .about-col-1 { flex: 0 0 240px; }
-        .about-avatar {
-            width: 220px; height: 250px; border-radius: 24px;
-            background: var(--gradient); display: flex; align-items: center;
-            justify-content: center; font-family: 'Syne', sans-serif;
-            font-size: 64px; font-weight: 900; color: #fff;
-            border: 2px solid var(--border);
-        }
-        .about-col-2 { flex: 1; }
-        .about-col-2 > p { font-size: 15px; color: #cbd5e1; line-height: 1.8; margin-bottom: 28px; }
-        .tab-title { display: flex; gap: 0; margin-bottom: 24px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
-        .tab-links {
-            padding: 10px 20px; cursor: pointer; font-size: 14px; font-weight: 600;
-            color: var(--muted); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: 0.2s;
-        }
-        .tab-links.active-link { color: var(--primary); border-bottom-color: var(--primary); }
-        .tab-contents { display: none; }
-        .tab-contents.active-tab { display: block; }
-        .aboutSkill { list-style: none; display: flex; flex-direction: column; gap: 20px; }
-        .aboutSkill li > span:first-child { font-weight: 700; font-size: 15px; }
-        .co {
-            display: inline-block; margin-top: 6px; padding: 5px 11px;
-            background: rgba(56,189,248,0.07); border: 1px solid rgba(56,189,248,0.18);
-            border-radius: 999px; font-size: 12px; color: var(--primary); margin-right: 5px;
-        }
-        @media (max-width: 768px) { #about .row { flex-direction: column; } .about-col-1 { max-width: 180px; } }
+/* section framing — service code labels */
+.svc-label{
+  font-family:var(--mono); font-size:12px; color:var(--signal); letter-spacing:2px;
+  display:flex; align-items:center; gap:10px; margin-bottom:14px; text-transform:uppercase;
+}
+.svc-label::before{content:'';width:22px;height:1px;background:var(--signal);}
+.sec-title{font-family:var(--sans); font-weight:700; font-size:clamp(28px,4vw,42px); letter-spacing:-0.5px;}
+.sec-sub{color:var(--muted); font-size:14.5px; margin-top:10px; max-width:520px; line-height:1.7;}
+.sec-head{margin-bottom:56px;}
 
-        /* Tech Stack */
-        .box2 {
-            padding: 80px 40px;
-            background: rgba(15,23,42,0.5);
-            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-        }
-        .box21 { text-align: center; margin-bottom: 50px; }
-        .box21 h1 { font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -1px; }
-        .box22 { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; max-width: 1100px; margin: auto; }
-        .tool {
-            display: flex; flex-direction: column; align-items: center; gap: 10px;
-            padding: 20px 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border);
-            border-radius: 20px; width: 100px; font-size: 12px; font-weight: 500; color: var(--muted);
-            transition: 0.3s; animation: floatIn 0.5s ease both;
-            animation-delay: calc(var(--i) * 0.07s); text-align: center;
-        }
-        .tool:hover { border-color: rgba(56,189,248,0.4); color: var(--text); transform: translateY(-5px); }
-        .tool-icon { font-size: 36px; line-height: 1; }
-        @keyframes floatIn { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+/* HERO */
+.hero{
+  min-height:100vh; display:flex; align-items:center; padding:140px 40px 80px;
+  max-width:1240px; margin:0 auto; gap:60px;
+}
+.hero-left{flex:1.3;}
+.hero-eyebrow{
+  font-family:var(--mono); font-size:12.5px; color:var(--warn); letter-spacing:2px;
+  display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border:1px solid rgba(255,180,84,0.25);
+  border-radius:3px; margin-bottom:26px; background:rgba(255,180,84,0.05);
+}
+.hero-title{
+  font-family:var(--sans); font-weight:700; font-size:clamp(38px,5.6vw,64px);
+  line-height:1.06; letter-spacing:-1.5px; margin-bottom:22px;
+}
+.hero-title .accent{color:var(--signal);}
+.hero-desc{font-size:16.5px; color:#c3d0cd; line-height:1.8; max-width:560px; margin-bottom:14px;}
+.hero-desc2{font-size:14px; color:var(--muted); line-height:1.8; max-width:560px; margin-bottom:34px;}
+.hero-btns{display:flex; gap:14px; flex-wrap:wrap;}
+.btn-primary{
+  font-family:var(--mono); font-size:13.5px; font-weight:600; padding:14px 26px;
+  background:var(--signal); color:#04120e; border:none; border-radius:3px; cursor:pointer;
+  text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:.2s;
+}
+.btn-primary:hover{background:#6fe9cf; transform:translateY(-2px);}
+.btn-ghost{
+  font-family:var(--mono); font-size:13.5px; font-weight:500; padding:14px 26px;
+  background:transparent; color:var(--text); border:1px solid var(--line); border-radius:3px;
+  cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px; transition:.2s;
+}
+.btn-ghost:hover{border-color:var(--signal); color:var(--signal);}
 
-        /* Skills */
-        .box4 { padding: 100px 40px; }
-        .box41 { margin-bottom: 50px; }
-        .box41 h1 { font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -1px; }
-        .skills-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; max-width: 1200px; }
-        .skills-list > div {
-            background: rgba(15,23,42,0.75); border: 1px solid var(--border);
-            border-radius: 24px; padding: 30px; transition: 0.3s;
-        }
-        .skills-list > div:hover { transform: translateY(-6px); border-color: rgba(56,189,248,0.35); }
-        .skills-list i { font-size: 32px; color: var(--primary); margin-bottom: 14px; display: block; }
-        .skills-list h2 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-        .skills-list p { font-size: 14px; color: #94a3b8; line-height: 1.7; }
+/* status console — the signature element */
+.console{
+  flex:1; background:var(--panel); border:1px solid var(--line); border-radius:10px;
+  overflow:hidden; min-width:320px; box-shadow:0 30px 80px rgba(0,0,0,0.5);
+}
+.console-head{
+  display:flex; align-items:center; justify-content:space-between; padding:14px 18px;
+  border-bottom:1px solid var(--line-soft); background:var(--panel-2);
+}
+.console-head .dots{display:flex; gap:6px;}
+.console-head .dots span{width:9px;height:9px;border-radius:50%;background:#2a3535;}
+.console-head .title{font-family:var(--mono); font-size:11.5px; color:var(--muted); letter-spacing:1px;}
+.console-body{padding:20px 18px;}
+.svc-row{
+  display:flex; align-items:center; justify-content:space-between; padding:11px 0;
+  border-bottom:1px solid var(--line-soft); font-family:var(--mono); font-size:12.5px;
+}
+.svc-row:last-child{border-bottom:none;}
+.svc-name{display:flex; align-items:center; gap:10px; color:#dbe6e3;}
+.svc-name .led{width:6px;height:6px;border-radius:50%;background:var(--signal);box-shadow:0 0 6px var(--signal);animation:blink 2.6s infinite;}
+.svc-name .led.warn{background:var(--warn); box-shadow:0 0 6px var(--warn);}
+.svc-meta{display:flex; gap:18px; color:var(--muted); font-size:11.5px;}
+.svc-meta b{color:var(--signal); font-weight:600;}
+.console-foot{
+  padding:14px 18px; border-top:1px solid var(--line-soft); background:var(--panel-2);
+  font-family:var(--mono); font-size:11px; color:var(--dim); display:flex; justify-content:space-between;
+}
+@media(max-width:900px){.hero{flex-direction:column; padding-top:120px;} .hero-left{flex:1;}}
 
-        /* Experience */
-        .box-exp {
-            padding: 100px 40px;
-            background: rgba(15,23,42,0.4);
-            border-top: 1px solid var(--border);
-        }
-        .box-exp-inner { max-width: 1000px; }
-        .exp-card {
-            background: rgba(15,23,42,0.75); border: 1px solid var(--border);
-            border-radius: 28px; padding: 40px; margin-bottom: 28px;
-        }
-        .exp-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
-        .exp-title-main { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 6px; }
-        .exp-company { font-size: 15px; color: var(--primary); }
-        .exp-duration {
-            padding: 10px 16px; border-radius: 12px; height: fit-content;
-            background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-            font-size: 13px; color: var(--muted); white-space: nowrap;
-        }
-        .exp-stack {
-            font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 10px;
-            padding: 12px 16px; background: rgba(255,255,255,0.03); border-radius: 12px;
-            border: 1px solid var(--border);
-        }
-        .exp-stack b { color: var(--accent); }
-        .exp-section-title { font-size: 14px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; margin: 20px 0 12px; }
-        .exp-list { display: flex; flex-direction: column; gap: 12px; }
-        .exp-item { display: flex; gap: 12px; font-size: 14px; color: #e2e8f0; line-height: 1.6; }
-        .arrow { color: var(--primary); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+/* ABOUT */
+.about{padding:110px 40px; max-width:1240px; margin:0 auto;}
+.about-grid{display:grid; grid-template-columns:280px 1fr; gap:70px;}
+.id-card{
+  background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:26px;
+  height:fit-content;
+}
+.id-photo{
+  width:100%; aspect-ratio:1/1.1; border-radius:6px; background:linear-gradient(160deg,#132523,#0d1414);
+  border:1px solid var(--line); display:flex; align-items:center; justify-content:center;
+  font-family:var(--mono); font-size:56px; font-weight:700; color:var(--signal); margin-bottom:18px;
+}
+.id-card .id-name{font-weight:700; font-size:17px; margin-bottom:4px;}
+.id-card .id-role{font-family:var(--mono); font-size:11.5px; color:var(--muted); margin-bottom:18px;}
+.id-field{font-family:var(--mono); font-size:11.5px; color:var(--dim); display:flex; justify-content:space-between; padding:7px 0; border-top:1px solid var(--line-soft);}
+.id-field b{color:var(--text); font-weight:500;}
+.about-body p{font-size:15px; color:#c3d0cd; line-height:1.85; margin-bottom:28px;}
+.tabs{display:flex; gap:0; border-bottom:1px solid var(--line); margin-bottom:26px; flex-wrap:wrap;}
+.tab-btn{
+  font-family:var(--mono); font-size:12.5px; padding:11px 18px; cursor:pointer; color:var(--muted);
+  border-bottom:2px solid transparent; margin-bottom:-1px; transition:.2s; background:none; border-top:none; border-left:none; border-right:none;
+}
+.tab-btn.active{color:var(--signal); border-bottom-color:var(--signal);}
+.tab-pane{display:none;}
+.tab-pane.active{display:block;}
+.chip-group{display:flex; flex-direction:column; gap:18px;}
+.chip-group .grp-title{font-weight:600; font-size:14px; margin-bottom:8px;}
+.chips{display:flex; flex-wrap:wrap; gap:7px;}
+.chip{
+  font-family:var(--mono); font-size:11.5px; padding:6px 11px; border-radius:3px;
+  background:rgba(79,227,196,0.06); border:1px solid rgba(79,227,196,0.18); color:var(--signal);
+}
+.achv{padding:16px 18px; background:var(--panel); border:1px solid var(--line); border-radius:8px; margin-bottom:12px;}
+.achv b{display:block; font-size:13.5px; margin-bottom:6px; color:var(--text);}
+.achv span{font-size:13px; color:var(--muted); line-height:1.6;}
+.edu-item{padding:16px 18px; background:var(--panel); border:1px solid var(--line); border-radius:8px; margin-bottom:12px;}
+.edu-item b{display:block; font-size:14px; margin-bottom:6px;}
+.edu-item span{font-family:var(--mono); font-size:12px; color:var(--muted);}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr;} .id-card{max-width:260px;}}
 
-        /* Projects */
-        .box3 { padding: 100px 40px; }
-        .box31 { margin-bottom: 50px; }
-        .box31 h1 { font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -1px; }
-        .box32 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; max-width: 1200px; }
-        .flip-card { height: 320px; perspective: 1000px; cursor: pointer; }
-        .flip-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.7s; transform-style: preserve-3d; }
-        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
-        .flip-card-front, .flip-card-back {
-            position: absolute; inset: 0; backface-visibility: hidden;
-            border-radius: 24px; overflow: hidden; border: 1px solid var(--border);
-        }
-        .flip-card-front {
-            display: flex; align-items: center; justify-content: center;
-            flex-direction: column; gap: 14px; font-size: 13px; color: var(--muted); padding: 20px; text-align: center;
-        }
-        .flip-card-front .fcard-icon { font-size: 52px; }
-        .flip-card-front .fcard-type { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--primary); }
-        .flip-card-front h2 { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: var(--text); }
-        .flip-card-back {
-            background: #0c1a2e; transform: rotateY(180deg);
-            display: flex; flex-direction: column; justify-content: center;
-            padding: 26px; gap: 9px; overflow-y: auto;
-        }
-        .flip-card-back h1 { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 800; color: var(--text); }
-        .flip-card-back .impact {
-            display: inline-block; padding: 5px 12px;
-            background: rgba(34,197,94,0.12); color: #4ade80;
-            font-size: 11px; font-weight: 700; border-radius: 999px; width: fit-content;
-        }
-        .flip-card-back p { font-size: 12.5px; color: #cbd5e1; line-height: 1.5; }
-        .flip-card-back .icons { display: flex; gap: 12px; margin-top: 2px; }
-        .flip-card-back .icons a { color: var(--primary); font-size: 18px; transition: 0.2s; text-decoration: none; }
-        .flip-card-back .icons a:hover { color: #fff; }
-        .tech-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
-        .tech-tags span {
-            padding: 4px 10px; border-radius: 999px;
-            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-            font-size: 11px; color: var(--muted);
-        }
+/* STACK */
+.stack{padding:90px 40px; background:var(--panel-2); border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);}
+.stack-inner{max-width:1240px; margin:0 auto;}
+.stack-grid{display:flex; flex-wrap:wrap; gap:12px; margin-top:40px;}
+.stack-item{
+  display:flex; align-items:center; gap:9px; padding:11px 16px; background:var(--panel);
+  border:1px solid var(--line); border-radius:20px; font-family:var(--mono); font-size:12.5px;
+  color:#c3d0cd; transition:.2s;
+}
+.stack-item:hover{border-color:var(--signal); color:var(--signal);}
+.stack-item .dot2{width:5px;height:5px;border-radius:50%;background:var(--signal);}
 
-        /* Stats */
-        .box7 {
-            display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;
-            padding: 80px 40px;
-            background: rgba(15,23,42,0.5);
-            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-        }
-        .box71 { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-        .stat-num {
-            font-family: 'Syne', sans-serif; font-size: 52px; font-weight: 900;
-            background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .box712 { font-size: 13px; color: var(--muted); text-align: center; max-width: 120px; line-height: 1.4; }
-        .box712 .bold { color: var(--text); font-weight: 700; display: block; margin-bottom: 2px; }
+/* CAPABILITIES */
+.cap{padding:110px 40px; max-width:1240px; margin:0 auto;}
+.cap-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); border-radius:10px; overflow:hidden;}
+.cap-item{background:var(--panel); padding:32px 28px; transition:.2s;}
+.cap-item:hover{background:var(--panel-2);}
+.cap-item .cap-num{font-family:var(--mono); font-size:11.5px; color:var(--dim); margin-bottom:16px;}
+.cap-item i{font-size:24px; color:var(--signal); margin-bottom:14px; display:block;}
+.cap-item h3{font-size:16.5px; font-weight:700; margin-bottom:10px;}
+.cap-item p{font-size:13.5px; color:var(--muted); line-height:1.75;}
 
-        /* Certifications */
-        .box8 { padding: 80px 40px; max-width: 1200px; margin: auto; }
-        .box8 .section-header { margin-bottom: 40px; }
-        .cert-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        .cert-card {
-            display: flex; align-items: center; gap: 16px;
-            background: rgba(15,23,42,0.75); border: 1px solid var(--border);
-            border-radius: 18px; padding: 22px; transition: 0.3s;
-        }
-        .cert-card:hover { border-color: rgba(56,189,248,0.35); transform: translateY(-4px); }
-        .cert-card i { font-size: 26px; color: var(--primary); flex-shrink: 0; }
-        .cert-card .cert-title { font-size: 14.5px; font-weight: 700; margin-bottom: 4px; }
-        .cert-card .cert-sub { font-size: 12.5px; color: var(--muted); }
+/* EXPERIENCE */
+.exp{padding:110px 40px; background:var(--panel-2); border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);}
+.exp-inner{max-width:980px; margin:0 auto;}
+.exp-card{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:38px;}
+.exp-top{display:flex; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:22px; padding-bottom:22px; border-bottom:1px solid var(--line-soft);}
+.exp-role{font-weight:700; font-size:20px; margin-bottom:5px;}
+.exp-co{color:var(--signal); font-family:var(--mono); font-size:13px;}
+.exp-dur{font-family:var(--mono); font-size:12px; color:var(--muted); background:var(--panel-2); border:1px solid var(--line); padding:9px 14px; border-radius:5px; height:fit-content;}
+.exp-stack-line{font-family:var(--mono); font-size:11.5px; color:var(--dim); line-height:1.9; margin-bottom:30px;}
+.exp-stack-line b{color:var(--muted);}
+.exp-block{margin-bottom:26px;}
+.exp-block:last-child{margin-bottom:0;}
+.exp-block-title{font-family:var(--mono); font-size:11.5px; color:var(--warn); letter-spacing:1.5px; margin-bottom:13px; text-transform:uppercase;}
+.exp-row{display:flex; gap:12px; font-size:14px; color:#d3ded9; line-height:1.7; margin-bottom:10px;}
+.exp-row:last-child{margin-bottom:0;}
+.exp-row .mk{color:var(--signal); flex-shrink:0; font-family:var(--mono); margin-top:2px;}
+.exp-row b{color:var(--text);}
 
-        /* Contact */
-        .box5 { padding: 100px 40px; }
-        .box51 { margin-bottom: 50px; }
-        .box51 h1 { font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -1px; }
-        .box52 { display: flex; gap: 60px; max-width: 1100px; align-items: flex-start; flex-wrap: wrap; }
-        .box511 { flex: 1; min-width: 280px; }
-        .box5h1 { font-family: 'Syne', sans-serif; font-size: 30px; font-weight: 800; margin-bottom: 10px; }
-        .box5h3 { font-size: 12px; font-weight: 600; letter-spacing: 1px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
-        .box5111 { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: #cbd5e1; font-size: 15px; }
-        .box5111 i { color: var(--primary); width: 20px; }
-        .box5112 { display: flex; gap: 12px; margin-top: 28px; flex-wrap: wrap; }
-        .ico a {
-            width: 42px; height: 42px; display: flex; align-items: center; justify-content: center;
-            border-radius: 50%; background: rgba(255,255,255,0.05);
-            border: 1px solid var(--border); color: var(--muted); font-size: 17px;
-            transition: 0.2s; text-decoration: none;
-        }
-        .ico a:hover { background: rgba(56,189,248,0.12); color: var(--primary); border-color: rgba(56,189,248,0.4); }
-        .box512 { flex: 0 0 200px; display: flex; flex-direction: column; align-items: center; gap: 20px; }
-        .avatar-contact {
-            width: 160px; height: 180px; border-radius: 20px;
-            background: var(--gradient); display: flex; align-items: center;
-            justify-content: center; font-family: 'Syne', sans-serif;
-            font-size: 48px; font-weight: 900; color: #fff;
-            border: 2px solid rgba(56,189,248,0.2);
-        }
+/* PROJECTS */
+.proj{padding:110px 40px; max-width:1240px; margin:0 auto;}
+.proj-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:22px;}
+.proj-card{
+  background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:30px;
+  transition:.25s; position:relative; overflow:hidden;
+}
+.proj-card:hover{border-color:rgba(79,227,196,0.4); transform:translateY(-4px);}
+.proj-top{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:18px;}
+.proj-tag{font-family:var(--mono); font-size:10.5px; color:var(--signal); letter-spacing:1.5px;}
+.proj-card h3{font-size:17.5px; font-weight:700; margin:8px 0 12px;}
+.proj-card p{font-size:13.5px; color:var(--muted); line-height:1.75; margin-bottom:16px;}
+.proj-impact{
+  font-family:var(--mono); font-size:11.5px; color:var(--warn); background:rgba(255,180,84,0.08);
+  border:1px solid rgba(255,180,84,0.2); padding:6px 11px; border-radius:4px; display:inline-block; margin-bottom:16px;
+}
+.proj-tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px;}
+.proj-tags span{font-family:var(--mono); font-size:10.5px; padding:4px 9px; background:var(--panel-2); border:1px solid var(--line); border-radius:3px; color:var(--muted);}
+.proj-link{font-family:var(--mono); font-size:12px; color:var(--text); display:inline-flex; align-items:center; gap:7px; text-decoration:none; border-top:1px solid var(--line-soft); padding-top:16px; width:100%;}
+.proj-link:hover{color:var(--signal);}
 
-        /* Footer */
-        .box6 {
-            text-align: center; padding: 28px;
-            border-top: 1px solid var(--border);
-            font-size: 14px; color: var(--muted);
-        }
-        .box6 i { color: #f43f5e; }
+/* METRICS */
+.metrics{padding:90px 40px; background:var(--panel-2); border-top:1px solid var(--line-soft); border-bottom:1px solid var(--line-soft);}
+.metrics-inner{max-width:1240px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); border-radius:10px; overflow:hidden;}
+.metric{background:var(--panel); padding:32px 20px; text-align:center;}
+.metric .num{font-family:var(--mono); font-weight:700; font-size:38px; color:var(--signal);}
+.metric .lbl{font-size:12px; color:var(--muted); margin-top:8px; line-height:1.5;}
 
-        /* Scroll up */
-        .arrup {
-            position: fixed; bottom: 30px; right: 30px;
-            color: var(--primary); opacity: 0.8; transition: 0.2s; z-index: 100;
-        }
-        .arrup:hover { opacity: 1; transform: translateY(-4px); }
+/* CERTS */
+.certs{padding:90px 40px; max-width:1240px; margin:0 auto;}
+.cert-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px;}
+.cert-card{display:flex; align-items:center; gap:16px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:22px; transition:.2s;}
+.cert-card:hover{border-color:rgba(79,227,196,0.35);}
+.cert-card i{font-size:22px; color:var(--signal);}
+.cert-card b{display:block; font-size:14px; margin-bottom:3px;}
+.cert-card span{font-size:12.5px; color:var(--muted); font-family:var(--mono);}
 
-        /* Reveal */
-        .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.65s ease, transform 0.65s ease; }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-    </style>
+/* CONTACT */
+.contact{padding:120px 40px; max-width:1240px; margin:0 auto;}
+.contact-panel{
+  background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:60px;
+  display:flex; justify-content:space-between; gap:50px; flex-wrap:wrap; position:relative; overflow:hidden;
+}
+.contact-panel::before{content:'';position:absolute; width:400px;height:400px; background:radial-gradient(circle,rgba(79,227,196,0.08),transparent 70%); top:-150px; right:-100px;}
+.contact-left{flex:1; min-width:280px; position:relative; z-index:1;}
+.contact-left h2{font-size:clamp(28px,4vw,38px); font-weight:700; letter-spacing:-1px; margin-bottom:16px;}
+.contact-left p{color:var(--muted); font-size:14.5px; line-height:1.8; max-width:440px; margin-bottom:30px;}
+.contact-fields{display:flex; flex-direction:column; gap:12px;}
+.contact-field{display:flex; align-items:center; gap:12px; font-family:var(--mono); font-size:13.5px; color:#c3d0cd;}
+.contact-field i{color:var(--signal); width:16px;}
+.contact-right{display:flex; flex-direction:column; gap:14px; justify-content:center; position:relative; z-index:1;}
+.social-row{display:flex; gap:10px;}
+.social-row a{
+  width:42px; height:42px; display:flex; align-items:center; justify-content:center; border-radius:6px;
+  background:var(--panel-2); border:1px solid var(--line); color:var(--muted); text-decoration:none; transition:.2s;
+}
+.social-row a:hover{border-color:var(--signal); color:var(--signal);}
+
+footer{text-align:center; padding:30px; border-top:1px solid var(--line-soft); font-family:var(--mono); font-size:12px; color:var(--dim);}
+
+.scroll-top{position:fixed; bottom:26px; right:26px; width:44px; height:44px; border-radius:50%; background:var(--panel); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--signal); z-index:100; text-decoration:none; transition:.2s;}
+.scroll-top:hover{border-color:var(--signal); transform:translateY(-3px);}
+
+.reveal{opacity:0; transform:translateY(28px); transition:opacity .6s ease, transform .6s ease;}
+.reveal.visible{opacity:1; transform:translateY(0);}
+</style>
 </head>
 <body>
 
-<!-- Progress Bar -->
-<div class="header">
-    <div class="progress-container"><div class="progress-bar" id="myBar"></div></div>
+<div class="grid-bg"></div>
+<div class="progress-wrap"><div class="progress-bar" id="bar"></div></div>
+
+<nav class="nav">
+  <div class="nav-id"><span class="led"></span> dinesh_kumar // status:available</div>
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="menu-btn"><span></span><span></span><span></span></label>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#stack">stack</a></li>
+    <li><a href="#capabilities">capabilities</a></li>
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#certs">certs</a></li>
+    <li><a href="#contact">contact</a></li>
+    <li><a href="resume.pdf" download class="cta">resume ↓</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow"><i class="fa-solid fa-signal"></i> OPEN TO FULL-TIME ROLES · HYDERABAD / HYBRID</div>
+    <h1 class="hero-title">Backend systems that stay<br><span class="accent">up, fast, and honest</span> at scale.</h1>
+    <p class="hero-desc">Python Full Stack &amp; AI/Backend Engineer — 2+ years shipping REST APIs, event-driven Kafka pipelines, Razorpay payment rails, and RAG/LLM systems that run in production, not just in demos.</p>
+    <p class="hero-desc2">Django · FastAPI · PostgreSQL · Kafka · pgvector — deployed on AWS &amp; DigitalOcean, based in Hyderabad, India.</p>
+    <div class="hero-btns">
+      <a href="mailto:dk967427@gmail.com" class="btn-primary"><i class="fa-solid fa-terminal"></i> get in touch</a>
+      <a href="resume.pdf" download class="btn-ghost"><i class="fa-solid fa-arrow-down"></i> download resume</a>
+    </div>
+  </div>
+  <div class="hero-left" style="flex:1;">
+    <div class="console">
+      <div class="console-head">
+        <div class="dots"><span></span><span></span><span></span></div>
+        <div class="title">SYSTEM_STATUS.LOG</div>
+      </div>
+      <div class="console-body">
+        <div class="svc-row"><div class="svc-name"><span class="led"></span>api.gateway</div><div class="svc-meta">p95 <b>&lt;300ms</b></div></div>
+        <div class="svc-row"><div class="svc-name"><span class="led"></span>payments.razorpay</div><div class="svc-meta">failures <b>0 / 6mo</b></div></div>
+        <div class="svc-row"><div class="svc-name"><span class="led"></span>kafka.stream</div><div class="svc-meta">loss <b>0%</b></div></div>
+        <div class="svc-row"><div class="svc-name"><span class="led"></span>rag.pgvector</div><div class="svc-meta">p95 <b>&lt;2s</b></div></div>
+        <div class="svc-row"><div class="svc-name"><span class="led warn"></span>ci_cd.pipeline</div><div class="svc-meta">deploy <b>&lt;4min</b></div></div>
+        <div class="svc-row"><div class="svc-name"><span class="led"></span>infra.uptime</div><div class="svc-meta">30d <b>99%+</b></div></div>
+      </div>
+      <div class="console-foot"><span>region: hyderabad-in</span><span>updated: just now</span></div>
+    </div>
+  </div>
 </div>
 
-<!-- Nav -->
-<section class="top-nav">
-    <div></div>
-    <input id="menu-toggle" type="checkbox" />
-    <label class="menu-button-container" for="menu-toggle"><div class="menu-button"></div></label>
-    <ul class="menu">
-        <li><a href="#box1">Home</a></li>
-        <li><a href="#box0">About</a></li>
-        <li><a href="#box2">Tech Stack</a></li>
-        <li><a href="#box4">Skills</a></li>
-        <li><a href="#box-exp">Experience</a></li>
-        <li><a href="#box3">Projects</a></li>
-        <li><a href="#box8">Certifications</a></li>
-        <li><a href="#box5">Contact</a></li>
-        <li><a href="https://drive.google.com/uc?export=download&id=1P1QfI61ggKbDu4ApmOUMGl5zbZg9dCcu" target="_blank" class="rbtn-nav">Resume ↓</a></li>
-    </ul>
-</section>
-
-<!-- Hero -->
-<div class="box1" id="box1">
-    <div class="box11">
-        <div class="box111">
-            <div class="hero-badge"><span class="dot"></span> Open to opportunities</div>
-            <h2 class="wlcm_note">Welcome to my portfolio!</h2>
-            <h2 class="some_about">I am a passionate <span>Python Full Stack Developer</span> with 2+ years building production-grade systems.</h2>
-            <p class="hero-sub">Building scalable REST APIs, event-driven pipelines with Apache Kafka, Razorpay payment integrations, and RAG/LLM-powered applications using Django, FastAPI, and PostgreSQL — deployed on AWS &amp; DigitalOcean. Based in Hyderabad, India.</p>
-            <div class="btn_div">
-                <button class="rbtn"><a href="mailto:dk967427@gmail.com">Get In Touch</a></button>
-                <button class="rbtn-outline"><a href="https://drive.google.com/uc?export=download&id=1P1QfI61ggKbDu4ApmOUMGl5zbZg9dCcu" target="_blank">Download Resume</a></button>
-            </div>
-        </div>
-        <div class="box112">
-            <div class="avatar-hero">VD</div>
-        </div>
+<!-- ABOUT -->
+<div class="about reveal" id="about">
+  <div class="svc-label">01 · profile</div>
+  <div class="sec-title" style="margin-bottom:50px;">About</div>
+  <div class="about-grid">
+    <div class="id-card">
+      <div class="id-photo">VD</div>
+      <div class="id-name">Dinesh Kumar Mariyala</div>
+      <div class="id-role">Python Full Stack / AI Engineer</div>
+      <div class="id-field"><span>Location</span><b>Hyderabad, IN</b></div>
+      <div class="id-field"><span>Experience</span><b>2+ years</b></div>
+      <div class="id-field"><span>Focus</span><b>Backend + AI</b></div>
+      <div class="id-field"><span>Status</span><b style="color:var(--signal);">Open to work</b></div>
     </div>
+    <div class="about-body">
+      <p>Python Full Stack Developer with 2+ years of hands-on experience building and shipping production-grade web applications, REST APIs, and data-driven backend systems. Delivered 3 live products on cloud infrastructure — from architecture and database design to deployment, monitoring, and performance tuning. Strong in Django, FastAPI, Flask, PostgreSQL, and JavaScript ES6+. Experienced with Apache Kafka for event streaming, AWS and DigitalOcean for cloud infrastructure, and LLM/RAG pipelines for AI-enabled applications. Delivers clean, tested, maintainable Python code following OOP, SOLID principles, and TDD.</p>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="skills">Technical Skills</button>
+        <button class="tab-btn" data-tab="achievements">Key Achievements</button>
+        <button class="tab-btn" data-tab="education">Education</button>
+      </div>
+      <div class="tab-pane active" id="skills">
+        <div class="chip-group">
+          <div>
+            <div class="grp-title">Backend Development</div>
+            <div class="chips"><span class="chip">Python 3</span><span class="chip">Django</span><span class="chip">FastAPI</span><span class="chip">DRF</span><span class="chip">Flask</span><span class="chip">REST APIs</span><span class="chip">Microservices</span><span class="chip">Async Python</span></div>
+          </div>
+          <div>
+            <div class="grp-title">Databases &amp; Data Engineering</div>
+            <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">pgvector</span><span class="chip">Pandas</span><span class="chip">NumPy</span><span class="chip">ETL Pipelines</span></div>
+          </div>
+          <div>
+            <div class="grp-title">Streaming, Payments &amp; Cloud</div>
+            <div class="chips"><span class="chip">Apache Kafka</span><span class="chip">Razorpay</span><span class="chip">AWS S3/EC2</span><span class="chip">DigitalOcean</span><span class="chip">Docker</span><span class="chip">Nginx</span><span class="chip">CI/CD</span></div>
+          </div>
+          <div>
+            <div class="grp-title">AI / GenAI &amp; Frontend</div>
+            <div class="chips"><span class="chip">LLM APIs</span><span class="chip">RAG Pipelines</span><span class="chip">Prompt Engineering</span><span class="chip">n8n Agents</span><span class="chip">JavaScript ES6+</span><span class="chip">HTML5/CSS3</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" id="achievements">
+        <div class="achv"><b>Performance &amp; Reliability</b><span>Reduced API response time from 4.2s to under 300ms (30% SQL performance improvement) and maintained 99%+ uptime across 3 production applications.</span></div>
+        <div class="achv"><b>Payments &amp; Data at Scale</b><span>Zero payment failures in 6+ months on a live Razorpay integration; built Kafka pipelines handling real-time event streams without data loss.</span></div>
+        <div class="achv"><b>AI-Enabled Engineering</b><span>Built a production RAG pipeline with pgvector achieving under 2s P95 latency, and an n8n-orchestrated AI agent workflow delivering a 40% efficiency gain.</span></div>
+      </div>
+      <div class="tab-pane" id="education">
+        <div class="edu-item"><b>B.Tech — Electronics &amp; Communication Engineering (ECE)</b><span>Krishna Chaithanya Institute of Technology and Sciences, Markapur, Andhra Pradesh · Aug 2019 – May 2023</span></div>
+        <div class="edu-item"><b>Professional Experience</b><span>Python Full Stack Developer · Friendsmoo Info Media Pvt Ltd, Hyderabad · Oct 2023 – Present (2+ yrs)</span></div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- About -->
-<div class="box0 reveal" id="box0">
-    <div class="section-header">
-        <h1>About Me</h1>
-        <p>Background, skills &amp; education</p>
+<!-- STACK -->
+<div class="stack reveal" id="stack">
+  <div class="stack-inner">
+    <div class="svc-label">02 · toolchain</div>
+    <div class="sec-title">Tech Stack</div>
+    <div class="stack-grid">
+      <div class="stack-item"><span class="dot2"></span>Python</div>
+      <div class="stack-item"><span class="dot2"></span>Django</div>
+      <div class="stack-item"><span class="dot2"></span>FastAPI</div>
+      <div class="stack-item"><span class="dot2"></span>DRF</div>
+      <div class="stack-item"><span class="dot2"></span>Flask</div>
+      <div class="stack-item"><span class="dot2"></span>PostgreSQL</div>
+      <div class="stack-item"><span class="dot2"></span>MySQL</div>
+      <div class="stack-item"><span class="dot2"></span>MongoDB</div>
+      <div class="stack-item"><span class="dot2"></span>Apache Kafka</div>
+      <div class="stack-item"><span class="dot2"></span>Razorpay</div>
+      <div class="stack-item"><span class="dot2"></span>AWS S3/EC2</div>
+      <div class="stack-item"><span class="dot2"></span>DigitalOcean</div>
+      <div class="stack-item"><span class="dot2"></span>Docker</div>
+      <div class="stack-item"><span class="dot2"></span>Pandas</div>
+      <div class="stack-item"><span class="dot2"></span>LLM / RAG</div>
+      <div class="stack-item"><span class="dot2"></span>pgvector</div>
+      <div class="stack-item"><span class="dot2"></span>n8n Agents</div>
+      <div class="stack-item"><span class="dot2"></span>JavaScript ES6+</div>
+      <div class="stack-item"><span class="dot2"></span>Git / CI-CD</div>
+      <div class="stack-item"><span class="dot2"></span>Linux / Nginx</div>
     </div>
-    <div id="about">
-        <div class="row">
-            <div class="about-col-1">
-                <div class="about-avatar">VD</div>
-            </div>
-            <div class="about-col-2">
-                <p>Python Full Stack Developer with 2+ years of hands-on experience building and shipping production-grade web applications, REST APIs, and data-driven backend systems. Delivered 3 live products on cloud infrastructure — from architecture and database design to deployment, monitoring, and performance tuning. Strong in Django, FastAPI, Flask, PostgreSQL, and JavaScript ES6+. Experienced with Apache Kafka for event streaming, AWS and DigitalOcean for cloud infrastructure, and LLM/RAG pipelines for AI-enabled applications. Delivers clean, tested, maintainable Python code following OOP, SOLID principles, and TDD.</p>
-                <div class="tab-title">
-                    <p class="tab-links active-link" onclick="opentab('skills', event)">Technical Skills</p>
-                    <p class="tab-links" onclick="opentab('softskills', event)">Key Achievements</p>
-                    <p class="tab-links" onclick="opentab('education', event)">Education</p>
-                </div>
-                <div class="tab-contents active-tab" id="skills">
-                    <ul class="aboutSkill">
-                        <li><span>Backend Development</span><br>
-                            <span class="co">Python 3</span><span class="co">Django</span><span class="co">FastAPI</span><span class="co">DRF</span><span class="co">Flask</span><span class="co">REST APIs</span><span class="co">Microservices</span><span class="co">Async Python</span>
-                        </li>
-                        <li><span>Databases &amp; Data Engineering</span><br>
-                            <span class="co">PostgreSQL</span><span class="co">MySQL</span><span class="co">MongoDB</span><span class="co">pgvector</span><span class="co">Pandas</span><span class="co">NumPy</span><span class="co">ETL Pipelines</span>
-                        </li>
-                        <li><span>Streaming, Payments &amp; Cloud</span><br>
-                            <span class="co">Apache Kafka</span><span class="co">Razorpay</span><span class="co">AWS S3/EC2</span><span class="co">DigitalOcean</span><span class="co">Docker</span><span class="co">Nginx</span><span class="co">CI/CD</span>
-                        </li>
-                        <li><span>AI / GenAI &amp; Frontend</span><br>
-                            <span class="co">LLM APIs</span><span class="co">RAG Pipelines</span><span class="co">Prompt Engineering</span><span class="co">n8n Agents</span><span class="co">JavaScript ES6+</span><span class="co">HTML5/CSS3</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tab-contents" id="softskills">
-                    <ul class="aboutSkill">
-                        <li><span>Performance &amp; Reliability</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Reduced API response time from 4.2s to under 300ms (30% SQL performance improvement) and maintained 99%+ uptime across 3 production applications.</span></li>
-                        <li><span>Payments &amp; Data at Scale</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Zero payment failures in 6+ months on a live Razorpay integration; built Kafka pipelines handling real-time event streams without data loss.</span></li>
-                        <li><span>AI-Enabled Engineering</span><br><span class="co" style="border-radius:8px;padding:8px 12px;">Built a production RAG pipeline with pgvector achieving under 2s P95 latency, and an n8n-orchestrated AI agent workflow delivering a 40% efficiency gain.</span></li>
-                    </ul>
-                </div>
-                <div class="tab-contents" id="education">
-                    <ul class="aboutSkill">
-                        <li><span>B.Tech — Electronics &amp; Communication Engineering (ECE)</span>
-                            <span class="co" style="border-radius:8px;padding:8px 12px;display:block;margin-top:8px;width:fit-content;">Krishna Chaithanya Institute of Technology and Sciences, Markapur, Andhra Pradesh · Aug 2019 – May 2023</span>
-                        </li>
-                        <li><span>Professional Experience</span>
-                            <span class="co" style="border-radius:8px;padding:8px 12px;display:block;margin-top:8px;width:fit-content;">Python Full Stack Developer · Friendsmoo Info Media Pvt Ltd, Hyderabad · Oct 2023 – Present (2+ yrs)</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
 
-<!-- Tech Stack -->
-<div class="box2 reveal" id="box2">
-    <div class="box21"><h1>TECH STACK</h1></div>
-    <div class="box22">
-        <div class="tool" style="--i:1;"><div class="tool-icon">🐍</div><div>Python</div></div>
-        <div class="tool" style="--i:2;"><div class="tool-icon">🎸</div><div>Django</div></div>
-        <div class="tool" style="--i:3;"><div class="tool-icon">⚡</div><div>FastAPI</div></div>
-        <div class="tool" style="--i:4;"><div class="tool-icon">🔷</div><div>DRF</div></div>
-        <div class="tool" style="--i:5;"><div class="tool-icon">🧪</div><div>Flask</div></div>
-        <div class="tool" style="--i:6;"><div class="tool-icon">🐘</div><div>PostgreSQL</div></div>
-        <div class="tool" style="--i:7;"><div class="tool-icon">🐬</div><div>MySQL</div></div>
-        <div class="tool" style="--i:8;"><div class="tool-icon">🍃</div><div>MongoDB</div></div>
-        <div class="tool" style="--i:9;"><div class="tool-icon">📨</div><div>Apache Kafka</div></div>
-        <div class="tool" style="--i:10;"><div class="tool-icon">💳</div><div>Razorpay</div></div>
-        <div class="tool" style="--i:11;"><div class="tool-icon">☁️</div><div>AWS S3/EC2</div></div>
-        <div class="tool" style="--i:12;"><div class="tool-icon">🌊</div><div>DigitalOcean</div></div>
-        <div class="tool" style="--i:13;"><div class="tool-icon">🐳</div><div>Docker</div></div>
-        <div class="tool" style="--i:14;"><div class="tool-icon">📊</div><div>Pandas</div></div>
-        <div class="tool" style="--i:15;"><div class="tool-icon">🧠</div><div>LLM / RAG</div></div>
-        <div class="tool" style="--i:16;"><div class="tool-icon">🔗</div><div>pgvector</div></div>
-        <div class="tool" style="--i:17;"><div class="tool-icon">🤖</div><div>n8n Agents</div></div>
-        <div class="tool" style="--i:18;"><div class="tool-icon">🌐</div><div>JavaScript</div></div>
-        <div class="tool" style="--i:19;"><div class="tool-icon">🔧</div><div>Git / CI/CD</div></div>
-        <div class="tool" style="--i:20;"><div class="tool-icon">🐧</div><div>Linux / Nginx</div></div>
-    </div>
+<!-- CAPABILITIES -->
+<div class="cap reveal" id="capabilities">
+  <div class="svc-label">03 · capabilities</div>
+  <div class="sec-head"><div class="sec-title">What I Build</div><div class="sec-sub">Core competencies across the backend and AI-systems surface.</div></div>
+  <div class="cap-grid">
+    <div class="cap-item"><div class="cap-num">CAP/01</div><i class="fa-brands fa-python"></i><h3>Python Backend Development</h3><p>Builds production REST APIs with Django REST Framework, FastAPI, and Flask — JWT auth, RBAC, pagination, OpenAPI docs, input validation, and structured logging across 12+ endpoints.</p></div>
+    <div class="cap-item"><div class="cap-num">CAP/02</div><i class="fa-solid fa-money-check-dollar"></i><h3>Payments &amp; Webhooks</h3><p>Integrated Razorpay into a production booking platform — secure payment initiation, webhook signature verification, idempotency handling, and refund flows with zero payment failures in 6+ months.</p></div>
+    <div class="cap-item"><div class="cap-num">CAP/03</div><i class="fa-solid fa-database"></i><h3>Database Design &amp; SQL Optimisation</h3><p>Designs normalised PostgreSQL schemas, resolves N+1 ORM chains, and uses EXPLAIN ANALYZE + composite indexing — cut API response time from 4.2s to under 300ms (30% improvement).</p></div>
+    <div class="cap-item"><div class="cap-num">CAP/04</div><i class="fa-solid fa-tower-broadcast"></i><h3>Kafka &amp; Event-Driven ETL</h3><p>Designs Kafka producer-consumer architectures across multiple topic partitions and builds ETL pipelines with Pandas-based transformation, validation, and deduplication — 40% efficiency gain.</p></div>
+    <div class="cap-item"><div class="cap-num">CAP/05</div><i class="fa-solid fa-brain"></i><h3>AI / RAG &amp; LLM Agents</h3><p>Builds RAG pipelines with semantic chunking, embeddings, and pgvector similarity search (P95 &lt;2s). Orchestrates multi-step LLM agent workflows via n8n with structured JSON output.</p></div>
+    <div class="cap-item"><div class="cap-num">CAP/06</div><i class="fa-solid fa-cloud"></i><h3>Cloud, DevOps &amp; Testing</h3><p>Deploys on DigitalOcean &amp; AWS with Nginx, SSL, and automated backups (99%+ uptime). Maintains 80%+ pytest coverage and CI/CD pipelines cutting deploy time from 25min to under 4min.</p></div>
+  </div>
 </div>
 
-<!-- My Skills -->
-<div class="box4 reveal" id="box4">
-    <div class="box41 section-header">
-        <h1>My Skills</h1>
-        <p>Core competencies and areas of expertise</p>
+<!-- EXPERIENCE -->
+<div class="exp reveal" id="experience">
+  <div class="exp-inner">
+    <div class="svc-label">04 · work log</div>
+    <div class="sec-head"><div class="sec-title">Experience</div></div>
+    <div class="exp-card">
+      <div class="exp-top">
+        <div><div class="exp-role">Python Full Stack Developer</div><div class="exp-co">Friendsmoo Info Media Pvt Ltd · Hyderabad, Telangana</div></div>
+        <div class="exp-dur">Oct 2023 — Present · 2+ yrs</div>
+      </div>
+      <div class="exp-stack-line"><b>stack:</b> Python 3, Django, FastAPI, DRF, Flask, PostgreSQL, MySQL, MongoDB, Apache Kafka, Razorpay, AWS S3/EC2, DigitalOcean, Nginx, Linux/Ubuntu, Git, Docker, pytest, CI/CD, JavaScript ES6+, HTML5, CSS3, LLM APIs, RAG, Agile Scrum</div>
+
+      <div class="exp-block">
+        <div class="exp-block-title">REST APIs &amp; Full Stack Development</div>
+        <div class="exp-row"><span class="mk">›</span>Architected and shipped <b>12+ production REST API endpoints</b> using DRF, FastAPI, and Flask — JWT auth, RBAC, paginated views, AWS S3 uploads, Razorpay webhook processing, and async task queuing.</div>
+        <div class="exp-row"><span class="mk">›</span>Built full-stack features end-to-end — modelled databases, wrote business logic, exposed REST APIs, and connected to a JavaScript ES6+ frontend. Took sole ownership of 2 complete features from spec to live deployment.</div>
+        <div class="exp-row"><span class="mk">›</span>Integrated Razorpay into a production service-booking platform — secure payment initiation, webhook signature verification, idempotency handling, refunds, and full transaction audit trail. <b>Zero payment failures</b> in 6+ months.</div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-block-title">Database Design, SQL Optimisation &amp; Data Modelling</div>
+        <div class="exp-row"><span class="mk">›</span>Designed PostgreSQL schemas from scratch for 3 production apps — 3NF normalisation, foreign keys, soft deletes, audit columns. Used Django ORM/SQLAlchemy plus raw SQL with CTEs and window functions.</div>
+        <div class="exp-row"><span class="mk">›</span>Resolved a critical slow-query bottleneck — used EXPLAIN ANALYZE on a 500K+ row table, added composite indexes, rewrote 3 N+1 ORM chains, reducing response time from 4.2s to under 300ms (<b>30% improvement</b>).</div>
+        <div class="exp-row"><span class="mk">›</span>Used MongoDB as a schema-flexible document store for activity logs and event payloads, with custom aggregation pipelines for reporting.</div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-block-title">Apache Kafka Event Streaming &amp; ETL Pipeline</div>
+        <div class="exp-row"><span class="mk">›</span>Designed a Kafka producer-consumer architecture across 3 topic partitions — Django services emit structured JSON events; Python consumers process and persist to PostgreSQL and AWS S3 with no data loss under burst loads.</div>
+        <div class="exp-row"><span class="mk">›</span>Built an end-to-end ETL pipeline replacing a fully manual workflow — automated ingestion from 4 upstream sources, Pandas transformations, quality validation, eliminating 3 hours of daily work (<b>40% efficiency gain</b>).</div>
+        <div class="exp-row"><span class="mk">›</span>Wrote Bash automation for scheduled runs, health monitoring, and recovery logic — <b>zero undetected pipeline failures</b> in production since launch.</div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-block-title">Cloud Infrastructure &amp; Production Deployment</div>
+        <div class="exp-row"><span class="mk">›</span>Deployed and operated 3 production applications on DigitalOcean Droplets — Nginx with SSL (Let's Encrypt), Gunicorn/Uvicorn, firewall rules, and automated daily backups to AWS S3. <b>99%+ uptime</b> maintained.</div>
+        <div class="exp-row"><span class="mk">›</span>Managed AWS S3 with bucket policies, least-privilege IAM roles, pre-signed URLs, and lifecycle tiering integrated into Django and FastAPI services.</div>
+        <div class="exp-row"><span class="mk">›</span>Set up CI/CD pipelines — automated pytest, flake8 linting, and deployments on every merge to main, cutting deploy time from 25 minutes to <b>under 4 minutes</b>.</div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-block-title">AI-Enabled Development — LLM APIs, RAG &amp; Prompt Engineering</div>
+        <div class="exp-row"><span class="mk">›</span>Built a production RAG pipeline from scratch — semantic chunking, OpenAI-compatible embeddings, cosine similarity search via PostgreSQL pgvector, and context-augmented LLM responses at <b>under 2s P95 latency</b>.</div>
+        <div class="exp-row"><span class="mk">›</span>Engineered structured prompt templates with role definition, few-shot examples, JSON schema enforcement, and retry logic with exponential backoff for rate limits.</div>
+        <div class="exp-row"><span class="mk">›</span>Automated a multistep business evaluation workflow using an AI agent architecture — chained 4 LLM calls via n8n, replacing a 3-person manual process with a <b>40% efficiency gain</b>.</div>
+      </div>
+
+      <div class="exp-block">
+        <div class="exp-block-title">Testing, Code Quality &amp; Agile Engineering</div>
+        <div class="exp-row"><span class="mk">›</span>Wrote pytest test suites — unit, integration (TestClient/httpx), and pytest-django fixtures — maintaining <b>80%+ test coverage</b> across all production services.</div>
+        <div class="exp-row"><span class="mk">›</span>Enforced code quality via peer review, catching <b>3 production-critical bugs</b> before they reached main; reviewed for security, N+1 queries, and blocking I/O in async routes.</div>
+        <div class="exp-row"><span class="mk">›</span>Participated in Agile Scrum for 2+ years — sprint planning, standups, backlog refinement, and retrospectives, consistently delivering committed sprint goals.</div>
+      </div>
     </div>
-    <div class="skills-list">
-        <div>
-            <i class="fa-brands fa-python"></i>
-            <h2>Python Backend Development</h2>
-            <p>Builds production REST APIs with Django REST Framework, FastAPI, and Flask — JWT auth, RBAC, pagination, OpenAPI docs, input validation, and structured logging across 12+ endpoints.</p>
-        </div>
-        <div>
-            <i class="fa-solid fa-money-check-dollar"></i>
-            <h2>Payments &amp; Webhooks</h2>
-            <p>Integrated Razorpay into a production booking platform — secure payment initiation, webhook signature verification, idempotency handling, and refund flows with zero payment failures in 6+ months.</p>
-        </div>
-        <div>
-            <i class="fa-solid fa-database"></i>
-            <h2>Database Design &amp; SQL Optimisation</h2>
-            <p>Designs normalised PostgreSQL schemas, resolves N+1 ORM chains, and uses EXPLAIN ANALYZE + composite indexing — cut API response time from 4.2s to under 300ms (30% improvement).</p>
-        </div>
-        <div>
-            <i class="fa-solid fa-tower-broadcast"></i>
-            <h2>Kafka &amp; Event-Driven ETL</h2>
-            <p>Designs Kafka producer-consumer architectures across multiple topic partitions and builds ETL pipelines with Pandas-based transformation, validation, and deduplication — 40% efficiency gain.</p>
-        </div>
-        <div>
-            <i class="fa-solid fa-brain"></i>
-            <h2>AI / RAG &amp; LLM Agents</h2>
-            <p>Builds RAG pipelines with semantic chunking, embeddings, and pgvector similarity search (P95 &lt;2s). Orchestrates multi-step LLM agent workflows via n8n with structured JSON output.</p>
-        </div>
-        <div>
-            <i class="fa-solid fa-cloud"></i>
-            <h2>Cloud, DevOps &amp; Testing</h2>
-            <p>Deploys on DigitalOcean &amp; AWS with Nginx, SSL, and automated backups (99%+ uptime). Maintains 80%+ pytest coverage and CI/CD pipelines cutting deploy time from 25min to under 4min.</p>
-        </div>
-    </div>
+  </div>
 </div>
 
-<!-- Experience -->
-<div class="box-exp reveal" id="box-exp">
-    <div class="box-exp-inner">
-        <div class="section-header">
-            <h1>Experience</h1>
-            <p>Professional history and responsibilities</p>
-        </div>
-        <div class="exp-card">
-            <div class="exp-head">
-                <div>
-                    <div class="exp-title-main">Python Full Stack Developer</div>
-                    <div class="exp-company">Friendsmoo Info Media Pvt Ltd · Hyderabad, Telangana</div>
-                </div>
-                <div class="exp-duration">Oct 2023 – Present · 2+ yrs</div>
-            </div>
-            <div class="exp-stack"><b>Stack:</b> Python 3, Django, FastAPI, DRF, Flask, PostgreSQL, MySQL, MongoDB, Apache Kafka, Razorpay, AWS S3/EC2, DigitalOcean, Nginx, Linux/Ubuntu, Git, Docker, pytest, CI/CD, JavaScript ES6+, HTML5, CSS3, LLM APIs, RAG, Agile Scrum</div>
-
-            <div class="exp-section-title">REST APIs &amp; FULL STACK DEVELOPMENT</div>
-            <div class="exp-list">
-                <div class="exp-item"><span class="arrow">→</span>Architected and shipped 12+ production REST API endpoints using DRF, FastAPI, and Flask — JWT auth, RBAC, paginated views, AWS S3 uploads, Razorpay webhook processing, and async task queuing.</div>
-                <div class="exp-item"><span class="arrow">→</span>Built full-stack features end-to-end — modelled databases, wrote business logic, exposed REST APIs, and connected to a JavaScript ES6+ frontend. Took sole ownership of 2 complete features from spec to live deployment.</div>
-                <div class="exp-item"><span class="arrow">→</span>Integrated Razorpay into a production service-booking platform — secure payment initiation, webhook signature verification, idempotency handling, refunds, and full transaction audit trail. <b>Zero payment failures</b> in 6+ months.</div>
-            </div>
-
-            <div class="exp-section-title">DATABASE DESIGN, SQL OPTIMISATION &amp; DATA MODELLING</div>
-            <div class="exp-list">
-                <div class="exp-item"><span class="arrow">→</span>Designed PostgreSQL schemas from scratch for 3 production apps — 3NF normalisation, foreign keys, soft deletes, audit columns. Used Django ORM/SQLAlchemy plus raw SQL with CTEs and window functions.</div>
-                <div class="exp-item"><span class="arrow">→</span>Resolved a critical slow-query bottleneck — used EXPLAIN ANALYZE on a 500K+ row table, added composite indexes, rewrote 3 N+1 ORM chains, reducing response time from 4.2s to under 300ms (<b>30% improvement</b>).</div>
-                <div class="exp-item"><span class="arrow">→</span>Used MongoDB as a schema-flexible document store for activity logs and event payloads, with custom aggregation pipelines for reporting.</div>
-            </div>
-
-            <div class="exp-section-title">APACHE KAFKA EVENT STREAMING &amp; ETL PIPELINE</div>
-            <div class="exp-list">
-                <div class="exp-item"><span class="arrow">→</span>Designed a Kafka producer-consumer architecture across 3 topic partitions — Django services emit structured JSON events; Python consumers process and persist to PostgreSQL and AWS S3 with no data loss under burst loads.</div>
-                <div class="exp-item"><span class="arrow">→</span>Built an end-to-end ETL pipeline replacing a fully manual workflow — automated ingestion from 4 upstream sources, Pandas transformations, quality validation, eliminating 3 hours of daily work (<b>40% efficiency gain</b>).</div>
-                <div class="exp-item"><span class="arrow">→</span>Wrote Bash automation for scheduled runs, health monitoring, and recovery logic — <b>zero undetected pipeline failures</b> in production since launch.</div>
-            </div>
-
-            <div class="exp-section-title">CLOUD INFRASTRUCTURE &amp; PRODUCTION DEPLOYMENT</div>
-            <div class="exp-list">
-                <div class="exp-item"><span class="arrow">→</span>Deployed and operated 3 production applications on DigitalOcean Droplets — Nginx with SSL (Let's Encrypt), Gunicorn/Uvicorn, firewall rules, and automated daily backups to AWS S3. <b>99%+ uptime</b> maintained.</div>
-                <div class="exp-item"><span class="arrow">→</span>Managed AWS S3 with bucket policies, least-privilege IAM roles, pre-signed URLs, and lifecycle tiering integrated into Django and FastAPI services.</div>
-                <div class="exp-item"><span class="arrow">→</span>Set up CI/CD pipelines — automated pytest, flake8 linting, and deployments on every merge to main, cutting deploy time from 25 minutes to <b>under 4 minutes</b>.</div>
-            </div>
-
-            <div class="exp-section-title">AI-ENABLED DEVELOPMENT — LLM APIs, RAG &amp; PROMPT ENGINEERING</div>
-            <div class="exp-list">
-                <div class="exp-item"><span class="arrow">→</span>Built a production RAG pipeline from scratch — semantic chunking, OpenAI-compatible embeddings, cosine similarity search via PostgreSQL pgvector, and context-augmented LLM responses at <b>under 2s P95 latency</b>.</div>
-                <div class="exp-item"><span class="arrow">→</span>Engineered structured prompt templates with role definition, few-shot examples, JSON schema enforcement, and retry logic with exponential backoff for rate limits.</div>
-                <div class="exp-item"><span class="arrow">→</span>Automated a multistep business evaluation workflow using an AI agent architecture — chained 4 LLM calls via n8n, replacing a 3-person manual process with a <b>40% efficiency gain</b>.</div>
-            </div>
-
-            <div class="exp-section-title">TESTING, CODE QUALITY &amp; AGILE ENGINEERING</div>
-            <div class="exp-list">
-                <div class="exp-item"><span class="arrow">→</span>Wrote pytest test suites — unit, integration (TestClient/httpx), and pytest-django fixtures — maintaining <b>80%+ test coverage</b> across all production services.</div>
-                <div class="exp-item"><span class="arrow">→</span>Enforced code quality via peer review, catching <b>3 production-critical bugs</b> before they reached main; reviewed for security, N+1 queries, and blocking I/O in async routes.</div>
-                <div class="exp-item"><span class="arrow">→</span>Participated in Agile Scrum for 2+ years — sprint planning, standups, backlog refinement, and retrospectives, consistently delivering committed sprint goals.</div>
-            </div>
-        </div>
+<!-- PROJECTS -->
+<div class="proj reveal" id="projects">
+  <div class="svc-label">05 · shipped</div>
+  <div class="sec-head"><div class="sec-title">Projects</div><div class="sec-sub">Production systems, not tutorials.</div></div>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-top"><span class="proj-tag">REST · KAFKA · RAZORPAY</span><i class="fa-solid fa-calendar-check" style="color:var(--signal);"></i></div>
+      <h3>Service Booking Platform</h3>
+      <p>Full-stack booking platform: DRF + FastAPI microservices, JavaScript ES6+ frontend, PostgreSQL with 12 normalised tables. 12+ REST endpoints with JWT, Razorpay payments/webhooks, and Kafka event streaming to analytics &amp; S3 audit logs.</p>
+      <div class="proj-impact">4.2s → &lt;300ms · 85% test coverage</div>
+      <div class="proj-tags"><span>Django</span><span>DRF</span><span>FastAPI</span><span>PostgreSQL</span><span>Kafka</span><span>Razorpay</span><span>DigitalOcean</span></div>
+      <a href="https://github.com/Dineshkumar6301" target="_blank" class="proj-link"><i class="fa-brands fa-github"></i> view on github</a>
     </div>
+    <div class="proj-card">
+      <div class="proj-top"><span class="proj-tag">KAFKA · ETL · DATA ENGINEERING</span><i class="fa-solid fa-arrows-rotate" style="color:var(--signal);"></i></div>
+      <h3>Intelligent ETL Pipeline</h3>
+      <p>Kafka producers ingest raw events from 4 upstream sources → Python consumers apply Pandas transformations, type coercion, dedup, and quality validation → clean data loaded to PostgreSQL, archived to S3. Dockerised with cron orchestration.</p>
+      <div class="proj-impact">40% efficiency gain · 3 hrs/day eliminated</div>
+      <div class="proj-tags"><span>Kafka</span><span>Pandas</span><span>NumPy</span><span>PostgreSQL</span><span>MongoDB</span><span>Docker</span><span>AWS S3</span></div>
+      <a href="https://github.com/Dineshkumar6301" target="_blank" class="proj-link"><i class="fa-brands fa-github"></i> view on github</a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><span class="proj-tag">RAG · LLM AGENT · PGVECTOR</span><i class="fa-solid fa-brain" style="color:var(--signal);"></i></div>
+      <h3>AI Automated Evaluation Platform</h3>
+      <p>Replaced a 3-person manual review process — RAG pipeline with 512-token semantic chunking, pgvector similarity search, and a 4-step n8n agent workflow generating structured, auditable LLM evaluation outputs with retry logic.</p>
+      <div class="proj-impact">40% efficiency gain · P95 &lt;2s latency</div>
+      <div class="proj-tags"><span>FastAPI</span><span>LLM APIs</span><span>RAG</span><span>pgvector</span><span>n8n</span><span>PostgreSQL</span></div>
+      <a href="https://github.com/Dineshkumar6301" target="_blank" class="proj-link"><i class="fa-brands fa-github"></i> view on github</a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top"><span class="proj-tag">DATA MODELLING · ANALYTICS</span><i class="fa-solid fa-chart-line" style="color:var(--signal);"></i></div>
+      <h3>Hospital Analytics &amp; KPI Dashboard</h3>
+      <p>3NF schema (8 tables), SQL analytics layer with CTEs, window functions, and rolling averages. 6 core analytics modules — admissions, bed occupancy, length-of-stay, staffing ratios — each a SQL view + API endpoint + Matplotlib chart.</p>
+      <div class="proj-impact">8.4s → &lt;500ms query time</div>
+      <div class="proj-tags"><span>Django</span><span>PostgreSQL</span><span>SQL</span><span>Pandas</span><span>Matplotlib</span><span>DigitalOcean</span></div>
+      <a href="https://github.com/Dineshkumar6301" target="_blank" class="proj-link"><i class="fa-brands fa-github"></i> view on github</a>
+    </div>
+  </div>
 </div>
 
-<!-- Projects -->
-<div class="box3 reveal" id="box3">
-    <div class="box31 section-header">
-        <h1>PROJECTS</h1>
-        <p>Hover each card to see details</p>
-    </div>
-    <div class="box32">
-
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front" style="background:linear-gradient(135deg,#071a2c,#0f172a);">
-                    <div class="fcard-type">REST API · KAFKA · RAZORPAY</div>
-                    <div class="fcard-icon">📅</div>
-                    <h2>Service Booking Platform</h2>
-                </div>
-                <div class="flip-card-back">
-                    <h1>Service Booking Platform — End-to-End Production App</h1>
-                    <div class="impact">4.2s → &lt;300ms · 85% test coverage</div>
-                    <p>Full-stack booking platform: DRF + FastAPI microservices, JavaScript ES6+ frontend, PostgreSQL with 12 normalised tables. 12+ REST endpoints with JWT, Razorpay payments/webhooks, and Kafka event streaming to analytics &amp; S3 audit logs.</p>
-                    <div class="tech-tags"><span>Django</span><span>DRF</span><span>FastAPI</span><span>PostgreSQL</span><span>Kafka</span><span>Razorpay</span><span>DigitalOcean</span></div>
-                    <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front" style="background:linear-gradient(135deg,#071c12,#0f172a);">
-                    <div class="fcard-type">KAFKA · ETL · DATA ENGINEERING</div>
-                    <div class="fcard-icon">🔄</div>
-                    <h2>Intelligent ETL Pipeline</h2>
-                </div>
-                <div class="flip-card-back">
-                    <h1>Intelligent ETL Pipeline — Automated Real-Time Processing</h1>
-                    <div class="impact">40% efficiency gain · 3 hrs/day eliminated</div>
-                    <p>Kafka producers ingest raw events from 4 upstream sources → Python consumers apply Pandas transformations, type coercion, dedup, and quality validation → clean data loaded to PostgreSQL, archived to S3. Dockerised with cron orchestration.</p>
-                    <div class="tech-tags"><span>Kafka</span><span>Pandas</span><span>NumPy</span><span>PostgreSQL</span><span>MongoDB</span><span>Docker</span><span>AWS S3</span></div>
-                    <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front" style="background:linear-gradient(135deg,#0e1020,#0f172a);">
-                    <div class="fcard-type">RAG · LLM AGENT · pgvector</div>
-                    <div class="fcard-icon">🧠</div>
-                    <h2>AI Automated Evaluation Platform</h2>
-                </div>
-                <div class="flip-card-back">
-                    <h1>AI-Powered Automated Evaluation Platform</h1>
-                    <div class="impact">40% efficiency gain · P95 &lt;2s latency</div>
-                    <p>Replaced a 3-person manual review process — RAG pipeline with 512-token semantic chunking, pgvector similarity search, and a 4-step n8n agent workflow generating structured, auditable LLM evaluation outputs with retry logic.</p>
-                    <div class="tech-tags"><span>FastAPI</span><span>LLM APIs</span><span>RAG</span><span>pgvector</span><span>n8n</span><span>PostgreSQL</span></div>
-                    <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front" style="background:linear-gradient(135deg,#1a0a2a,#0f172a);">
-                    <div class="fcard-type">DATA MODELLING · ANALYTICS</div>
-                    <div class="fcard-icon">🏥</div>
-                    <h2>Hospital Analytics &amp; KPI Dashboard</h2>
-                </div>
-                <div class="flip-card-back">
-                    <h1>Hospital Analytics &amp; KPI Dashboard System</h1>
-                    <div class="impact">8.4s → &lt;500ms query time</div>
-                    <p>3NF schema (8 tables), SQL analytics layer with CTEs, window functions, and rolling averages. 6 core analytics modules — admissions, bed occupancy, length-of-stay, staffing ratios — each a SQL view + API endpoint + Matplotlib chart.</p>
-                    <div class="tech-tags"><span>Django</span><span>PostgreSQL</span><span>SQL</span><span>Pandas</span><span>Matplotlib</span><span>DigitalOcean</span></div>
-                    <div class="icons"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                </div>
-            </div>
-        </div>
-
-    </div>
+<!-- METRICS -->
+<div class="metrics reveal">
+  <div class="metrics-inner">
+    <div class="metric"><div class="num">2+</div><div class="lbl">Years professional experience</div></div>
+    <div class="metric"><div class="num">3</div><div class="lbl">Live products deployed</div></div>
+    <div class="metric"><div class="num">12+</div><div class="lbl">REST APIs shipped</div></div>
+    <div class="metric"><div class="num">30%</div><div class="lbl">SQL performance gain</div></div>
+    <div class="metric"><div class="num">40%</div><div class="lbl">Operational efficiency gain</div></div>
+    <div class="metric"><div class="num">99%+</div><div class="lbl">Uptime across all apps</div></div>
+    <div class="metric"><div class="num">80%+</div><div class="lbl">Test coverage</div></div>
+  </div>
 </div>
 
-<!-- Stats -->
-<div class="box7 reveal">
-    <div class="box71"><div class="stat-num">2+</div><div class="box712"><span class="bold">Years</span>professional experience</div></div>
-    <div class="box71"><div class="stat-num">3</div><div class="box712"><span class="bold">Live products</span>deployed to production</div></div>
-    <div class="box71"><div class="stat-num">12+</div><div class="box712"><span class="bold">REST APIs</span>shipped to production</div></div>
-    <div class="box71"><div class="stat-num">30%</div><div class="box712"><span class="bold">SQL performance</span>improvement</div></div>
-    <div class="box71"><div class="stat-num">40%</div><div class="box712"><span class="bold">Operational</span>efficiency gain</div></div>
-    <div class="box71"><div class="stat-num">99%+</div><div class="box712"><span class="bold">Uptime</span>across all apps</div></div>
-    <div class="box71"><div class="stat-num">80%+</div><div class="box712"><span class="bold">Test coverage</span>on production services</div></div>
+<!-- CERTS -->
+<div class="certs reveal" id="certs">
+  <div class="svc-label">06 · credentials</div>
+  <div class="sec-head"><div class="sec-title">Certifications</div></div>
+  <div class="cert-grid">
+    <div class="cert-card"><i class="fa-brands fa-python"></i><div><b>Complete Python Bootcamp: From Zero to Hero in Python</b><span>Naresh I Technologies</span></div></div>
+    <div class="cert-card"><i class="fa-brands fa-python"></i><div><b>Data Analysis with Python</b><span>IBM</span></div></div>
+  </div>
 </div>
 
-<!-- Certifications -->
-<div class="box8 reveal" id="box8">
-    <div class="section-header">
-        <h1>Certifications</h1>
-        <p>Continued learning &amp; credentials</p>
+<!-- CONTACT -->
+<div class="contact reveal" id="contact">
+  <div class="contact-panel">
+    <div class="contact-left">
+      <div class="svc-label" style="margin-bottom:20px;">07 · contact</div>
+      <h2>Let's work together.</h2>
+      <p>Open to full-time Python Full Stack / Python Engineer roles in Hyderabad or hybrid. My inbox is open for all.</p>
+      <div class="contact-fields">
+        <div class="contact-field"><i class="fa-solid fa-location-dot"></i> Hyderabad, India</div>
+        <div class="contact-field"><i class="fa-solid fa-envelope"></i> dk967427@gmail.com</div>
+        <div class="contact-field"><i class="fa-solid fa-phone"></i> +91 6301861405</div>
+        <div class="contact-field"><i class="fa-solid fa-globe"></i> dineshkumar6301.github.io/dinesh-portfolio</div>
+      </div>
     </div>
-    <div class="cert-list">
-        <div class="cert-card">
-            <i class="fa-brands fa-python"></i>
-            <div>
-                <div class="cert-title">Complete Python Bootcamp: From Zero to Hero in Python</div>
-                <div class="cert-sub">Naresh I Technologies</div>
-            </div>
-        </div>
-        <div class="cert-card">
-            <i class="fa-brands fa-python"></i>
-            <div>
-                <div class="cert-title">Data Analysis with Python</div>
-                <div class="cert-sub">IBM</div>
-            </div>
-        </div>
+    <div class="contact-right">
+      <a href="resume.pdf" download class="btn-primary" style="justify-content:center;"><i class="fa-solid fa-arrow-down"></i> download resume</a>
+      <a href="mailto:dk967427@gmail.com" class="btn-ghost" style="justify-content:center;"><i class="fa-solid fa-envelope"></i> email me</a>
+      <div class="social-row">
+        <a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a>
+        <a href="https://linkedin.com/in/venakata-dinesh-kumar-mariyala-7b48b219a" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="tel:+916301861405"><i class="fa-solid fa-phone"></i></a>
+      </div>
     </div>
+  </div>
 </div>
 
-<!-- Contact -->
-<div class="box5 reveal" id="box5">
-    <div class="box51 section-header">
-        <h1>CONTACT</h1>
-        <p>Open to full-time Python Full Stack / Python Engineer roles</p>
-    </div>
-    <div class="box52">
-        <div class="box511">
-            <h1 class="box5h1">Let's work together.</h1>
-            <h3 class="box5h3">OPEN TO FULL-TIME PYTHON FULL STACK / PYTHON ENGINEER ROLES IN HYDERABAD OR HYBRID. MY INBOX IS OPEN FOR ALL.</h3>
-            <div class="box5111"><i class="fa-solid fa-location-dot"></i> Hyderabad, India</div>
-            <div class="box5111"><i class="fa-solid fa-envelope"></i> dk967427@gmail.com</div>
-            <div class="box5111"><i class="fa-solid fa-phone"></i> +91 6301861405</div>
-            <div class="box5111"><i class="fa-solid fa-globe"></i> dineshkumar6301.github.io/dinesh-portfolio</div>
-            <div class="box5112">
-                <div class="ico"><a href="https://github.com/Dineshkumar6301" target="_blank"><i class="fa-brands fa-github"></i></a></div>
-                <div class="ico"><a href="https://linkedin.com/in/venakata-dinesh-kumar-mariyala-7b48b219a" target="_blank"><i class="fa-brands fa-linkedin"></i></a></div>
-                <div class="ico"><a href="mailto:dk967427@gmail.com"><i class="fa-solid fa-envelope"></i></a></div>
-                <div class="ico"><a href="tel:+916301861405"><i class="fa-solid fa-phone"></i></a></div>
-                <div class="ico"><a href="https://dineshkumar6301.github.io/dinesh-portfolio/" target="_blank"><i class="fa-solid fa-globe"></i></a></div>
-            </div>
-        </div>
-        <div class="box512">
-            <div class="avatar-contact">VD</div>
-            <div class="btn_div">
-                <button class="rbtn"><a href="https://drive.google.com/uc?export=download&id=1P1QfI61ggKbDu4ApmOUMGl5zbZg9dCcu" target="_blank">Download Resume</a></button>
-            </div>
-        </div>
-    </div>
-</div>
+<footer>© 2026 Dinesh Kumar Mariyala — built with Python, coffee, and zero downtime.</footer>
 
-<!-- Footer -->
-<div class="box6" id="box6">
-    <p>Built From Scratch With <i class="fa-sharp fa-solid fa-heart"></i> by Venakata Dinesh Kumar Mariyala</p>
-</div>
-
-<!-- Scroll up -->
-<a href="#box1" class="arrup">
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" viewBox="0 0 16 16">
-        <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-    </svg>
-</a>
+<a href="#" class="scroll-top"><i class="fa-solid fa-arrow-up"></i></a>
 
 <script>
-    // Progress bar
-    window.onscroll = function() {
-        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        document.getElementById("myBar").style.width = ((winScroll / height) * 100) + "%";
-    };
-
-    // Tabs
-    function opentab(tabname, e) {
-        document.querySelectorAll('.tab-contents').forEach(t => t.classList.remove('active-tab'));
-        document.querySelectorAll('.tab-links').forEach(t => t.classList.remove('active-link'));
-        document.getElementById(tabname).classList.add('active-tab');
-        (e ? e.currentTarget : event.currentTarget).classList.add('active-link');
-    }
-
-    // Reveal on scroll
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+window.onscroll=function(){
+  var st=document.body.scrollTop||document.documentElement.scrollTop;
+  var h=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+  document.getElementById('bar').style.width=((st/h)*100)+'%';
+};
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
 </script>
 </body>
 </html>
